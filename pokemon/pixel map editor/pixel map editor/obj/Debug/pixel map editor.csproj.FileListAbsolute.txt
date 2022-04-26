@@ -8,3 +8,13 @@ C:\Users\kimsd\Desktop\pokemon\pixel map editor\pixel map editor\obj\Debug\pixel
 C:\Users\kimsd\Desktop\pokemon\pixel map editor\pixel map editor\obj\Debug\pixel map editor.exe
 C:\Users\kimsd\Desktop\pokemon\pixel map editor\pixel map editor\obj\Debug\pixel map editor.pdb
 C:\Users\kimsd\Desktop\pokemon\pixel map editor\pixel map editor\obj\Debug\pixel_map_editor.Form1.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\bin\Debug\pixel map editor.exe.config
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\bin\Debug\pixel map editor.exe
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\bin\Debug\pixel map editor.pdb
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\obj\Debug\pixel map editor.csproj.AssemblyReference.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\obj\Debug\pixel_map_editor.Form1.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\obj\Debug\pixel_map_editor.Properties.Resources.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\obj\Debug\pixel map editor.csproj.GenerateResource.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\obj\Debug\pixel map editor.csproj.CoreCompileInputs.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\obj\Debug\pixel map editor.exe
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\obj\Debug\pixel map editor.pdb

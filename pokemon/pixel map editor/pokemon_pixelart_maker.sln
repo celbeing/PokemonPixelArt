@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pixel map editor", "pixel map editor\pixel map editor.csproj", "{94FE9EC4-1CDD-48F7-8909-5E9924D3C15A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pokemon pick", "pixel map editor\pokemon pick.csproj", "{94FE9EC4-1CDD-48F7-8909-5E9924D3C15A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

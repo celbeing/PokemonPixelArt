@@ -8,36 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace pixel_map_editor
+namespace pokemon_pixelart_maker
 {
-    public partial class Form1 : Form
+    public partial class pokemon_pick : Form
     {
-        public Form1()
+        public pokemon_pick()
         {
             InitializeComponent();
-        }
-
-        private void load_image_Click(object sender, EventArgs e)
-        {
-            string pokemon_image = string.Empty;
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.InitialDirectory = @"C:\";
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                pokemon_image = dialog.FileName;
-            }
-            else return;
-            pokemon.Image = Bitmap.FromFile(pokemon_image);
-        }
-        private void random_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.ShowDialog();
-            string path = dialog.SelectedPath;
-            Random r = new Random();
-            int image_num = r.Next() % 1024 + 1;
-            path += $"\\image{image_num}.bmp";
-            pokemon.Image = Bitmap.FromFile(path);
         }
 
         private void pokemon_Click(object sender, EventArgs e)
@@ -47,6 +24,31 @@ namespace pixel_map_editor
 
         private void create_Click(object sender, EventArgs e)
         {
+            Random r = new Random();
+            int img_row = r.Next(54);
+            int img_column = r.Next(15)*2;
+            if (r.Next() % 10 == 0) img_column++;
+            int pokemon_no = img_row * 32 + img_column;
+            img_row *= 30; img_column *= 40;
+
+            Bitmap pokemon_img = new Bitmap(40,30);
+            Bitmap pokemon_set =
+                new Bitmap(pokemon_pixelart_maker.Properties.Resources.pokemon_sample_gen8);
+            Color[,] pokemon_color = new Color[pokemon_set.Width, pokemon_set.Height];
+            for (int j = 0; j < pokemon_set.Height; j++)
+            {
+                for (int i = 0; i < pokemon_set.Width; i++)
+                {
+                    pokemon_color[i, j] = pokemon_set.GetPixel(i, j);
+                }
+            }
+            for (int i = 0; i < 30; i++)
+            {
+                for (int j = 0; j < 40; j++)
+                    pokemon_img.SetPixel(j, i, pokemon_color[img_column + j, img_row + i]);
+            }
+            pokemon.Image = new Bitmap(pokemon_img);
+
             int[] dx = { 1, -1, 0, 0 };
             int[] dy = { 0, 0, 1, -1 };
 
@@ -89,7 +91,7 @@ namespace pixel_map_editor
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void pokemon_pick_Load(object sender, EventArgs e)
         {
 
         }
