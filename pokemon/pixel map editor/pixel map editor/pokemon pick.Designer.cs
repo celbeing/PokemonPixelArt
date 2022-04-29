@@ -29,10 +29,10 @@ namespace pokemon_pixelart_maker
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(pokemon_pick));
             this.pixel_table = new System.Windows.Forms.DataGridView();
             this.color_table = new System.Windows.Forms.DataGridView();
-            this.create = new System.Windows.Forms.Button();
             this.pokemon = new System.Windows.Forms.PictureBox();
             this.pokemon_table = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pixel_table)).BeginInit();
@@ -50,14 +50,14 @@ namespace pokemon_pixelart_maker
             this.pixel_table.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.pixel_table.BackgroundColor = System.Drawing.Color.White;
             this.pixel_table.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.pixel_table.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("굴림", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.pixel_table.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.pixel_table.ColumnHeadersHeight = 10;
             this.pixel_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.pixel_table.ColumnHeadersVisible = false;
@@ -96,22 +96,13 @@ namespace pokemon_pixelart_maker
             this.color_table.Size = new System.Drawing.Size(150, 400);
             this.color_table.TabIndex = 4;
             // 
-            // create
-            // 
-            this.create.Location = new System.Drawing.Point(35, 122);
-            this.create.Name = "create";
-            this.create.Size = new System.Drawing.Size(120, 23);
-            this.create.TabIndex = 5;
-            this.create.Text = "포켓몬 뽑기";
-            this.create.UseVisualStyleBackColor = true;
-            this.create.Click += new System.EventHandler(this.create_Click);
-            // 
             // pokemon
             // 
+            this.pokemon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pokemon.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pokemon.Location = new System.Drawing.Point(35, 26);
             this.pokemon.Name = "pokemon";
             this.pokemon.Size = new System.Drawing.Size(120, 90);
-            this.pokemon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pokemon.TabIndex = 0;
             this.pokemon.TabStop = false;
             this.pokemon.Click += new System.EventHandler(this.pokemon_Click);
@@ -120,14 +111,15 @@ namespace pokemon_pixelart_maker
             // 
             this.pokemon_table.AllowUserToAddRows = false;
             this.pokemon_table.BackgroundColor = System.Drawing.Color.White;
+            this.pokemon_table.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pokemon_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.pokemon_table.ColumnHeadersVisible = false;
             this.pokemon_table.GridColor = System.Drawing.Color.Silver;
-            this.pokemon_table.Location = new System.Drawing.Point(22, 151);
+            this.pokemon_table.Location = new System.Drawing.Point(22, 122);
             this.pokemon_table.Name = "pokemon_table";
             this.pokemon_table.RowHeadersVisible = false;
             this.pokemon_table.RowTemplate.Height = 23;
-            this.pokemon_table.Size = new System.Drawing.Size(150, 70);
+            this.pokemon_table.Size = new System.Drawing.Size(150, 99);
             this.pokemon_table.TabIndex = 6;
             // 
             // pokemon_pick
@@ -137,10 +129,10 @@ namespace pokemon_pixelart_maker
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1024, 660);
             this.Controls.Add(this.pokemon_table);
-            this.Controls.Add(this.create);
             this.Controls.Add(this.color_table);
             this.Controls.Add(this.pixel_table);
             this.Controls.Add(this.pokemon);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "pokemon_pick";
             this.Text = "포켓몬 랜덤 뽑기";
             this.Load += new System.EventHandler(this.pokemon_pick_Load);
@@ -157,7 +149,6 @@ namespace pokemon_pixelart_maker
         private System.Windows.Forms.PictureBox pokemon;
         private System.Windows.Forms.DataGridView pixel_table;
         private System.Windows.Forms.DataGridView color_table;
-        private System.Windows.Forms.Button create;
         private System.Windows.Forms.DataGridView pokemon_table;
     }
 }

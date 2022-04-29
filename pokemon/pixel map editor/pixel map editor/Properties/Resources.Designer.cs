@@ -63,10 +63,20 @@ namespace pokemon_pixelart_maker.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        public static System.Drawing.Bitmap pokemon_sample {
+        public static System.Drawing.Bitmap pokeball {
             get {
-                object obj = ResourceManager.GetObject("pokemon_sample", resourceCulture);
+                object obj = ResourceManager.GetObject("pokeball", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   (아이콘)과(와) 유사한 System.Drawing.Icon 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        public static System.Drawing.Icon pokeball_icon {
+            get {
+                object obj = ResourceManager.GetObject("pokeball_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
