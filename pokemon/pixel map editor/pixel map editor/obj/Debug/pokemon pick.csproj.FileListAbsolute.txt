@@ -8,3 +8,7 @@ C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\p
 C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\obj\Debug\pokemon pick.csproj.CoreCompileInputs.cache
 C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\obj\Debug\pokemon_pixelart_maker.exe
 C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\obj\Debug\pokemon_pixelart_maker.pdb
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\bin\Debug\pokemon_pixelart_maker.exe.manifest
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\bin\Debug\pokemon_pixelart_maker.application
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\obj\Debug\pokemon_pixelart_maker.exe.manifest
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixel map editor\pixel map editor\obj\Debug\pokemon_pixelart_maker.application
