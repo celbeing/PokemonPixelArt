@@ -81,6 +81,56 @@ namespace pokemon_pixelart_maker.Properties {
         }
         
         /// <summary>
+        ///   no.001,이상해씨
+        ///no.002,이상해풀
+        ///no.003,이상해꽃
+        ///no.003,메가이상해꽃
+        ///no.004,파이리
+        ///no.005,리자드
+        ///no.006,리자몽
+        ///no.006,메가리자몽X
+        ///no.006,메가리자몽Y
+        ///no.007,꼬부기
+        ///no.008,어니부기
+        ///no.009,거북왕
+        ///no.009,메가거북왕
+        ///no.010,캐터피
+        ///no.011,단데기
+        ///no.012,버터풀
+        ///no.013,뿔충이
+        ///no.014,딱충이
+        ///no.015,독침붕
+        ///no.016,구구
+        ///no.017,피죠
+        ///no.018,피죤투
+        ///no.019,꼬렛
+        ///no.020,레트라
+        ///no.021,깨비참
+        ///no.022,깨비드릴조
+        ///no.023,아보
+        ///no.024,아보크
+        ///no.025,피카츄
+        ///no.026,라이츄
+        ///no.027,모래두지
+        ///no.028,고지
+        ///no.029,니드런(♀)
+        ///no.030,니드리나
+        ///no.031,니드퀸
+        ///no.032,니드런(♂)
+        ///no.033,니드리노
+        ///no.034,니드킹
+        ///no.035,삐삐
+        ///no.036,픽시
+        ///no.037,식스테일
+        ///[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string pokemon_data {
+            get {
+                return ResourceManager.GetString("pokemon_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
         public static System.Drawing.Bitmap pokemon_sample_gen8 {

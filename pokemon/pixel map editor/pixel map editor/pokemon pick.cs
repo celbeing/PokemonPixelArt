@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,8 @@ namespace pokemon_pixelart_maker
         public pokemon_pick()
         {
             InitializeComponent();
-            pokemon.Image = new Bitmap(pokemon_pixelart_maker.Properties.Resources.pokeball);
+            pokemon.Image = 
+                new Bitmap(pokemon_pixelart_maker.Properties.Resources.pokeball);
         }
 
         bool blank = true;
@@ -35,10 +37,15 @@ namespace pokemon_pixelart_maker
 
             // 포켓몬 뽑기, 이로치 확률 조정
             Random r = new Random();
+            bool irochi = false;
             int img_row = r.Next(54);
             int img_column = r.Next(15) * 2;
-            if (r.Next() % 10 == 0) img_column++;
             int pokemon_no = img_row * 32 + img_column;
+            if (r.Next(100) % 100 == 0)
+            {
+                img_column++;
+                irochi = true;
+            }
             img_row *= 30; img_column *= 40;
 
             // 이미지 초기 설정
@@ -64,12 +71,13 @@ namespace pokemon_pixelart_maker
                 {
                     pokemon_img.SetPixel(j, i, pokemon_color[img_column + j, img_row + i]);
                     for(int k = 0; k < 9; k++)
-                        pokemon_ex.SetPixel(j * 3 + dj[k], i * 3 + di[k], pokemon_color[img_column + j, img_row + i]);
+                        pokemon_ex.SetPixel
+                            (j * 3 + dj[k], i * 3 + di[k], pokemon_color[img_column + j, img_row + i]);
                 }
             }
             pokemon.Image = new Bitmap(pokemon_ex);
 
-            // 색상표 데이터 그리드 만들기
+            // 색상표 data grid view
             int[] dx = { 1, -1, 0, 0 };
             int[] dy = { 0, 0, 1, -1 };
             Color[,] map = new Color[40, 30];
@@ -96,7 +104,7 @@ namespace pokemon_pixelart_maker
             }
             color_table.Rows.RemoveAt(0);
 
-            // 포켓폰 픽셀아트 데이터 그리드 만들기
+            // 포켓폰 픽셀아트 data grid view
             for (int i = 0; i < 40; i++)
                 pixel_table.Columns.Add(" ", " ");
             for (int i = 0; i < 30; i++)
@@ -109,8 +117,18 @@ namespace pokemon_pixelart_maker
                 }
                 pixel_table.Rows.Add(row);
             }
+
+            // 포켓몬 정보 data grid view
+            pokemon_table.Columns.Add("값", "값");
+            string[] pokemon_data = pokemon_pixelart_maker.Properties.Resources.pokemon_data.Split();
+            string[] your_pokemon = pokemon_data[pokemon_no].Split(',');
+            pokemon_table.Rows.Add(your_pokemon[0]);
+            pokemon_table.Rows.Add(your_pokemon[1]);
+            pokemon_table.Rows.Add(irochi ? "이로치" : " ");
+
             pixel_table.ClearSelection();
             color_table.ClearSelection();
+            pokemon_table.ClearSelection();
         }
 
         private void pokemon_pick_Load(object sender, EventArgs e)

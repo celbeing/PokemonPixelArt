@@ -110,6 +110,7 @@ namespace pokemon_pixelart_maker
             // pokemon_table
             // 
             this.pokemon_table.AllowUserToAddRows = false;
+            this.pokemon_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.pokemon_table.BackgroundColor = System.Drawing.Color.White;
             this.pokemon_table.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pokemon_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

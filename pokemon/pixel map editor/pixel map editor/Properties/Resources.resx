@@ -124,6 +124,9 @@
   <data name="pokeball_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pokeball_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pokemon_data" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pokemon_data.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
   <data name="pokemon_sample_gen8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pokemon_sample_gen8.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

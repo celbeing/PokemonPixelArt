@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="pokemon_pixelart_maker.exe.manifest" size="3573">
+    <dependentAssembly dependencyType="install" codebase="pokemon_pixelart_maker.exe.manifest" size="4083">
       <assemblyIdentity name="pokemon_pixelart_maker.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pHXZDy+YlMXbfVTK5xDni3QFBgbj/h13A1S8Clwqf8A=</dsig:DigestValue>
+        <dsig:DigestValue>1MJMegkrvQmrWI3asE6MJL/xZCpueG4DnUZQYQZ/TWQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
