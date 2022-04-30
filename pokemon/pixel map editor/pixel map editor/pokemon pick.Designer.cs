@@ -135,7 +135,7 @@ namespace pokemon_pixelart_maker
             this.Controls.Add(this.pokemon);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "pokemon_pick";
-            this.Text = "포켓몬 랜덤 뽑기";
+            this.Text = "포켓몬 랜덤 뽑기 (인디스쿨:전라남도교육지원청, 티스토리:https://celbeing.tistory.com/)";
             this.Load += new System.EventHandler(this.pokemon_pick_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pixel_table)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.color_table)).EndInit();

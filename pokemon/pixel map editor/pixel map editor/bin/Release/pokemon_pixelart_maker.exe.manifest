@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="pokemon_pixelart_maker.exe" size="848352">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="pokemon_pixelart_maker.exe" size="699360">
       <assemblyIdentity name="pokemon_pixelart_maker" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>I6Yf65OhVBO0w6rXflqX7C2MUFzfFgScNgRAHQ21A4w=</dsig:DigestValue>
+        <dsig:DigestValue>pLcogqz3Xz2BzWexTokL7Q6HdS4GDKfRJYR/hJHbSIw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
