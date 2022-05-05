@@ -18,3 +18,13 @@ C:\Users\kimsd\Desktop\pokemon\pixelart\pixelart\obj\Debug\pixelart.csproj.Gener
 C:\Users\kimsd\Desktop\pokemon\pixelart\pixelart\obj\Debug\pixelart.csproj.CoreCompileInputs.cache
 C:\Users\kimsd\Desktop\pokemon\pixelart\pixelart\obj\Debug\pixelart.exe
 C:\Users\kimsd\Desktop\pokemon\pixelart\pixelart\obj\Debug\pixelart.pdb
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixelart\pixelart\bin\Debug\pixelart.exe.config
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixelart\pixelart\bin\Debug\pixelart.exe
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixelart\pixelart\bin\Debug\pixelart.pdb
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixelart\pixelart\obj\Debug\pixelart.csproj.AssemblyReference.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixelart\pixelart\obj\Debug\pixelart.Form1.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixelart\pixelart\obj\Debug\pixelart.Properties.Resources.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixelart\pixelart\obj\Debug\pixelart.csproj.GenerateResource.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixelart\pixelart\obj\Debug\pixelart.csproj.CoreCompileInputs.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixelart\pixelart\obj\Debug\pixelart.exe
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\pixelart\pixelart\obj\Debug\pixelart.pdb

@@ -21,12 +21,14 @@ namespace pixelart
         {
             string image_file = string.Empty;
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.InitialDirectory = @"C:\";
+            dialog.Filter = "bmp files (*.bmp)|*.bmp|gif files (*.gif)|*.gif|All files (*.*)|*.*";
+            dialog.FilterIndex = 1;
+            dialog.RestoreDirectory = true;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 image_file = dialog.FileName;
             }
-            else if (dialog.ShowDialog() == DialogResult.Cancel)
+            else
             {
                 return;
             }
@@ -35,9 +37,16 @@ namespace pixelart
         }
         private void btnSeparate_Click(object sender, EventArgs e)
         {
+            string path = string.Empty;
             FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.ShowDialog();
-            string path = dialog.SelectedPath + "\\partition";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                path = dialog.SelectedPath + "\\partition";
+            }
+            else
+            {
+                return;
+            }
             int filenumber = 1;
             int x = pic.Image.Width / 40;
             int y = pic.Image.Height / 30;
