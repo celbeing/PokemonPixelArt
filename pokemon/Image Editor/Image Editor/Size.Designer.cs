@@ -42,15 +42,17 @@ namespace Image_Editor
             this.Label_text.AutoSize = true;
             this.Label_text.Location = new System.Drawing.Point(12, 12);
             this.Label_text.Name = "Label_text";
-            this.Label_text.Size = new System.Drawing.Size(217, 12);
-            this.Label_text.Text = "이미지 조각 하나의 크기를 지정합니다.";
+            this.Label_text.Size = new System.Drawing.Size(217, 24);
+            this.Label_text.TabIndex = 5;
+            this.Label_text.Text = "이미지 조각 하나의 크기를 지정합니다.\r\n조각보다 작은 이미지는 버려집니다.";
             // 
             // Label_width
             // 
             this.Label_width.AutoSize = true;
-            this.Label_width.Location = new System.Drawing.Point(12, 40);
+            this.Label_width.Location = new System.Drawing.Point(12, 50);
             this.Label_width.Name = "Label_width";
             this.Label_width.Size = new System.Drawing.Size(29, 12);
+            this.Label_width.TabIndex = 4;
             this.Label_width.Text = "가로";
             // 
             // Label_height
@@ -59,6 +61,7 @@ namespace Image_Editor
             this.Label_height.Location = new System.Drawing.Point(12, 73);
             this.Label_height.Name = "Label_height";
             this.Label_height.Size = new System.Drawing.Size(29, 12);
+            this.Label_height.TabIndex = 3;
             this.Label_height.Text = "세로";
             // 
             // Button_Submit
@@ -73,7 +76,7 @@ namespace Image_Editor
             // 
             // Textbox_width
             // 
-            this.Textbox_width.Location = new System.Drawing.Point(41, 36);
+            this.Textbox_width.Location = new System.Drawing.Point(41, 45);
             this.Textbox_width.Name = "Textbox_width";
             this.Textbox_width.Size = new System.Drawing.Size(100, 21);
             this.Textbox_width.TabIndex = 0;
@@ -101,6 +104,7 @@ namespace Image_Editor
             this.Name = "Size";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "이미지 크기 지정";
+            // load 이벤트 핸들러 삭제했음
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -12,7 +12,7 @@ namespace Image_Editor
 {
     public partial class Size : Form
     {
-        int width = 30; int height = 40;
+        int width = 40; int height = 30;
         public delegate void SizeDataHandler(int w, int h);
         public event SizeDataHandler Size_Data_Send;
         public Size()
