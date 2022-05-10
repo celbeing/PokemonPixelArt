@@ -9,3 +9,15 @@ C:\Users\kimsd\source\repos\Csharp_Study\pokemon\Image Editor\Image Editor\obj\D
 C:\Users\kimsd\source\repos\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.exe
 C:\Users\kimsd\source\repos\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.pdb
 C:\Users\kimsd\source\repos\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor.Size.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\bin\Debug\Image Editor.exe.config
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\bin\Debug\Image Editor.exe
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\bin\Debug\Image Editor.pdb
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.csproj.AssemblyReference.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor.Arrange.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor.Size.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor.Image_Editor.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor.Properties.Resources.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.csproj.GenerateResource.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.csproj.CoreCompileInputs.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.exe
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.pdb

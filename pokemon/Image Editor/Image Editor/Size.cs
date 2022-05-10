@@ -43,11 +43,11 @@ namespace Image_Editor
                     this.Size_Data_Send(width, height);
                     this.Close();
                 }
-                else MessageBox.Show("0 이상의 자연수 값을 입력하세요.");
+                else MessageBox.Show("0 이상의 자연수를 입력하세요.");
             }
             catch
             {
-                MessageBox.Show("0 이상의 자연수 값을 입력하세요.");
+                MessageBox.Show("0 이상의 자연수를 입력하세요.");
             }
         }
     }

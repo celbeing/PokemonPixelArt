@@ -29,10 +29,11 @@ namespace Image_Editor
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Size));
             this.Label_text = new System.Windows.Forms.Label();
             this.Label_width = new System.Windows.Forms.Label();
             this.Label_height = new System.Windows.Forms.Label();
-            this.Button_Submit = new System.Windows.Forms.Button();
+            this.Button_submit = new System.Windows.Forms.Button();
             this.Textbox_width = new System.Windows.Forms.TextBox();
             this.Textbox_height = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -64,15 +65,15 @@ namespace Image_Editor
             this.Label_height.TabIndex = 3;
             this.Label_height.Text = "세로";
             // 
-            // Button_Submit
+            // Button_submit
             // 
-            this.Button_Submit.Location = new System.Drawing.Point(154, 67);
-            this.Button_Submit.Name = "Button_Submit";
-            this.Button_Submit.Size = new System.Drawing.Size(75, 23);
-            this.Button_Submit.TabIndex = 2;
-            this.Button_Submit.Text = "확인";
-            this.Button_Submit.UseVisualStyleBackColor = true;
-            this.Button_Submit.Click += new System.EventHandler(this.Button_Submit_Click);
+            this.Button_submit.Location = new System.Drawing.Point(154, 67);
+            this.Button_submit.Name = "Button_submit";
+            this.Button_submit.Size = new System.Drawing.Size(75, 23);
+            this.Button_submit.TabIndex = 2;
+            this.Button_submit.Text = "확인";
+            this.Button_submit.UseVisualStyleBackColor = true;
+            this.Button_submit.Click += new System.EventHandler(this.Button_Submit_Click);
             // 
             // Textbox_width
             // 
@@ -95,16 +96,16 @@ namespace Image_Editor
             this.ClientSize = new System.Drawing.Size(241, 102);
             this.Controls.Add(this.Textbox_height);
             this.Controls.Add(this.Textbox_width);
-            this.Controls.Add(this.Button_Submit);
+            this.Controls.Add(this.Button_submit);
             this.Controls.Add(this.Label_height);
             this.Controls.Add(this.Label_width);
             this.Controls.Add(this.Label_text);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(257, 141);
             this.MinimumSize = new System.Drawing.Size(257, 141);
             this.Name = "Size";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "이미지 크기 지정";
-            // load 이벤트 핸들러 삭제했음
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,7 +116,7 @@ namespace Image_Editor
         private System.Windows.Forms.Label Label_text;
         private System.Windows.Forms.Label Label_width;
         private System.Windows.Forms.Label Label_height;
-        private System.Windows.Forms.Button Button_Submit;
+        private System.Windows.Forms.Button Button_submit;
         private System.Windows.Forms.TextBox Textbox_width;
         private System.Windows.Forms.TextBox Textbox_height;
     }

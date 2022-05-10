@@ -14,6 +14,7 @@ namespace Image_Editor
     {
         int separate_width = 0;
         int separate_height = 0;
+        int merge_row = 1;
         public Image_Editor()
         {
             InitializeComponent();
@@ -47,6 +48,16 @@ namespace Image_Editor
                 MessageBox.Show("폴더가 선택되지 않았습니다.");
                 return;
             }
+            Arrange Arrange_Set = new Arrange();
+            Arrange_Set.Arrange_Data_Send += Get_Arrange_Data;
+            Arrange_Set.Location = new Point(Cursor.Position.X, Cursor.Position.Y);
+            Arrange_Set.ShowDialog();
+            if (merge_row < 1)
+            {
+                MessageBox.Show("잘못된 입력입니다.");
+                return;
+            }
+            // 이미지 합치기
         }
         private void Button_separate_Click(object sender, EventArgs e)
         {
@@ -54,7 +65,12 @@ namespace Image_Editor
             Size_Editor.Size_Data_Send += Get_Image_Size;
             Size_Editor.Location = new Point(Cursor.Position.X, Cursor.Position.Y);
             Size_Editor.ShowDialog();
-            if (separate_width * separate_height <= 0) return;
+            if (separate_width * separate_height <= 0)
+            {
+                MessageBox.Show("잘못된 입력입니다.");
+                return;
+            }
+            // bool 값으로 "확인" 눌러서 값 전달 된건지 확인
 
             string image_origin_path = string.Empty;
             OpenFileDialog image_directory = new OpenFileDialog();
@@ -115,6 +131,11 @@ namespace Image_Editor
         {
             separate_width = w;
             separate_height = h;
+        }
+
+        public void Get_Arrange_Data(int r)
+        {
+            merge_row = r;
         }
     }
 }

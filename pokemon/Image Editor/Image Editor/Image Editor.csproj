@@ -66,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Arrange.resx">
+      <DependentUpon>Arrange.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Size.resx">
       <DependentUpon>Size.cs</DependentUpon>
     </EmbeddedResource>
