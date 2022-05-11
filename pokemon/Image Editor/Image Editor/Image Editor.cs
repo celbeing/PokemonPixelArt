@@ -58,6 +58,61 @@ namespace Image_Editor
                 return;
             }
             // 이미지 합치기
+            Bitmap sample = new Bitmap(image_piece_path + "\\001.png");
+            int piece_width = sample.Width;
+            int piece_height = sample.Height;
+            int piece_number = 0;
+            int piece_last = 0;
+            int piece_count = 0;
+            int merge_count = 0;
+            int blank_stack = 0;
+            while(blank_stack < 100)
+            {
+                string piece_path = image_piece_path + $"\\{piece_number:D3}.png";
+                piece_number++;
+                if (System.IO.File.Exists(piece_path))
+                {
+                    piece_count++;
+                    blank_stack = 0;
+                    piece_last = piece_number;
+                }
+                else
+                    blank_stack++;
+            }
+            int merge_column = ((piece_last - 1) / merge_row) + 1;
+            MessageBox.Show($"총 {piece_count}개의 이미지 조각을 찾았습니다.\n" +
+                $"{merge_column}행 {merge_row}열로 조각을 이어 붙입니다.");
+            piece_number = 0;
+            Bitmap merge = new Bitmap(piece_width * merge_row, piece_height * merge_column);
+
+            while (piece_number <= piece_count)
+            {
+                Bitmap piece = new Bitmap(piece_width, piece_height);
+                piece_number++;
+                try
+                {
+                    Bitmap load_image = new Bitmap(image_piece_path + $"\\{piece_number:D3}.png");
+                    for(int row = 0; row < piece_height; row++)
+                    {
+                        for(int column = 0; column < piece_width; column++)
+                            piece.SetPixel(row, column, load_image.GetPixel(row, column));
+                    }
+                }
+                catch { continue; }
+
+                for(int row = 0; row < piece_height; row++)
+                {
+                    for(int column = 0; column < piece_width; column++)
+                    {
+                        merge.SetPixel(((piece_number - 1) % merge_row) + column, 
+                            ((piece_number - 1) / merge_row) + column, 
+                            piece.GetPixel(row, column));
+                    }
+                }
+                merge_count++;
+            }
+
+            merge.Save(image_piece_path + "\\image.bmp");
         }
         private void Button_separate_Click(object sender, EventArgs e)
         {
