@@ -80,6 +80,7 @@ namespace Image_Editor
             this.Controls.Add(this.Textbox_row);
             this.Controls.Add(this.Label_row);
             this.Controls.Add(this.Label_text);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(273, 114);
             this.MinimumSize = new System.Drawing.Size(273, 114);

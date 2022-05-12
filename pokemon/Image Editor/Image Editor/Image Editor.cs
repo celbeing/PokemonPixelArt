@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,9 @@ namespace Image_Editor
         int separate_width = 0;
         int separate_height = 0;
         int merge_row = 1;
+
+        public delegate void ImageDataHandler(Bitmap current_merge_image);
+        public event ImageDataHandler Image_Data_Send;
         public Image_Editor()
         {
             InitializeComponent();
@@ -85,6 +89,11 @@ namespace Image_Editor
             piece_number = 0;
             Bitmap merge = new Bitmap(piece_width * merge_row, piece_height * merge_column);
 
+            /*
+            Merge merge_client = new Merge();
+            merge_client.Show();
+            */
+
             while (piece_number <= piece_count)
             {
                 Bitmap piece = new Bitmap(piece_width, piece_height);
@@ -92,22 +101,27 @@ namespace Image_Editor
                 try
                 {
                     Bitmap load_image = new Bitmap(image_piece_path + $"\\{piece_number:D3}.png");
-                    for(int row = 0; row < piece_height; row++)
+                    for (int row = 0; row < piece_height; row++)
                     {
-                        for(int column = 0; column < piece_width; column++)
-                            piece.SetPixel(row, column, load_image.GetPixel(row, column));
+                        for (int column = 0; column < piece_width; column++)
+                        {
+                            piece.SetPixel(column, row, load_image.GetPixel(column, row));
+                        }
                     }
                 }
                 catch { continue; }
 
+                /*
+                this.Image_Data_Send(piece);
+                Thread.Sleep(5000);
+                */
+
                 for(int row = 0; row < piece_height; row++)
                 {
                     for(int column = 0; column < piece_width; column++)
-                    {
-                        merge.SetPixel(((piece_number - 1) % merge_row) + column, 
-                            ((piece_number - 1) / merge_row) + column, 
-                            piece.GetPixel(row, column));
-                    }
+                        merge.SetPixel(((piece_number - 1) % merge_row) * piece_width + column, 
+                            ((piece_number - 1) / merge_row) * piece_height + row, 
+                            piece.GetPixel(column, row));
                 }
                 merge_count++;
             }
