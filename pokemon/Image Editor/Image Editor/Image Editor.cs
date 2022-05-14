@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -61,8 +62,14 @@ namespace Image_Editor
                 MessageBox.Show("잘못된 입력입니다.");
                 return;
             }
+            // 파일목록 작성
+            List<string> image_list = new List<string>();
+            DirectoryInfo file_list = new DirectoryInfo(image_piece_path);
+            foreach(FileInfo image_name in file_list.GetFiles())
+                image_list.Add(image_name.Name);
+
             // 이미지 합치기
-            Bitmap sample = new Bitmap(image_piece_path + "\\001.png");
+            Bitmap sample = new Bitmap(image_piece_path + $"\\{image_list[0]}");
             int piece_width = sample.Width;
             int piece_height = sample.Height;
             int piece_number = 0;
@@ -74,7 +81,7 @@ namespace Image_Editor
             {
                 string piece_path = image_piece_path + $"\\{piece_number:D3}.png";
                 piece_number++;
-                if (System.IO.File.Exists(piece_path))
+                if (File.Exists(piece_path))
                 {
                     piece_count++;
                     blank_stack = 0;
@@ -83,8 +90,8 @@ namespace Image_Editor
                 else
                     blank_stack++;
             }
-            int merge_column = ((piece_last - 1) / merge_row) + 1;
-            MessageBox.Show($"총 {piece_count}개의 이미지 조각을 찾았습니다.\n" +
+            int merge_column = ((image_list.Count - 1) / merge_row) + 1;
+            MessageBox.Show($"총 {image_list.Count}개의 이미지 조각을 찾았습니다.\n" +
                 $"{merge_column}행 {merge_row}열로 조각을 이어 붙입니다.");
             piece_number = 0;
             Bitmap merge = new Bitmap(piece_width * merge_row, piece_height * merge_column);
@@ -94,13 +101,12 @@ namespace Image_Editor
             merge_client.Show();
             */
 
-            while (piece_number <= piece_count)
+            while (piece_number < image_list.Count)
             {
                 Bitmap piece = new Bitmap(piece_width, piece_height);
-                piece_number++;
                 try
                 {
-                    Bitmap load_image = new Bitmap(image_piece_path + $"\\{piece_number:D3}.png");
+                    Bitmap load_image = new Bitmap(image_piece_path + $"\\{image_list[piece_number]}");
                     for (int row = 0; row < piece_height; row++)
                     {
                         for (int column = 0; column < piece_width; column++)
@@ -108,6 +114,7 @@ namespace Image_Editor
                             piece.SetPixel(column, row, load_image.GetPixel(column, row));
                         }
                     }
+                    piece_number++;
                 }
                 catch { continue; }
 
