@@ -17,7 +17,7 @@ namespace image_dictionary
             pokemon_list_path = Path.GetDirectoryName(pokemon_list_path);
             pokemon_list_path = Path.GetDirectoryName(pokemon_list_path);
             StreamReader pokemon_dic_sr = 
-                new StreamReader(Path.Combine(Path.Combine(pokemon_list_path,"resources"),"pokemon_list.csv"));
+                new StreamReader(Path.Combine(Path.Combine(pokemon_list_path,"resources"),"pokemon_dictionary.csv"));
             string sr_line = string.Empty;
             while((sr_line = pokemon_dic_sr.ReadLine()) != null)
             {
@@ -54,7 +54,7 @@ namespace image_dictionary
                         file_name_split[0] = pokemon_dic[file_name_split[0]];
                         pokemon_number = pokemon_num[file_name_split[0]];
                         check[pokemon_number - 1] = true;
-                        new_file_name = $"no{pokemon_number:D3}";
+                        new_file_name = $"no{pokemon_number:D3} ";
                     }
                     else
                     {
@@ -68,7 +68,7 @@ namespace image_dictionary
                                 file_name_split[index] = pokemon_dic[file_name_split[index]];
                                 pokemon_number = pokemon_num[file_name_split[index]];
                                 check[pokemon_number - 1] = true;
-                                new_file_name = $"no{pokemon_number:D3}";
+                                new_file_name = $"no{pokemon_number:D3} ";
                                 break;
                             }
                             index++;
@@ -78,6 +78,34 @@ namespace image_dictionary
                     {
                         if (pokemon_dic.TryGetValue(file_name_split[i], out string value))
                             file_name_split[i] = value;
+                    }
+
+                    if (file_name_split[0] == "마휘핑")
+                    {
+                        if (file_name_split.Length < 3 ) continue;
+                        if(file_name_split[2] == "밀키")
+                        {
+                            file_name_split[1] = file_name_split[2] + file_name_split[1];
+                            file_name_split[2] = string.Empty;
+                        }
+                        else
+                        {
+                            file_name_split[1] += file_name_split[2];
+                            file_name_split[2] = string.Empty;
+                        }
+                        file_name_split[1] = "(" + file_name_split[1] + "/" + file_name_split[3] + ")";
+                        file_name_split[3] = string.Empty;
+                    }
+                    else if(file_name_split[0] == "배쓰나이")
+                    {
+                        if (file_name_split.Length < 2) continue;
+                        file_name_split[1] = "(" + file_name_split[1] + file_name_split[2] + ")";
+                        file_name_split[2] = string.Empty;
+                    }
+                    else if(file_name_split[0] == "플라베베" || file_name_split[0] == "플라엣테" || file_name_split[0] == "플라제스")
+                    {
+                        if (file_name_split.Length < 2) continue;
+                        file_name_split[1] = "(" + file_name_split[1] + ")";
                     }
                     foreach (string file_name_piece in file_name_split)
                     {

@@ -22,4 +22,3 @@ C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image
 C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.exe
 C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.pdb
 C:\Users\kimsd\source\repos\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor.Arrange.resources
-C:\Users\kimsd\source\repos\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor.Merge.resources

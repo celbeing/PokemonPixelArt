@@ -118,11 +118,6 @@ namespace Image_Editor
                 }
                 catch { continue; }
 
-                /*
-                this.Image_Data_Send(piece);
-                Thread.Sleep(5000);
-                */
-
                 for(int row = 0; row < piece_height; row++)
                 {
                     for(int column = 0; column < piece_width; column++)
@@ -178,6 +173,7 @@ namespace Image_Editor
 
             int origin_width = image_origin.Width;
             int origin_height = image_origin.Height;
+
 
             int file_count = 0;
             for (int set_row = 0; set_row < origin_height / separate_height; set_row++)

@@ -941,7 +941,7 @@ speed,(스피드폼)
 therian,(영물폼)
 origin,(오리진폼)
 primal,(원시)
-eternal,(영원의꽃)
+eternal,영원의꽃
 ff,f
 mm,m
 exclamation,느낌표
@@ -970,7 +970,7 @@ plain,플레인
 red,빨강
 blue,파랑
 indigo,군청
-violet,포라
+violet,보라
 green,초록
 white,하양
 yellow,노랑
@@ -984,6 +984,8 @@ lareine,(퀸컷)
 matron,(마담컷)
 pharaoh,(킹덤컷)
 starcut,(스타컷)
+pirouette,(스텝폼)
+original,(500년전의색)
 striped,줄무늬
 rainy,(빗방울의모습)
 snowy,(설운의모습)
@@ -1060,6 +1062,8 @@ tundra,(설원)
 school,(군집의모습)
 active,(액티브모드)
 rapidstrike,(연격의태세)
+bl,(블랙큐레무)
+wh,(화이트큐레무)
 swordcrowned,(검왕)
 shieldcrowned,(방패왕)
 10,(10%폼)

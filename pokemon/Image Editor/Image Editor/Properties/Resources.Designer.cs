@@ -61,6 +61,30 @@ namespace Image_Editor.Properties {
         }
         
         /// <summary>
+        ///   abomasnow-mega.png,no460 눈설왕-(메가진화).png
+        ///abomasnow.png,no460 눈설왕.png
+        ///abra.png,no063 캐이시.png
+        ///absol-mega.png,no359 앱솔-(메가진화).png
+        ///absol.png,no359 앱솔.png
+        ///accelgor.png,no617 어지리더.png
+        ///aegislash-blade.png,no681 킬가르도-(블레이드폼).png
+        ///aegislash.png,no681 킬가르도.png
+        ///aerodactyl-mega.png,no142 프테라-(메가진화).png
+        ///aerodactyl.png,no142 프테라.png
+        ///aggron-mega.png,no306 보스로라-(메가진화).png
+        ///aggron.png,no306 보스로라.png
+        ///aipom.png,no190 에이팜.png
+        ///alakazam-mega.png,no065 후딘-(메가진화).png
+        ///alakazam.png,no065 후딘.png
+        ///alcremie-caramel-swirl-ber[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string image_name {
+            get {
+                return ResourceManager.GetString("image_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   (아이콘)과(와) 유사한 System.Drawing.Icon 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
         internal static System.Drawing.Icon pokeball_icon {

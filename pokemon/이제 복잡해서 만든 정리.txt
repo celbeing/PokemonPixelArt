@@ -1,0 +1,25 @@
+###현재 진행 중인 작업###
+1. 이미지 잘라낼 때, 파일명에 맞게 이름 지정해 저장하기
+2. 폼 디자인
+
+포켓몬 이미지 조각 크기는 38*56px
+
+###솔루션 이름, 중요도###
+★Image Editor : 조각 이어붙이기, 조각 만들기
+★image_dictionary : 파일명 번역
+★image_name.csv : 원본 파일명 번역
+ 이 파일은 메모장으로 다시 열어서 uft-8 인코딩으로 다시 저장해주어야 한글 안깨짐
+ 인코딩 자동 변환은 이후에 공부해보는 것으로...
+★pokeball_icon.ico : 포켓볼 아이콘
+★pokemon_data.csv : 포켓몬 번호, 한국어, 영어 이름
+★pokemon_image_gen8 : 포켓몬 이미지 수정본
+★pokemon-gen8 : 이미지 원본 폴더
+
+☆pixel map editor : v1.0
+☆pixelart : Image Editor 프로토타입
+☆pokemon_dictionary : 포켓몬 위키에서 가져온 언어별 이름에서 한국어, 영어 추출
+☆pokemon_global_name.txt : 포켓몬 위키에서 긁어온 양식 정리한 파일
+☆pokemon_data_old : 포켓몬 번호, 한국어이름
+
+★최중요 프로젝트, 파일
+☆이제 없어도 되는, 버전업 끝난 프로젝트, 파일
