@@ -80,10 +80,9 @@ namespace image_dictionary
                             file_name_split[i] = value;
                     }
 
-                    if (file_name_split[0] == "마휘핑")
+                    if (file_name_split[0] == "마휘핑" && file_name_split.Length > 2)
                     {
-                        if (file_name_split.Length < 3 ) continue;
-                        if(file_name_split[2] == "밀키")
+                        if (file_name_split[2] == "밀키")
                         {
                             file_name_split[1] = file_name_split[2] + file_name_split[1];
                             file_name_split[2] = string.Empty;
@@ -93,20 +92,23 @@ namespace image_dictionary
                             file_name_split[1] += file_name_split[2];
                             file_name_split[2] = string.Empty;
                         }
-                        file_name_split[1] = "(" + file_name_split[1] + "/" + file_name_split[3] + ")";
+                        file_name_split[1] = "(" + file_name_split[1] + "_" + file_name_split[3] + ")";
                         file_name_split[3] = string.Empty;
                     }
-                    else if(file_name_split[0] == "배쓰나이")
+                    else if(file_name_split[0] == "배쓰나이" && file_name_split.Length > 1)
                     {
-                        if (file_name_split.Length < 2) continue;
-                        file_name_split[1] = "(" + file_name_split[1] + file_name_split[2] + ")";
-                        file_name_split[2] = string.Empty;
+                        if (file_name_split.Length < 2) { }
+                        else
+                        {
+                            file_name_split[1] = "(" + file_name_split[1] + file_name_split[2] + ")";
+                            file_name_split[2] = string.Empty;
+                        }
                     }
-                    else if(file_name_split[0] == "플라베베" || file_name_split[0] == "플라엣테" || file_name_split[0] == "플라제스")
-                    {
-                        if (file_name_split.Length < 2) continue;
+                    else if((file_name_split[0] == "플라베베" 
+                        || file_name_split[0] == "플라엣테" 
+                        || file_name_split[0] == "플라제스") 
+                        && file_name_split.Length > 1)
                         file_name_split[1] = "(" + file_name_split[1] + ")";
-                    }
                     foreach (string file_name_piece in file_name_split)
                     {
                         if (file_name_piece == String.Empty) continue;

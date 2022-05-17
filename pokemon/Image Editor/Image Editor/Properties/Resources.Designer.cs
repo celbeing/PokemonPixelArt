@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Image_Editor.Properties {
+namespace Image_Editor_Client.Properties {
     using System;
     
     

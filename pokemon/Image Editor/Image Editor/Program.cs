@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Image_Editor
+namespace Image_Editor_Client
 {
     static class Program
     {

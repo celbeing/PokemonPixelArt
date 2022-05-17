@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Image_Editor
+namespace Image_Editor_Client
 {
     public partial class Image_Editor : Form
     {
@@ -174,7 +174,12 @@ namespace Image_Editor
             int origin_width = image_origin.Width;
             int origin_height = image_origin.Height;
 
-
+            string name_path = Environment.CurrentDirectory;
+            name_path = Path.GetDirectoryName(name_path);
+            name_path = Path.GetDirectoryName(name_path);
+            name_path += "\\Resources\\image_name.csv";
+            StreamReader file_name_sr = new StreamReader(name_path);
+            string image_file_name = string.Empty;
             int file_count = 0;
             for (int set_row = 0; set_row < origin_height / separate_height; set_row++)
             {
@@ -194,7 +199,9 @@ namespace Image_Editor
                                 );
                         }
                     }
-                    image_piece.Save(image_save_path + $"\\No.{file_count:D3}.bmp");
+                    string[] sr_split = file_name_sr.ReadLine().Split(',');
+                    image_file_name = sr_split[1];
+                    image_piece.Save(image_save_path + $"\\{image_file_name}");
                 }
             }
             MessageBox.Show($"이미지가 분리되었습니다.\n파일저장위치:{image_save_path}\n분리된 이미지:{file_count}개");

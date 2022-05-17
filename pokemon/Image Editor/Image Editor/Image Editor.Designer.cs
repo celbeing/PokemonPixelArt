@@ -1,5 +1,5 @@
 ﻿
-namespace Image_Editor
+namespace Image_Editor_Client
 {
     partial class Image_Editor
     {
