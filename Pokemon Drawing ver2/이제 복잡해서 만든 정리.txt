@@ -1,0 +1,21 @@
+###현재 진행 중인 작업###
+1. 폼 디자인
+
+포켓몬 이미지 조각 크기는 68*56px
+
+###솔루션 이름, 중요도###
+★image_name.csv : 원본 파일명 번역
+★pokemon_no_kor_eng.csv : 포켓몬 번호, 한국어, 영어
+★pokemon_translate.csv : 번역쌍
+★pokeball_icon.ico : 포켓볼 아이콘
+★pokeball.bmp : 포켓볼 이미지
+★image~~~.png : 포켓몬 샘플
+
+
+★최중요 프로젝트, 파일
+☆이제 없어도 되는, 버전업 끝난 프로젝트, 파일
+
+###포함 리소스의 resourcestream 위치###
+"Pokemon_Drawing_ver2.Main_Client.resources"
+"Pokemon_Drawing_ver2.Properties.Resources.resources"
+"Pokemon_Drawing_ver2.Resources.*.*"

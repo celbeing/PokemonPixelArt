@@ -238,7 +238,8 @@ namespace Pokemon_Drawing_ver2.Properties {
         ///nidoking,니드킹
         ///clefairy,삐삐
         ///clefable,픽시
-        ///vulpix,식스테일        ///[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///vulpix,식스테일
+        ///[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string pokemon_translate {
             get {

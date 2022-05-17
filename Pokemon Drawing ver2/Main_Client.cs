@@ -8,15 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Reflection;
 
 namespace Pokemon_Drawing_ver2
 {
     public partial class Main_Client : Form
     {
-        int pokemon_number = 0;
         byte gen_select = 8;
+        int pokemon_number = 0;
+        int sample_order_fornt = 0;
+        int sample_order_back = 0;
+        string pokemon_name_kor = string.Empty;
+        string pokemon_name_eng = string.Empty;
         string file_path = string.Empty;
         string directory_path = string.Empty;
+
+        List<string> pokemon_difficulty = new List<string>();
+        List<string> pokemon_form = new List<string>();
         public Main_Client()
         {
             InitializeComponent();
@@ -49,6 +57,85 @@ namespace Pokemon_Drawing_ver2
             button_search_out.Visible = true;
             combo_search_pokemon_difficulty.Visible = true;
             combo_search_pokemon_form.Visible = true;
+
+            // 포켓몬 이름 찾기
+            Assembly _assembly;
+            StreamReader pokemon_name_search;
+            _assembly = Assembly.GetExecutingAssembly();
+            pokemon_name_search = 
+                new StreamReader(_assembly.GetManifestResourceStream
+                ("Pokemon_Drawing_ver2.Resources.pokemon_no_kor_eng.csv"));
+            while (true)
+            {
+                string[] no_kor_eng = pokemon_name_search.ReadLine().Split(',');
+                if(int.Parse(no_kor_eng[0]) == pokemon_number)
+                {
+                    pokemon_name_kor = no_kor_eng[1];
+                    pokemon_name_eng = no_kor_eng[2].ToLower();
+                    break;
+                }
+            }
+            pokemon_name_search.Close();
+
+            // 이미지 샘플에서 포켓몬 위치 찾기
+            // 포켓몬 이미지 갯수 세기
+            int count_sample = 0;
+            int count_order = 0;
+            int first = -1;
+            int last = 0;
+            StreamReader pokemon_locate_find = 
+                new StreamReader(_assembly.GetManifestResourceStream
+                ("Pokemon_Drawing_ver2.Resources.image_name.csv"));
+            while (true)
+            {
+                string[] image_name = pokemon_locate_find.ReadLine().Split(',');
+                string[] image_no_name_form = image_name[1].Replace(".png","").Split('-');
+                string[] image_kor_name = image_no_name_form[0].Split();
+                if(image_kor_name[1] == pokemon_name_kor)
+                {
+                    if (first == -1) first = count_order;
+                    count_sample++;
+                    pokemon_form.Add(image_name[1].Substring(6).Replace("-", " ").Replace("_", "-"));
+                }
+                else if(first != -1)
+                {
+                    last = count_order - 1;
+                    break;
+                }
+                count_order++;
+            }
+            sample_order_fornt = first;
+            sample_order_back = last;
+            pokemon_locate_find.Close();
+
+            // 이미지 샘플 가져오기(기본형으로)
+            Bitmap image_sample = new Bitmap(68, 56);
+            Bitmap image_enlarge = new Bitmap(136, 112);
+            Bitmap image_origin = 
+                new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_regular_normal);
+
+            Color[,] image_color = new Color[68, 56];
+            for(int row = 0; row < 56; row++)
+            {
+                for(int col = 0; col < 68; col++)
+                {
+                    image_color[col, row] = image_origin.GetPixel
+                        ((last % 32) * 68 + col, (last / 42) * 56 + row);
+                }
+            }
+            // 두칸 위에꺼가 뽑히는데 왜지
+            for(int row = 0; row < 56; row++)
+            {
+                for(int col = 0; col < 68; col++)
+                {
+                    image_sample.SetPixel(col, row, image_color[col, row]);
+                    image_enlarge.SetPixel(col * 2, row * 2, image_color[col, row]);
+                    image_enlarge.SetPixel(col * 2, row * 2 + 1, image_color[col, row]);
+                    image_enlarge.SetPixel(col * 2 + 1, row * 2, image_color[col, row]);
+                    image_enlarge.SetPixel(col * 2 + 1, row * 2 + 1, image_color[col, row]);
+                }
+            }
+            image_search_pokemon.Image = image_enlarge;
         }
         private void button_random_pokemon_Click(object sender, EventArgs e)
         {

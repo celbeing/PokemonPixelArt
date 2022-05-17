@@ -29,6 +29,7 @@ namespace Pokemon_Drawing_ver2
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Client));
             this.tab_control = new System.Windows.Forms.TabControl();
             this.search = new System.Windows.Forms.TabPage();
             this.combo_search_pokemon_difficulty = new System.Windows.Forms.ComboBox();
@@ -103,7 +104,7 @@ namespace Pokemon_Drawing_ver2
             // label_search_pokemon_data
             // 
             this.label_search_pokemon_data.AutoSize = true;
-            this.label_search_pokemon_data.Location = new System.Drawing.Point(252, 174);
+            this.label_search_pokemon_data.Location = new System.Drawing.Point(284, 174);
             this.label_search_pokemon_data.Name = "label_search_pokemon_data";
             this.label_search_pokemon_data.Size = new System.Drawing.Size(11, 12);
             this.label_search_pokemon_data.TabIndex = 8;
@@ -143,9 +144,9 @@ namespace Pokemon_Drawing_ver2
             // image_search_pokemon
             // 
             this.image_search_pokemon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.image_search_pokemon.Location = new System.Drawing.Point(254, 59);
+            this.image_search_pokemon.Location = new System.Drawing.Point(286, 59);
             this.image_search_pokemon.Name = "image_search_pokemon";
-            this.image_search_pokemon.Size = new System.Drawing.Size(168, 112);
+            this.image_search_pokemon.Size = new System.Drawing.Size(136, 112);
             this.image_search_pokemon.TabIndex = 4;
             this.image_search_pokemon.TabStop = false;
             // 
@@ -203,7 +204,7 @@ namespace Pokemon_Drawing_ver2
             // label_random_pokemon_data
             // 
             this.label_random_pokemon_data.AutoSize = true;
-            this.label_random_pokemon_data.Location = new System.Drawing.Point(252, 174);
+            this.label_random_pokemon_data.Location = new System.Drawing.Point(284, 174);
             this.label_random_pokemon_data.Name = "label_random_pokemon_data";
             this.label_random_pokemon_data.Size = new System.Drawing.Size(11, 12);
             this.label_random_pokemon_data.TabIndex = 18;
@@ -355,9 +356,9 @@ namespace Pokemon_Drawing_ver2
             // image_random_pokemon
             // 
             this.image_random_pokemon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.image_random_pokemon.Location = new System.Drawing.Point(254, 59);
+            this.image_random_pokemon.Location = new System.Drawing.Point(286, 59);
             this.image_random_pokemon.Name = "image_random_pokemon";
-            this.image_random_pokemon.Size = new System.Drawing.Size(168, 112);
+            this.image_random_pokemon.Size = new System.Drawing.Size(136, 112);
             this.image_random_pokemon.TabIndex = 6;
             this.image_random_pokemon.TabStop = false;
             // 
@@ -377,6 +378,7 @@ namespace Pokemon_Drawing_ver2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 294);
             this.Controls.Add(this.tab_control);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Client";
             this.Text = "포켓몬 뽑기 v2.0 (인디스쿨:전라남도교육지원청, 티스토리:https://celbeing.tistory.com/)";
             this.tab_control.ResumeLayout(false);
