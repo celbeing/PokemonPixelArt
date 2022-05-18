@@ -18,16 +18,22 @@ namespace Pokemon_Drawing_ver2
         int pokemon_number = 0;
         int sample_order_fornt = 0;
         int sample_order_back = 0;
+        const int all_pokemon_count = 1344;
         string pokemon_name_kor = string.Empty;
         string pokemon_name_eng = string.Empty;
         string file_path = string.Empty;
         string directory_path = string.Empty;
 
-        List<string> pokemon_difficulty = new List<string>();
         List<string> pokemon_form = new List<string>();
         public Main_Client()
         {
             InitializeComponent();
+            combo_random_pokemon_difficulty.Items.Add("쉬움");
+            combo_random_pokemon_difficulty.Items.Add("보통");
+            combo_random_pokemon_difficulty.Items.Add("어려움");
+            combo_search_pokemon_difficulty.Items.Add("쉬움");
+            combo_search_pokemon_difficulty.Items.Add("보통");
+            combo_search_pokemon_difficulty.Items.Add("어려움");
         }
 
         private void button_search_pokemon_Click(object sender, EventArgs e)
@@ -54,9 +60,6 @@ namespace Pokemon_Drawing_ver2
                 MessageBox.Show("포켓몬 번호를 입력해주세요.");
                 return;
             }
-            button_search_out.Visible = true;
-            combo_search_pokemon_difficulty.Visible = true;
-            combo_search_pokemon_form.Visible = true;
 
             // 포켓몬 이름 찾기
             Assembly _assembly;
@@ -88,6 +91,11 @@ namespace Pokemon_Drawing_ver2
                 ("Pokemon_Drawing_ver2.Resources.image_name.csv"));
             while (true)
             {
+                if (count_order == all_pokemon_count)
+                {
+                    last = count_order - 1;
+                    break;
+                }
                 string[] image_name = pokemon_locate_find.ReadLine().Split(',');
                 string[] image_no_name_form = image_name[1].Replace(".png","").Split('-');
                 string[] image_kor_name = image_no_name_form[0].Split();
@@ -120,10 +128,9 @@ namespace Pokemon_Drawing_ver2
                 for(int col = 0; col < 68; col++)
                 {
                     image_color[col, row] = image_origin.GetPixel
-                        ((last % 32) * 68 + col, (last / 42) * 56 + row);
+                        ((last % 32) * 68 + col, (last / 32) * 56 + row);
                 }
             }
-            // 두칸 위에꺼가 뽑히는데 왜지
             for(int row = 0; row < 56; row++)
             {
                 for(int col = 0; col < 68; col++)
@@ -136,6 +143,17 @@ namespace Pokemon_Drawing_ver2
                 }
             }
             image_search_pokemon.Image = image_enlarge;
+
+            button_search_out.Visible = true;
+            combo_search_pokemon_difficulty.Visible = true;
+            combo_search_pokemon_form.Visible = true;
+
+            combo_search_pokemon_form.Items.Clear();
+            foreach (string pokemon_forms in pokemon_form)
+                combo_search_pokemon_form.Items.Add(pokemon_forms.Replace(".png", ""));
+            combo_search_pokemon_form.SelectedIndex = pokemon_form.Count - 1;
+            combo_search_pokemon_difficulty.SelectedIndex = 1;
+            pokemon_form.Clear();
         }
         private void button_random_pokemon_Click(object sender, EventArgs e)
         {
