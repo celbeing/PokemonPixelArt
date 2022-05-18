@@ -100,6 +100,7 @@ namespace Pokemon_Drawing_ver2
             this.combo_search_pokemon_difficulty.Size = new System.Drawing.Size(121, 20);
             this.combo_search_pokemon_difficulty.TabIndex = 9;
             this.combo_search_pokemon_difficulty.Visible = false;
+            this.combo_search_pokemon_difficulty.SelectedIndexChanged += new System.EventHandler(this.combo_search_pokemon_difficulty_SelectedIndexChanged);
             // 
             // label_search_pokemon_data
             // 
@@ -120,6 +121,7 @@ namespace Pokemon_Drawing_ver2
             this.combo_search_pokemon_form.Size = new System.Drawing.Size(121, 20);
             this.combo_search_pokemon_form.TabIndex = 7;
             this.combo_search_pokemon_form.Visible = false;
+            this.combo_search_pokemon_form.SelectedIndexChanged += new System.EventHandler(this.combo_search_pokemon_form_SelectedIndexChanged);
             // 
             // button_search_out
             // 
@@ -130,6 +132,7 @@ namespace Pokemon_Drawing_ver2
             this.button_search_out.Text = "저장하기";
             this.button_search_out.UseVisualStyleBackColor = true;
             this.button_search_out.Visible = false;
+            this.button_search_out.Click += new System.EventHandler(this.button_search_out_Click);
             // 
             // button_search_pokemon
             // 
@@ -146,7 +149,7 @@ namespace Pokemon_Drawing_ver2
             this.image_search_pokemon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.image_search_pokemon.Location = new System.Drawing.Point(286, 59);
             this.image_search_pokemon.Name = "image_search_pokemon";
-            this.image_search_pokemon.Size = new System.Drawing.Size(136, 112);
+            this.image_search_pokemon.Size = new System.Drawing.Size(138, 114);
             this.image_search_pokemon.TabIndex = 4;
             this.image_search_pokemon.TabStop = false;
             // 
@@ -200,6 +203,7 @@ namespace Pokemon_Drawing_ver2
             this.combo_random_pokemon_difficulty.Size = new System.Drawing.Size(121, 20);
             this.combo_random_pokemon_difficulty.TabIndex = 19;
             this.combo_random_pokemon_difficulty.Visible = false;
+            this.combo_random_pokemon_difficulty.SelectedIndexChanged += new System.EventHandler(this.combo_random_pokemon_difficulty_SelectedIndexChanged);
             // 
             // label_random_pokemon_data
             // 
@@ -220,6 +224,7 @@ namespace Pokemon_Drawing_ver2
             this.combo_random_pokemon_form.Size = new System.Drawing.Size(121, 20);
             this.combo_random_pokemon_form.TabIndex = 17;
             this.combo_random_pokemon_form.Visible = false;
+            this.combo_random_pokemon_form.SelectedIndexChanged += new System.EventHandler(this.combo_random_pokemon_form_SelectedIndexChanged);
             // 
             // check_gen8
             // 
@@ -342,6 +347,7 @@ namespace Pokemon_Drawing_ver2
             this.button_random_out.Text = "저장하기";
             this.button_random_out.UseVisualStyleBackColor = true;
             this.button_random_out.Visible = false;
+            this.button_random_out.Click += new System.EventHandler(this.button_random_out_Click);
             // 
             // button_random_pokemon
             // 
@@ -358,7 +364,7 @@ namespace Pokemon_Drawing_ver2
             this.image_random_pokemon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.image_random_pokemon.Location = new System.Drawing.Point(286, 59);
             this.image_random_pokemon.Name = "image_random_pokemon";
-            this.image_random_pokemon.Size = new System.Drawing.Size(136, 112);
+            this.image_random_pokemon.Size = new System.Drawing.Size(138, 114);
             this.image_random_pokemon.TabIndex = 6;
             this.image_random_pokemon.TabStop = false;
             // 

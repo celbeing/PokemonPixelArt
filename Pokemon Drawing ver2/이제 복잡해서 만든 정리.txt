@@ -1,6 +1,5 @@
 ###현재 진행 중인 작업###
 1. 출력하기
-2. 콤보박스 선택에 따라 반응하기
 
 포켓몬 이미지 조각 크기는 68*56px
 
@@ -20,3 +19,12 @@
 "Pokemon_Drawing_ver2.Main_Client.resources"
 "Pokemon_Drawing_ver2.Properties.Resources.resources"
 "Pokemon_Drawing_ver2.Resources.*.*"
+
+1g 001~151
+2g 152~251
+3g 252~386
+4g 387~493
+5g 494~649
+6g 650~721
+7g 722~807
+8g 808~905
