@@ -384,6 +384,7 @@ namespace Pokemon_Drawing_ver2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 294);
             this.Controls.Add(this.tab_control);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Client";
             this.Text = "포켓몬 뽑기 v2.0 (인디스쿨:전라남도교육지원청, 티스토리:https://celbeing.tistory.com/)";

@@ -30,6 +30,8 @@ namespace Pokemon_Drawing_ver2
 
         List<string> pokemon_form = new List<string>();
         Bitmap image_sample = new Bitmap(68, 56);
+        Bitmap image_search = new Bitmap(68, 56);
+        Bitmap image_random = new Bitmap(68, 56);
 
         Assembly _assembly;
         StreamReader pokemon_name_search;
@@ -160,22 +162,16 @@ namespace Pokemon_Drawing_ver2
                     image_enlarge.SetPixel(col * 2 + 1, row * 2 + 1, image_color[col, row]);
                 }
             }
-            if (tab_control.SelectedIndex == 0) image_search_pokemon.Image = image_enlarge;
-            else image_random_pokemon.Image = image_enlarge;
-        }
-        private void get_pokemon_pixelart()
-        {
-            Bitmap pokemon;
-
-            // 탭 위치에 따라 이미지 따로 받기
-            if (tab_control.SelectedIndex == 0) { }
-            else { }
-
-            // 이미지 처리
-
-            // 색상 확인
-
-            // 출력
+            if (tab_control.SelectedIndex == 0)
+            {
+                image_search = image_sample;
+                image_search_pokemon.Image = image_enlarge;
+            }
+            else
+            {
+                image_random = image_sample;
+                image_random_pokemon.Image = image_enlarge;
+            }
         }
 
         private void button_search_pokemon_Click(object sender, EventArgs e)
@@ -250,7 +246,7 @@ namespace Pokemon_Drawing_ver2
         }
         private void button_search_out_Click(object sender, EventArgs e)
         {
-            get_pokemon_pixelart();
+            Print_Page print = new Print_Page(image_search);
         }
         private void button_random_pokemon_Click(object sender, EventArgs e)
         {
@@ -315,7 +311,7 @@ namespace Pokemon_Drawing_ver2
         }
         private void button_random_out_Click(object sender, EventArgs e)
         {
-            get_pokemon_pixelart();
+            Print_Page print = new Print_Page(image_random);
         }
 
         private void check_gen1_CheckedChanged(object sender, EventArgs e)
