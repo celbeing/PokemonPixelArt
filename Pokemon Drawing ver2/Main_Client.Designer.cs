@@ -56,6 +56,10 @@ namespace Pokemon_Drawing_ver2
             this.button_random_pokemon = new System.Windows.Forms.Button();
             this.image_random_pokemon = new System.Windows.Forms.PictureBox();
             this.label_random_pokemon = new System.Windows.Forms.Label();
+            this.check_search_desktop = new System.Windows.Forms.CheckBox();
+            this.check_random_desktop = new System.Windows.Forms.CheckBox();
+            this.label_signature = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tab_control.SuspendLayout();
             this.search.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_search_pokemon)).BeginInit();
@@ -76,6 +80,8 @@ namespace Pokemon_Drawing_ver2
             // search
             // 
             this.search.BackColor = System.Drawing.Color.Transparent;
+            this.search.Controls.Add(this.label_signature);
+            this.search.Controls.Add(this.check_search_desktop);
             this.search.Controls.Add(this.combo_search_pokemon_difficulty);
             this.search.Controls.Add(this.label_search_pokemon_data);
             this.search.Controls.Add(this.combo_search_pokemon_form);
@@ -172,6 +178,8 @@ namespace Pokemon_Drawing_ver2
             // random
             // 
             this.random.BackColor = System.Drawing.Color.Transparent;
+            this.random.Controls.Add(this.label1);
+            this.random.Controls.Add(this.check_random_desktop);
             this.random.Controls.Add(this.combo_random_pokemon_difficulty);
             this.random.Controls.Add(this.label_random_pokemon_data);
             this.random.Controls.Add(this.combo_random_pokemon_form);
@@ -378,6 +386,46 @@ namespace Pokemon_Drawing_ver2
             this.label_random_pokemon.Text = "무작위로 포켓몬을 하나 뽑습니다.\r\n세대를 선택해 뽑을 수 있습니다.\r\n뽑힌 포켓몬의 형태는 자유롭게 선택할 수 있습니다.\r\n(색이 다른 포켓몬 " +
     "등장 확률 = 0.1%)";
             // 
+            // check_search_desktop
+            // 
+            this.check_search_desktop.AutoSize = true;
+            this.check_search_desktop.Location = new System.Drawing.Point(229, 219);
+            this.check_search_desktop.Name = "check_search_desktop";
+            this.check_search_desktop.Size = new System.Drawing.Size(112, 16);
+            this.check_search_desktop.TabIndex = 10;
+            this.check_search_desktop.Text = "바탕화면에 저장";
+            this.check_search_desktop.UseVisualStyleBackColor = true;
+            // 
+            // check_random_desktop
+            // 
+            this.check_random_desktop.AutoSize = true;
+            this.check_random_desktop.Location = new System.Drawing.Point(229, 219);
+            this.check_random_desktop.Name = "check_random_desktop";
+            this.check_random_desktop.Size = new System.Drawing.Size(112, 16);
+            this.check_random_desktop.TabIndex = 20;
+            this.check_random_desktop.Text = "바탕화면에 저장";
+            this.check_random_desktop.UseVisualStyleBackColor = true;
+            // 
+            // label_signature
+            // 
+            this.label_signature.AutoSize = true;
+            this.label_signature.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label_signature.Location = new System.Drawing.Point(6, 208);
+            this.label_signature.Name = "label_signature";
+            this.label_signature.Size = new System.Drawing.Size(221, 24);
+            this.label_signature.TabIndex = 11;
+            this.label_signature.Text = "인디스쿨:전라남도교육지원청\r\n티스토리:https://celbeing.tistory.com/";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label1.Location = new System.Drawing.Point(6, 208);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(221, 24);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "인디스쿨:전라남도교육지원청\r\n티스토리:https://celbeing.tistory.com/";
+            // 
             // Main_Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -386,8 +434,9 @@ namespace Pokemon_Drawing_ver2
             this.Controls.Add(this.tab_control);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Main_Client";
-            this.Text = "포켓몬 뽑기 v2.0 (인디스쿨:전라남도교육지원청, 티스토리:https://celbeing.tistory.com/)";
+            this.Text = "포켓몬 뽑기 v2.0";
             this.tab_control.ResumeLayout(false);
             this.search.ResumeLayout(false);
             this.search.PerformLayout();
@@ -428,6 +477,10 @@ namespace Pokemon_Drawing_ver2
         private System.Windows.Forms.ComboBox combo_random_pokemon_difficulty;
         private System.Windows.Forms.Label label_random_pokemon_data;
         private System.Windows.Forms.Button button_random_out;
+        private System.Windows.Forms.CheckBox check_search_desktop;
+        private System.Windows.Forms.CheckBox check_random_desktop;
+        private System.Windows.Forms.Label label_signature;
+        private System.Windows.Forms.Label label1;
     }
 }
 

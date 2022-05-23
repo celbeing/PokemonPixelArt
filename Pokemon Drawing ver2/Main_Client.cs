@@ -21,17 +21,20 @@ namespace Pokemon_Drawing_ver2
         bool shiny = false;                 // 색이 다른 포켓몬
         const int all_pokemon_count = 1344; // 전체 포켓몬 이미지 수
         const int last_pokemon_number = 905;// 마지막 포켓몬 번호
-        const double shiny_rate = 1;        // % 단위
+        const double shiny_rate = 5;        // % 단위
 
-        string pokemon_name_kor = string.Empty;
-        string pokemon_name_eng = string.Empty;
-        string file_path = string.Empty;
-        string directory_path = string.Empty;
+        string pokemon_name_kor = string.Empty; // 포켓몬 한글 이름
+        string pokemon_name_eng = string.Empty; // 포켓몬 영문 이름
+        string file_path = string.Empty;        // 파일 경로
+        string directory_path = string.Empty;   // 디렉토리
 
+        List<int[]> number_dot = new List<int[]>();
         List<string> pokemon_form = new List<string>();
+
         Bitmap image_sample = new Bitmap(68, 56);
         Bitmap image_search = new Bitmap(68, 56);
         Bitmap image_random = new Bitmap(68, 56);
+        Bitmap pixelart = new Bitmap(1600, 1100);
 
         Assembly _assembly;
         StreamReader pokemon_name_search;
@@ -44,6 +47,26 @@ namespace Pokemon_Drawing_ver2
             combo_search_pokemon_difficulty.Items.Add("쉬움");
             combo_search_pokemon_difficulty.Items.Add("보통");
             combo_search_pokemon_difficulty.Items.Add("어려움");
+
+            List<string> number_dot_loc = new List<string>();
+            number_dot_loc.Add("01,02,03,04,05,06,07,08,10,19,20,29,30,39,40,49,51,52,53,54,55,56,57,58");          // 0
+            number_dot_loc.Add("11,20,21,22,23,24,25,26,27,28,29");                                                 // 1
+            number_dot_loc.Add("01,02,07,08,09,10,16,19,20,25,29,30,35,39,40,44,49,51,52,53,59");                   // 2
+            number_dot_loc.Add("01,02,07,08,10,19,20,24,29,30,34,39,40,44,49,51,52,53,55,56,57,58");                // 3
+            number_dot_loc.Add("06,07,14,15,17,22,23,27,30,31,37,40,41,42,43,44,45,46,47,48,49,57");                // 4
+            number_dot_loc.Add("01,02,03,04,05,08,10,14,19,20,24,29,30,34,39,40,44,49,50,55,56,57,58");             // 5
+            number_dot_loc.Add("01,02,03,04,05,06,07,08,10,14,19,20,24,29,30,34,39,40,44,49,51,55,56,57,58");       // 6
+            number_dot_loc.Add("00,01,02,10,20,30,36,37,38,39,40,43,44,45,50,51,52");                               // 7
+            number_dot_loc.Add("01,02,03,05,06,07,08,10,14,19,20,24,29,30,34,39,40,44,49,51,52,53,55,56,57,58");    // 8
+            number_dot_loc.Add("01,02,03,04,08,10,15,19,20,25,29,30,35,39,40,45,49,51,52,53,54,55,56,57,58");       // 9
+            for (int i = 0; i < 10; i++)
+            {
+                string[] str_arr = number_dot_loc[i].Split(',');
+                int[] int_arr = new int[str_arr.Length];
+                for (int j = 0; j < str_arr.Length; j++)
+                    int_arr[j] = int.Parse(str_arr[j]);
+                number_dot.Add(int_arr);
+            }
 
             _assembly = Assembly.GetExecutingAssembly();
         }
@@ -173,6 +196,133 @@ namespace Pokemon_Drawing_ver2
                 image_random_pokemon.Image = image_enlarge;
             }
         }
+        private void get_pixelart(Bitmap pokemon)
+        {
+            // 색상 확인
+            Color[,] color_pokemon = new Color[68, 56];
+            Dictionary<Color, int> color_chart = new Dictionary<Color, int>();
+            Dictionary<int, Color> color_chart_r = new Dictionary<int, Color>();
+            int color_count = 1;
+            int[,] color_table = new int[68, 56];
+            Graphics field = Graphics.FromImage(pixelart);
+            field.Clear(Color.White);
+            color_chart.Add(Color.FromArgb(255,255,255,255), 0);
+            color_chart_r.Add(0, Color.FromArgb(255,255,255,255));
+
+            for (int row = 0; row < 56; row++)
+            {
+                for (int col = 0; col < 68; col++)
+                {
+                    color_pokemon[col, row] = pokemon.GetPixel(col, row);
+                    if (!color_chart.ContainsKey(color_pokemon[col, row]))
+                    {
+                        color_chart.Add(color_pokemon[col, row], color_count);
+                        color_chart_r.Add(color_count, color_pokemon[col, row]);
+                        color_count++;
+                    }
+                    color_table[col, row] = color_chart[color_pokemon[col, row]];
+                }
+            }
+
+            // 그리기
+            int cursor_x = 30;
+            int cursor_y = 30;
+            for (int row = 0; row < 56; row++)
+            {
+                for (int col = 0; col < 68; col++)
+                {
+                    draw_blank(col * 18 + cursor_x, row * 18 + cursor_y);
+                    draw_number(color_table[col, row], col * 18 + cursor_x, row * 18 + cursor_y);
+                }
+            }
+
+            // 샘플 붙이기
+            cursor_x = 1280;
+            cursor_y = 30;
+            int[] dx = { 0, 0, 0, 1, 1, 1, 2, 2, 2 };
+            int[] dy = { 0, 1, 2, 0, 1, 2, 0, 1, 2 };
+            for (int row = 0; row < 56; row++)
+            {
+                for (int col = 0; col < 68; col++)
+                {
+                    for (int i = 0; i < 9; i++)
+                        pixelart.SetPixel
+                                (cursor_x + dx[i] + col * 3, cursor_y + dy[i] + row * 3, color_pokemon[col, row]);
+                }
+            }
+
+            string pokemon_name = string.Empty;
+            if (tab_control.SelectedIndex == 0)
+                pokemon_name = label_search_pokemon_data.Text;
+            else
+                pokemon_name = label_random_pokemon_data.Text;
+            Graphics text = Graphics.FromImage(pixelart);
+            cursor_x = 1280;
+            cursor_y = 208;
+            Brush black = new SolidBrush(Color.Black);
+            Brush yellow = new SolidBrush(Color.Yellow);
+            FontFamily _font = new FontFamily("굴림체");
+            Font myFont = new Font(_font, 15, FontStyle.Regular, GraphicsUnit.Pixel);
+            PointF startPoint = new PointF(cursor_x, cursor_y);
+            text.DrawString(pokemon_name, myFont, black, startPoint);
+            if (shiny)
+            {
+                startPoint.X -= 1;
+                startPoint.Y -= 1;
+                text.DrawString(pokemon_name, myFont, yellow, startPoint);
+            }
+
+            // 색상 표 그리기
+            cursor_x = 1280;
+            cursor_y = 253;
+            startPoint.X = cursor_x;
+            startPoint.Y = cursor_y;
+            Pen pen = new Pen(Color.Black, 15);
+            for(int i = 1; i < color_count; i++)
+            {
+                pen.Color = color_chart_r[i];
+                text.DrawString(i.ToString(), myFont, black, startPoint);
+                text.DrawLine(pen, startPoint.X + 20, startPoint.Y + 7, startPoint.X + 50, startPoint.Y + 7);
+                if (i >= color_count / 2 && startPoint.X == cursor_x)
+                {
+                    startPoint.X = cursor_x + 70;
+                    startPoint.Y = cursor_y;
+                }
+                else startPoint.Y += 21;
+            }
+        }
+        private void draw_blank(int x, int y)
+        {
+            for (int i = 0; i < 19; i++)
+            {
+                pixelart.SetPixel(x + i, y, Color.FromArgb(255, 175, 175, 175));
+                pixelart.SetPixel(x, y + i, Color.FromArgb(255, 175, 175, 175));
+                pixelart.SetPixel(x + i, y + 18, Color.FromArgb(255, 175, 175, 175));
+                pixelart.SetPixel(x + 18, y + i, Color.FromArgb(255, 175, 175, 175));
+            }
+        }
+        private void draw_number(int number, int x, int y)
+        {
+            x += 2; y += 2;
+            Stack<int> draw_this = new Stack<int>();
+            while (number > 0)
+            {
+                draw_this.Push(number % 10);
+                number /= 10;
+            }
+            while (draw_this.Count > 0)
+            {
+                foreach (int location in number_dot[draw_this.Pop()])
+                {
+                    int dx = location / 10;
+                    int dy = location % 10;
+
+                    pixelart.SetPixel
+                        (x + dx, y + dy, Color.FromArgb(255, 175, 175, 175));
+                }
+                x += 7;
+            }
+        }
 
         private void button_search_pokemon_Click(object sender, EventArgs e)
         {
@@ -185,7 +335,7 @@ namespace Pokemon_Drawing_ver2
                 try
                 {
                     pokemon_number = int.Parse(textbox_number.Text);
-                    if(pokemon_number < 1 || pokemon_number > 905)
+                    if (pokemon_number < 1 || pokemon_number > 905)
                     {
                         MessageBox.Show("범위를 벗어났습니다.\n\r1~905 사이의 숫자를 입력해주세요.");
                         return;
@@ -225,7 +375,7 @@ namespace Pokemon_Drawing_ver2
             combo_search_pokemon_difficulty.Visible = true;
             combo_search_pokemon_form.Visible = true;
             label_search_pokemon_data.Visible = true;
-            string pokemon_label = $"No.{textbox_number.Text} {pokemon_name_kor}";
+            string pokemon_label = $"No.{int.Parse(textbox_number.Text):D3} {pokemon_name_kor}";
             if (this.shiny) pokemon_label += "\n\r색이 다른 포켓몬!!!";
             label_search_pokemon_data.Text = pokemon_label;
 
@@ -246,7 +396,28 @@ namespace Pokemon_Drawing_ver2
         }
         private void button_search_out_Click(object sender, EventArgs e)
         {
-            Print_Page print = new Print_Page(image_search);
+            get_pixelart(image_search);
+            if (check_search_desktop.Checked)
+            {
+                file_path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+                    + "\\pokemon_pixelart.png";
+            }
+            else
+            {
+                FolderBrowserDialog select_save_path = new FolderBrowserDialog();
+                if (select_save_path.ShowDialog() == DialogResult.OK)
+                {
+                    directory_path = select_save_path.SelectedPath;
+                    file_path = directory_path + "\\pokemon_pixelart.png";
+                }
+                else
+                {
+                    MessageBox.Show("폴더가 선택되지 않았습니다.");
+                    return;
+                }
+            }
+            pixelart.Save(file_path);
+            MessageBox.Show("저장되었습니다.");
         }
         private void button_random_pokemon_Click(object sender, EventArgs e)
         {
@@ -299,9 +470,9 @@ namespace Pokemon_Drawing_ver2
         }
         private void combo_random_pokemon_form_SelectedIndexChanged(object sender, EventArgs e)
         {
-             get_pokemon_image
-                (sample_order_front + combo_random_pokemon_form.SelectedIndex,
-                combo_random_pokemon_difficulty.SelectedIndex, this.shiny);
+            get_pokemon_image
+               (sample_order_front + combo_random_pokemon_form.SelectedIndex,
+               combo_random_pokemon_difficulty.SelectedIndex, this.shiny);
         }
         private void combo_random_pokemon_difficulty_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -311,7 +482,29 @@ namespace Pokemon_Drawing_ver2
         }
         private void button_random_out_Click(object sender, EventArgs e)
         {
-            Print_Page print = new Print_Page(image_random);
+            get_pixelart(image_random);
+
+            if (check_random_desktop.Checked)
+            {
+                file_path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+                    + "\\pokemon_pixelart.png";
+            }
+            else
+            {
+                FolderBrowserDialog select_save_path = new FolderBrowserDialog();
+                if (select_save_path.ShowDialog() == DialogResult.OK)
+                {
+                    directory_path = select_save_path.SelectedPath;
+                    file_path = directory_path + "\\pokemon_pixelart.png";
+                }
+                else
+                {
+                    MessageBox.Show("폴더가 선택되지 않았습니다.");
+                    return;
+                }
+            }
+            pixelart.Save(file_path);
+            MessageBox.Show("저장되었습니다.");
         }
 
         private void check_gen1_CheckedChanged(object sender, EventArgs e)
@@ -370,7 +563,5 @@ namespace Pokemon_Drawing_ver2
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
         }
-
-
     }
 }
