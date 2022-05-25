@@ -400,7 +400,7 @@ namespace Pokemon_Drawing_ver2
             if (check_search_desktop.Checked)
             {
                 file_path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
-                    + "\\pokemon_pixelart.png";
+                    + $"\\No{pokemon_number:D3}";
             }
             else
             {
@@ -408,7 +408,7 @@ namespace Pokemon_Drawing_ver2
                 if (select_save_path.ShowDialog() == DialogResult.OK)
                 {
                     directory_path = select_save_path.SelectedPath;
-                    file_path = directory_path + "\\pokemon_pixelart.png";
+                    file_path = directory_path + $"\\No{pokemon_number:D3}";
                 }
                 else
                 {
@@ -416,6 +416,8 @@ namespace Pokemon_Drawing_ver2
                     return;
                 }
             }
+            if (shiny) file_path += "_shiny.png";
+            else file_path += ".png";
             pixelart.Save(file_path);
             MessageBox.Show("저장되었습니다.");
         }
@@ -487,7 +489,7 @@ namespace Pokemon_Drawing_ver2
             if (check_random_desktop.Checked)
             {
                 file_path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
-                    + "\\pokemon_pixelart.png";
+                    + $"\\No{pokemon_number:D3}";
             }
             else
             {
@@ -495,7 +497,7 @@ namespace Pokemon_Drawing_ver2
                 if (select_save_path.ShowDialog() == DialogResult.OK)
                 {
                     directory_path = select_save_path.SelectedPath;
-                    file_path = directory_path + "\\pokemon_pixelart.png";
+                    file_path = directory_path + $"\\No{pokemon_number:D3}";
                 }
                 else
                 {
@@ -503,6 +505,8 @@ namespace Pokemon_Drawing_ver2
                     return;
                 }
             }
+            if (shiny) file_path += "_shiny.png";
+            else file_path += ".png";
             pixelart.Save(file_path);
             MessageBox.Show("저장되었습니다.");
         }

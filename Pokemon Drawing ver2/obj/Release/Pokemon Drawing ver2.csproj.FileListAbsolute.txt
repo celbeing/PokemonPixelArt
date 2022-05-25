@@ -7,3 +7,12 @@ C:\Users\kimsd\source\repos\Csharp_Study\Pokemon Drawing ver2\bin\Release\Pokemo
 C:\Users\kimsd\source\repos\Csharp_Study\Pokemon Drawing ver2\bin\Release\Pokemon Drawing ver2.pdb
 C:\Users\kimsd\source\repos\Csharp_Study\Pokemon Drawing ver2\obj\Release\Pokemon Drawing ver2.exe
 C:\Users\kimsd\source\repos\Csharp_Study\Pokemon Drawing ver2\obj\Release\Pokemon Drawing ver2.pdb
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\Pokemon Drawing ver2\bin\Release\Pokemon Drawing ver2.exe.config
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\Pokemon Drawing ver2\bin\Release\Pokemon Drawing ver2.exe
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\Pokemon Drawing ver2\bin\Release\Pokemon Drawing ver2.pdb
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\Pokemon Drawing ver2\obj\Release\Pokemon_Drawing_ver2.Main_Client.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\Pokemon Drawing ver2\obj\Release\Pokemon_Drawing_ver2.Properties.Resources.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\Pokemon Drawing ver2\obj\Release\Pokemon Drawing ver2.csproj.GenerateResource.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\Pokemon Drawing ver2\obj\Release\Pokemon Drawing ver2.csproj.CoreCompileInputs.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\Pokemon Drawing ver2\obj\Release\Pokemon Drawing ver2.exe
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\Pokemon Drawing ver2\obj\Release\Pokemon Drawing ver2.pdb
