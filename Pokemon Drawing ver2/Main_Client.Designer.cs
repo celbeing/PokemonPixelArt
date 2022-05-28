@@ -43,6 +43,7 @@ namespace Pokemon_Drawing_ver2
             this.textbox_number = new System.Windows.Forms.TextBox();
             this.label_search_pokemon = new System.Windows.Forms.Label();
             this.random = new System.Windows.Forms.TabPage();
+            this.check_all = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.check_random_desktop = new System.Windows.Forms.CheckBox();
             this.combo_random_pokemon_difficulty = new System.Windows.Forms.ComboBox();
@@ -76,6 +77,7 @@ namespace Pokemon_Drawing_ver2
             this.tab_control.SelectedIndex = 0;
             this.tab_control.Size = new System.Drawing.Size(436, 270);
             this.tab_control.TabIndex = 0;
+            this.tab_control.SelectedIndexChanged += new System.EventHandler(this.tab_index_Changed);
             // 
             // search
             // 
@@ -116,6 +118,7 @@ namespace Pokemon_Drawing_ver2
             this.check_search_desktop.TabIndex = 10;
             this.check_search_desktop.Text = "바탕화면에 저장";
             this.check_search_desktop.UseVisualStyleBackColor = true;
+            this.check_search_desktop.CheckedChanged += new System.EventHandler(this.check_search_Saveoption);
             // 
             // combo_search_pokemon_difficulty
             // 
@@ -198,6 +201,7 @@ namespace Pokemon_Drawing_ver2
             // random
             // 
             this.random.BackColor = System.Drawing.Color.Transparent;
+            this.random.Controls.Add(this.check_all);
             this.random.Controls.Add(this.label1);
             this.random.Controls.Add(this.check_random_desktop);
             this.random.Controls.Add(this.combo_random_pokemon_difficulty);
@@ -222,6 +226,19 @@ namespace Pokemon_Drawing_ver2
             this.random.TabIndex = 4;
             this.random.Text = "포켓몬 뽑기";
             // 
+            // check_all
+            // 
+            this.check_all.AutoSize = true;
+            this.check_all.Checked = true;
+            this.check_all.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_all.Location = new System.Drawing.Point(6, 65);
+            this.check_all.Name = "check_all";
+            this.check_all.Size = new System.Drawing.Size(76, 16);
+            this.check_all.TabIndex = 22;
+            this.check_all.Text = "모두 선택";
+            this.check_all.UseVisualStyleBackColor = true;
+            this.check_all.CheckedChanged += new System.EventHandler(this.check_all_CheckedChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -241,6 +258,7 @@ namespace Pokemon_Drawing_ver2
             this.check_random_desktop.TabIndex = 20;
             this.check_random_desktop.Text = "바탕화면에 저장";
             this.check_random_desktop.UseVisualStyleBackColor = true;
+            this.check_random_desktop.CheckedChanged += new System.EventHandler(this.check_random_Saveoption);
             // 
             // combo_random_pokemon_difficulty
             // 
@@ -436,7 +454,7 @@ namespace Pokemon_Drawing_ver2
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Main_Client";
-            this.Text = "포켓몬 뽑기 v2.01";
+            this.Text = "포켓몬 뽑기 v2.02";
             this.tab_control.ResumeLayout(false);
             this.search.ResumeLayout(false);
             this.search.PerformLayout();
@@ -481,6 +499,7 @@ namespace Pokemon_Drawing_ver2
         private System.Windows.Forms.CheckBox check_random_desktop;
         private System.Windows.Forms.Label label_signature;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox check_all;
     }
 }
 

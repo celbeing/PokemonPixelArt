@@ -14,14 +14,28 @@ namespace Pokemon_Drawing_ver2
 {
     public partial class Main_Client : Form
     {
-        byte gen_select = 8;                // 선택된 세대 수
-        int pokemon_number = 0;             // 뽑으려는 포켓몬 번호
-        int sample_order_front = 0;         // 이미지 샘플 첫번째 순서
-        int sample_order_back = 0;          // 이미지 샘플 마지막 순서
-        bool shiny = false;                 // 색이 다른 포켓몬
         const int all_pokemon_count = 1344; // 전체 포켓몬 이미지 수
         const int last_pokemon_number = 905;// 마지막 포켓몬 번호
         const double shiny_rate = 5;        // % 단위
+
+        byte gen_select = 8;                // 선택된 세대 수
+        int pokemon_number = 0;             // 뽑으려는 포켓몬 번호
+        int current_search_pokemon_number = 0; // 찾은 포켓몬 번호 저장
+        int current_random_pokemon_number = 0; // 뽑은 포켓몬 번호 저장
+
+        int sample_order_front = 0;         // 이미지 샘플 첫번째 순서
+        int sample_order_back = 0;          // 이미지 샘플 마지막 순서
+        int search_order_front = 0;
+        int search_order_back = 0;
+        int random_order_front = 0;
+        int random_order_back = 0;
+
+        bool shiny = false;                 // 색이 다른 포켓몬
+        bool shiny_search = false;
+        bool shiny_random = false;
+
+        bool check_all_event = false;       // 모두 선택 옵션
+        bool check_box_event = false;       // 개별 선택 옵션
 
         string pokemon_name_kor = string.Empty; // 포켓몬 한글 이름
         string pokemon_name_eng = string.Empty; // 포켓몬 영문 이름
@@ -291,6 +305,23 @@ namespace Pokemon_Drawing_ver2
                 else startPoint.Y += 21;
             }
         }
+        private void get_file_name()
+        {
+            string path_ex = ".png";
+            string path_sh = string.Empty;
+            string path_check = string.Empty;
+            int file_number_count = 1;
+            if (shiny) path_sh = "_shiny";
+            else path_sh = "";
+            if(!File.Exists(file_path + path_sh + path_ex))
+            {
+                file_path += path_sh + path_ex;
+                return;
+            }
+            while (File.Exists(file_path + path_sh + $"({file_number_count})" + path_ex))
+                file_number_count++;
+            file_path += path_sh + $"({file_number_count})" + path_ex;
+        }
         private void draw_blank(int x, int y)
         {
             for (int i = 0; i < 19; i++)
@@ -324,6 +355,23 @@ namespace Pokemon_Drawing_ver2
             }
         }
 
+        private void tab_index_Changed(object sender, EventArgs e)
+        {
+            if(tab_control.SelectedIndex == 0)
+            {
+                pokemon_number = current_search_pokemon_number;
+                sample_order_front = search_order_front;
+                sample_order_back = search_order_back;
+                shiny = shiny_search;
+            }
+            else
+            {
+                pokemon_number = current_random_pokemon_number;
+                sample_order_front = random_order_front;
+                sample_order_back = random_order_back;
+                shiny = shiny_random;
+            }
+        }
         private void button_search_pokemon_Click(object sender, EventArgs e)
         {
             pokemon_form.Clear();
@@ -335,6 +383,7 @@ namespace Pokemon_Drawing_ver2
                 try
                 {
                     pokemon_number = int.Parse(textbox_number.Text);
+                    current_search_pokemon_number = pokemon_number;
                     if (pokemon_number < 1 || pokemon_number > 905)
                     {
                         MessageBox.Show("범위를 벗어났습니다.\n\r1~905 사이의 숫자를 입력해주세요.");
@@ -356,12 +405,15 @@ namespace Pokemon_Drawing_ver2
             // 이로치 뽑기
             Random shiny = new Random();
             if (shiny.Next(1000) < shiny_rate * 10) this.shiny = true;
+            shiny_search = this.shiny;
 
             // 포켓몬 이름 찾기
             get_pokemon_name();
 
             // 이미지 샘플에서 포켓몬 위치 찾기
             get_pokemon_index();
+            search_order_front = sample_order_front;
+            search_order_back = sample_order_back;
 
             // 콤보박스 초기화
             combo_search_pokemon_form.Items.Clear();
@@ -416,8 +468,7 @@ namespace Pokemon_Drawing_ver2
                     return;
                 }
             }
-            if (shiny) file_path += "_shiny.png";
-            else file_path += ".png";
+            get_file_name();
             pixelart.Save(file_path);
             MessageBox.Show("저장되었습니다.");
         }
@@ -441,16 +492,20 @@ namespace Pokemon_Drawing_ver2
                 else { if (check_gen8.Checked) break; }
             }
             pokemon_number++;
+            current_random_pokemon_number = pokemon_number;
 
             // 이로치 뽑기
             Random shiny = new Random();
             if (shiny.Next(1000) < shiny_rate * 10) this.shiny = true;
+            shiny_random = this.shiny;
 
             // 포켓몬 이름 찾기
             get_pokemon_name();
 
             // 이미지 샘플에서 포켓몬 위치 찾기
             get_pokemon_index();
+            random_order_front = sample_order_front;
+            random_order_back = sample_order_back;
 
             button_random_out.Visible = true;
             combo_random_pokemon_difficulty.Visible = true;
@@ -505,67 +560,149 @@ namespace Pokemon_Drawing_ver2
                     return;
                 }
             }
-            if (shiny) file_path += "_shiny.png";
-            else file_path += ".png";
+            get_file_name();
             pixelart.Save(file_path);
             MessageBox.Show("저장되었습니다.");
         }
-
+        private void check_search_Saveoption(object sender, EventArgs e)
+        {
+            if (check_search_desktop.Checked)
+                check_random_desktop.Checked = true;
+            else check_random_desktop.Checked = false;
+        }
+        private void check_random_Saveoption(object sender, EventArgs e)
+        {
+            if (check_random_desktop.Checked)
+                check_search_desktop.Checked = true;
+            else check_search_desktop.Checked = false;
+        }
+        private void check_all_CheckedChanged(object sender, EventArgs e)
+        {
+            if (check_box_event) return;
+            check_all_event = true;
+            if (check_all.Checked)
+            {
+                check_gen1.Checked = true;
+                check_gen2.Checked = true;
+                check_gen3.Checked = true;
+                check_gen4.Checked = true;
+                check_gen5.Checked = true;
+                check_gen6.Checked = true;
+                check_gen7.Checked = true;
+                check_gen8.Checked = true;
+                gen_select = 8;
+                button_random_pokemon.Visible = true;
+            }
+            else
+            {
+                check_gen1.Checked = false;
+                check_gen2.Checked = false;
+                check_gen3.Checked = false;
+                check_gen4.Checked = false;
+                check_gen5.Checked = false;
+                check_gen6.Checked = false;
+                check_gen7.Checked = false;
+                check_gen8.Checked = false;
+                gen_select = 0;
+                button_random_pokemon.Visible = false;
+            }
+            check_all_event = false;
+        }
         private void check_gen1_CheckedChanged(object sender, EventArgs e)
         {
+            if (check_all_event) return;
+            check_box_event = true;
             if (check_gen1.Checked) gen_select++;
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
+            if (gen_select == 8) check_all.Checked = true;
+            else check_all.Checked = false;
+            check_box_event = false;
         }
         private void check_gen2_CheckedChanged(object sender, EventArgs e)
         {
+            if (check_all_event) return;
+            check_box_event = true;
             if (check_gen2.Checked) gen_select++;
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
+            if (gen_select == 8) check_all.Checked = true;
+            else check_all.Checked = false;
+            check_box_event = false;
         }
         private void check_gen3_CheckedChanged(object sender, EventArgs e)
         {
+            if (check_all_event) return;
+            check_box_event = true;
             if (check_gen3.Checked) gen_select++;
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
+            if (gen_select == 8) check_all.Checked = true;
+            else check_all.Checked = false;
+            check_box_event = false;
         }
         private void check_gen4_CheckedChanged(object sender, EventArgs e)
         {
+            if (check_all_event) return;
+            check_box_event = true;
             if (check_gen4.Checked) gen_select++;
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
+            if (gen_select == 8) check_all.Checked = true;
+            else check_all.Checked = false;
+            check_box_event = false;
         }
         private void check_gen5_CheckedChanged(object sender, EventArgs e)
         {
+            if (check_all_event) return;
+            check_box_event = true;
             if (check_gen5.Checked) gen_select++;
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
+            if (gen_select == 8) check_all.Checked = true;
+            else check_all.Checked = false;
+            check_box_event = false;
         }
         private void check_gen6_CheckedChanged(object sender, EventArgs e)
         {
+            if (check_all_event) return;
+            check_box_event = true;
             if (check_gen6.Checked) gen_select++;
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
+            if (gen_select == 8) check_all.Checked = true;
+            else check_all.Checked = false;
+            check_box_event = false;
         }
         private void check_gen7_CheckedChanged(object sender, EventArgs e)
         {
+            if (check_all_event) return;
+            check_box_event = true;
             if (check_gen7.Checked) gen_select++;
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
+            if (gen_select == 8) check_all.Checked = true;
+            else check_all.Checked = false;
+            check_box_event = false;
         }
         private void check_gen8_CheckedChanged(object sender, EventArgs e)
         {
+            if (check_all_event) return;
+            check_box_event = true;
             if (check_gen8.Checked) gen_select++;
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
+            if (gen_select == 8) check_all.Checked = true;
+            else check_all.Checked = false;
+            check_box_event = false;
         }
     }
 }
