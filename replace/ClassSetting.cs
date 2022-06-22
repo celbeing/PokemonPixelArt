@@ -41,6 +41,7 @@ namespace replace
                     Desk[i, j].Visible = true;
                     Desk[i, j].Click += Desk_Click;
                     ClassSetting_TableLayout.Controls.Add(Desk[i, j], j * 2 + 1, i * 2 + 1);
+                    ClassSetting_ToolTip.SetToolTip(Desk[i, j], "이 자리를 활성화하거나 비활성화합니다.");
                 }
             }
             for(int i = 0; i < 9; i++)
@@ -57,6 +58,7 @@ namespace replace
                     LinkV[i, j].Visible = true;
                     LinkV[i, j].Click += LinkV_Click;
                     ClassSetting_TableLayout.Controls.Add(LinkV[i, j], j * 2 + 1, i * 2 + 2);
+                    ClassSetting_ToolTip.SetToolTip(LinkV[i, j], "앞, 뒤를 짝으로 설정하거나 해제합니다.");
                 }
             }
             for (int i = 0; i < 10; i++)
@@ -73,6 +75,7 @@ namespace replace
                     LinkH[i, j].Visible = true;
                     LinkH[i, j].Click += LinkH_Click;
                     ClassSetting_TableLayout.Controls.Add(LinkH[i, j], j * 2 + 2, i * 2 + 1);
+                    ClassSetting_ToolTip.SetToolTip(LinkH[i, j], "양 옆을 짝으로 설정하거나 해제합니다.");
                 }
             }
             for(int i = 0; i < 9; i++)
@@ -88,6 +91,7 @@ namespace replace
                     Cent[i, j].Visible = true;
                     Cent[i, j].Click += Cent_Click;
                     ClassSetting_TableLayout.Controls.Add(Cent[i, j], j * 2 + 2, i * 2 + 2);
+                    ClassSetting_ToolTip.SetToolTip(Cent[i, j], "네 자리의 모둠을 설정하거나 해제합니다.");
                 }
             }
             for(int i = 0; i < 10; i++)
@@ -101,6 +105,7 @@ namespace replace
                 PenH[i].Visible = true;
                 PenH[i].Click += PenH_Click;
                 ClassSetting_TableLayout.Controls.Add(PenH[i], 0, i * 2 + 2);
+                ClassSetting_ToolTip.SetToolTip(PenH[i], "앞, 뒤 두 줄을 짝으로 설정하거나 해제합니다.");
 
                 PenV[i] = new PictureBox();
                 PenV[i].Image = replace.Properties.Resources.pencil_vertical;
@@ -111,6 +116,7 @@ namespace replace
                 PenV[i].Visible = true;
                 PenV[i].Click += PenV_Click;
                 ClassSetting_TableLayout.Controls.Add(PenV[i], i * 2 + 2, 0);
+                ClassSetting_ToolTip.SetToolTip(PenV[i], "양 옆 두 줄을 짝으로 설정하거나 해제합니다.");
             }
         }
         private void PenH_Click(object sender, EventArgs e)

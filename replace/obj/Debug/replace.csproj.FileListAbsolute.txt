@@ -9,3 +9,14 @@ C:\Users\kimsd\source\repos\Csharp_Study\replace\obj\Debug\replace.csproj.CoreCo
 C:\Users\kimsd\source\repos\Csharp_Study\replace\obj\Debug\replace.exe
 C:\Users\kimsd\source\repos\Csharp_Study\replace\obj\Debug\replace.pdb
 C:\Users\kimsd\source\repos\Csharp_Study\replace\obj\Debug\replace.ClassSetting.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\replace\bin\Debug\replace.exe.config
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\replace\bin\Debug\replace.exe
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\replace\bin\Debug\replace.pdb
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\replace\obj\Debug\replace.csproj.AssemblyReference.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\replace\obj\Debug\replace.ClassSetting.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\replace\obj\Debug\replace.MainClient.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\replace\obj\Debug\replace.Properties.Resources.resources
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\replace\obj\Debug\replace.csproj.GenerateResource.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\replace\obj\Debug\replace.csproj.CoreCompileInputs.cache
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\replace\obj\Debug\replace.exe
+C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\replace\obj\Debug\replace.pdb

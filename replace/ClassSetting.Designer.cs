@@ -29,6 +29,7 @@ namespace replace
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClassSetting));
             this.ClassSetting_Button_Submit = new System.Windows.Forms.Button();
             this.ClassSetting_Label_Row = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@ namespace replace
             this.ClassSetting_Button_Apply = new System.Windows.Forms.Button();
             this.ClassSetting_TableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.ClassSetting_PictureBox_Desk = new System.Windows.Forms.PictureBox();
+            this.ClassSetting_ToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ClassSetting_RowUpdown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClassSetting_ColumnUpdown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClassSetting_PictureBox_Desk)).BeginInit();
@@ -50,6 +52,7 @@ namespace replace
             this.ClassSetting_Button_Submit.Size = new System.Drawing.Size(75, 23);
             this.ClassSetting_Button_Submit.TabIndex = 0;
             this.ClassSetting_Button_Submit.Text = "확인";
+            this.ClassSetting_ToolTip.SetToolTip(this.ClassSetting_Button_Submit, "이 설정을 저장합니다.");
             this.ClassSetting_Button_Submit.UseVisualStyleBackColor = true;
             // 
             // ClassSetting_Label_Row
@@ -86,6 +89,7 @@ namespace replace
             this.ClassSetting_RowUpdown.Name = "ClassSetting_RowUpdown";
             this.ClassSetting_RowUpdown.Size = new System.Drawing.Size(34, 21);
             this.ClassSetting_RowUpdown.TabIndex = 5;
+            this.ClassSetting_ToolTip.SetToolTip(this.ClassSetting_RowUpdown, "앞, 뒤로 놓이는 책상 수를 조절합니다. (1~10)");
             this.ClassSetting_RowUpdown.Value = new decimal(new int[] {
             4,
             0,
@@ -108,6 +112,7 @@ namespace replace
             this.ClassSetting_ColumnUpdown.Name = "ClassSetting_ColumnUpdown";
             this.ClassSetting_ColumnUpdown.Size = new System.Drawing.Size(34, 21);
             this.ClassSetting_ColumnUpdown.TabIndex = 6;
+            this.ClassSetting_ToolTip.SetToolTip(this.ClassSetting_ColumnUpdown, "양 옆으로 놓이는 책상 수를 조절합니다. (1~10)");
             this.ClassSetting_ColumnUpdown.Value = new decimal(new int[] {
             6,
             0,
@@ -121,6 +126,7 @@ namespace replace
             this.ClassSetting_Button_Apply.Size = new System.Drawing.Size(75, 23);
             this.ClassSetting_Button_Apply.TabIndex = 7;
             this.ClassSetting_Button_Apply.Text = "책상놓기";
+            this.ClassSetting_ToolTip.SetToolTip(this.ClassSetting_Button_Apply, "책상을 배치합니다.");
             this.ClassSetting_Button_Apply.UseVisualStyleBackColor = true;
             this.ClassSetting_Button_Apply.Click += new System.EventHandler(this.ClassSetting_Button_Apply_Click);
             // 
@@ -189,6 +195,7 @@ namespace replace
             this.ClassSetting_PictureBox_Desk.Size = new System.Drawing.Size(40, 30);
             this.ClassSetting_PictureBox_Desk.TabIndex = 9;
             this.ClassSetting_PictureBox_Desk.TabStop = false;
+            this.ClassSetting_ToolTip.SetToolTip(this.ClassSetting_PictureBox_Desk, "모든 자리를 활성화하거나 비활성화합니다.");
             this.ClassSetting_PictureBox_Desk.Click += new System.EventHandler(this.ClassSetting_PictureBox_Desk_Click);
             // 
             // ClassSetting
@@ -226,5 +233,6 @@ namespace replace
         private System.Windows.Forms.Button ClassSetting_Button_Apply;
         private System.Windows.Forms.TableLayoutPanel ClassSetting_TableLayout;
         private System.Windows.Forms.PictureBox ClassSetting_PictureBox_Desk;
+        private System.Windows.Forms.ToolTip ClassSetting_ToolTip;
     }
 }
