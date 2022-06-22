@@ -86,19 +86,40 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\DOSMyungjo.ttf" />
+    <EmbeddedResource Include="Resources\DOSMyungjo.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\desk.png" />
+    <EmbeddedResource Include="Resources\desk.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\desk-lock sprite.png" />
+    <EmbeddedResource Include="Resources\desk-lock sprite.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\desk sprite.png" />
+    <EmbeddedResource Include="Resources\desk sprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\chain-horizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\chain-vertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\unchain-horizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\unchain-vertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\center.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\penceil-vertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\penceil-horizontal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

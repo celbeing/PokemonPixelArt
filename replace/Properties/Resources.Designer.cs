@@ -63,6 +63,36 @@ namespace replace.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap center {
+            get {
+                object obj = ResourceManager.GetObject("center", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap chain_horizontal {
+            get {
+                object obj = ResourceManager.GetObject("chain_horizontal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap chain_vertical {
+            get {
+                object obj = ResourceManager.GetObject("chain_vertical", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap desk_lock_sprite {
             get {
                 object obj = ResourceManager.GetObject("desk_lock_sprite", resourceCulture);
@@ -87,6 +117,46 @@ namespace replace.Properties {
             get {
                 object obj = ResourceManager.GetObject("DOSMyungjo", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap pencil_horizontal {
+            get {
+                object obj = ResourceManager.GetObject("pencil_horizontal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap pencil_vertical {
+            get {
+                object obj = ResourceManager.GetObject("pencil_vertical", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap unchain_horizontal {
+            get {
+                object obj = ResourceManager.GetObject("unchain_horizontal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap unchain_vertical {
+            get {
+                object obj = ResourceManager.GetObject("unchain_vertical", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
