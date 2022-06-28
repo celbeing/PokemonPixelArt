@@ -26,6 +26,7 @@ namespace replace
         public ClassSetting()
         {
             InitializeComponent();
+            ClassSetting_PictureBox_Desk.Image = replace.Properties.Resources.desk_sprite;
             column = 6; row = 4;
             for (int i = 0; i < 10; i++)
             {

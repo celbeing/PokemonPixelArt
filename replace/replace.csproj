@@ -92,31 +92,31 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\chain-horizontal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\chain-vertical.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\unchain-horizontal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\unchain-vertical.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\center.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\penceil-vertical.png" />
+    <EmbeddedResource Include="Resources\chain_horizontal.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\penceil-horizontal.png" />
+    <EmbeddedResource Include="Resources\chain_vertical.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\desk-sprite.png" />
+    <EmbeddedResource Include="Resources\desk_lock_sprite.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\desk-lock-sprite.png" />
+    <EmbeddedResource Include="Resources\unchain_horizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\unchain_vertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\pencil_horizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\pencil_vertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\desk_sprite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

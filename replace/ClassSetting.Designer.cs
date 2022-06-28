@@ -76,48 +76,24 @@ namespace replace
             // ClassSetting_RowUpdown
             // 
             this.ClassSetting_RowUpdown.Location = new System.Drawing.Point(26, 224);
-            this.ClassSetting_RowUpdown.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ClassSetting_RowUpdown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.ClassSetting_RowUpdown.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            this.ClassSetting_RowUpdown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             this.ClassSetting_RowUpdown.Name = "ClassSetting_RowUpdown";
             this.ClassSetting_RowUpdown.Size = new System.Drawing.Size(34, 21);
             this.ClassSetting_RowUpdown.TabIndex = 5;
             this.ClassSetting_ToolTip.SetToolTip(this.ClassSetting_RowUpdown, "앞, 뒤로 놓이는 책상 수를 조절합니다. (1~10)");
-            this.ClassSetting_RowUpdown.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
+            this.ClassSetting_RowUpdown.Value = new decimal(new int[] { 4, 0, 0, 0 });
             // 
             // ClassSetting_ColumnUpdown
             // 
             this.ClassSetting_ColumnUpdown.Location = new System.Drawing.Point(74, 224);
-            this.ClassSetting_ColumnUpdown.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ClassSetting_ColumnUpdown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.ClassSetting_ColumnUpdown.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            this.ClassSetting_ColumnUpdown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             this.ClassSetting_ColumnUpdown.Name = "ClassSetting_ColumnUpdown";
             this.ClassSetting_ColumnUpdown.Size = new System.Drawing.Size(34, 21);
             this.ClassSetting_ColumnUpdown.TabIndex = 6;
             this.ClassSetting_ToolTip.SetToolTip(this.ClassSetting_ColumnUpdown, "양 옆으로 놓이는 책상 수를 조절합니다. (1~10)");
-            this.ClassSetting_ColumnUpdown.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
+            this.ClassSetting_ColumnUpdown.Value = new decimal(new int[] { 6, 0, 0, 0 });
             // 
             // ClassSetting_Button_Apply
             // 
@@ -182,11 +158,9 @@ namespace replace
             // 
             // ClassSetting_PictureBox_Desk
             // 
-            this.ClassSetting_PictureBox_Desk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClassSetting_PictureBox_Desk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.ClassSetting_PictureBox_Desk.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ClassSetting_PictureBox_Desk.Image = global::replace.Properties.Resources.desk_sprite;
             this.ClassSetting_PictureBox_Desk.Location = new System.Drawing.Point(192, 220);
             this.ClassSetting_PictureBox_Desk.Margin = new System.Windows.Forms.Padding(0);
             this.ClassSetting_PictureBox_Desk.MaximumSize = new System.Drawing.Size(40, 30);
