@@ -54,6 +54,7 @@ namespace replace
             this.ClassSetting_Button_Submit.Text = "확인";
             this.ClassSetting_ToolTip.SetToolTip(this.ClassSetting_Button_Submit, "이 설정을 저장합니다.");
             this.ClassSetting_Button_Submit.UseVisualStyleBackColor = true;
+            this.ClassSetting_Button_Submit.Click += new System.EventHandler(this.ClassSetting_Button_Submit_Click);
             // 
             // ClassSetting_Label_Row
             // 
@@ -76,24 +77,48 @@ namespace replace
             // ClassSetting_RowUpdown
             // 
             this.ClassSetting_RowUpdown.Location = new System.Drawing.Point(26, 224);
-            this.ClassSetting_RowUpdown.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            this.ClassSetting_RowUpdown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            this.ClassSetting_RowUpdown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ClassSetting_RowUpdown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.ClassSetting_RowUpdown.Name = "ClassSetting_RowUpdown";
             this.ClassSetting_RowUpdown.Size = new System.Drawing.Size(34, 21);
             this.ClassSetting_RowUpdown.TabIndex = 5;
             this.ClassSetting_ToolTip.SetToolTip(this.ClassSetting_RowUpdown, "앞, 뒤로 놓이는 책상 수를 조절합니다. (1~10)");
-            this.ClassSetting_RowUpdown.Value = new decimal(new int[] { 4, 0, 0, 0 });
+            this.ClassSetting_RowUpdown.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // ClassSetting_ColumnUpdown
             // 
             this.ClassSetting_ColumnUpdown.Location = new System.Drawing.Point(74, 224);
-            this.ClassSetting_ColumnUpdown.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            this.ClassSetting_ColumnUpdown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            this.ClassSetting_ColumnUpdown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ClassSetting_ColumnUpdown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.ClassSetting_ColumnUpdown.Name = "ClassSetting_ColumnUpdown";
             this.ClassSetting_ColumnUpdown.Size = new System.Drawing.Size(34, 21);
             this.ClassSetting_ColumnUpdown.TabIndex = 6;
             this.ClassSetting_ToolTip.SetToolTip(this.ClassSetting_ColumnUpdown, "양 옆으로 놓이는 책상 수를 조절합니다. (1~10)");
-            this.ClassSetting_ColumnUpdown.Value = new decimal(new int[] { 6, 0, 0, 0 });
+            this.ClassSetting_ColumnUpdown.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
             // 
             // ClassSetting_Button_Apply
             // 
@@ -158,8 +183,9 @@ namespace replace
             // 
             // ClassSetting_PictureBox_Desk
             // 
-            this.ClassSetting_PictureBox_Desk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClassSetting_PictureBox_Desk.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ClassSetting_PictureBox_Desk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ClassSetting_PictureBox_Desk.Location = new System.Drawing.Point(192, 220);
             this.ClassSetting_PictureBox_Desk.Margin = new System.Windows.Forms.Padding(0);
@@ -185,10 +211,12 @@ namespace replace
             this.Controls.Add(this.ClassSetting_Label_Column);
             this.Controls.Add(this.ClassSetting_Label_Row);
             this.Controls.Add(this.ClassSetting_Button_Submit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ClassSetting";
-            this.Text = "교실 설정";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.Text = "교실 설정(24명)";
             ((System.ComponentModel.ISupportInitialize)(this.ClassSetting_RowUpdown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClassSetting_ColumnUpdown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClassSetting_PictureBox_Desk)).EndInit();

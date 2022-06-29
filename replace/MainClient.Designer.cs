@@ -33,11 +33,12 @@ namespace replace
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainClient));
             this.MainClient_Label_Title = new System.Windows.Forms.Label();
             this.MainClient_Label_Version = new System.Windows.Forms.Label();
-            this.MainClient_Button_LayoutSetting = new System.Windows.Forms.Button();
             this.MainClient_Button_ClassSetting = new System.Windows.Forms.Button();
+            this.MainClient_Button_StudentSetting = new System.Windows.Forms.Button();
             this.MainClient_Button_Replacement = new System.Windows.Forms.Button();
             this.MainClient_Label_Sign = new System.Windows.Forms.Label();
             this.MainClient_ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.MainClient_Label_CurrentSetting = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // MainClient_Label_Title
@@ -62,26 +63,28 @@ namespace replace
             this.MainClient_Label_Version.TabIndex = 1;
             this.MainClient_Label_Version.Text = "v1.0";
             // 
-            // MainClient_Button_LayoutSetting
-            // 
-            this.MainClient_Button_LayoutSetting.AccessibleDescription = "";
-            this.MainClient_Button_LayoutSetting.Location = new System.Drawing.Point(292, 121);
-            this.MainClient_Button_LayoutSetting.Name = "MainClient_Button_LayoutSetting";
-            this.MainClient_Button_LayoutSetting.Size = new System.Drawing.Size(75, 23);
-            this.MainClient_Button_LayoutSetting.TabIndex = 2;
-            this.MainClient_Button_LayoutSetting.Text = "교실 설정";
-            this.MainClient_ToolTip.SetToolTip(this.MainClient_Button_LayoutSetting, "교실의 책상 배치를 설정합니다.");
-            this.MainClient_Button_LayoutSetting.UseVisualStyleBackColor = true;
-            // 
             // MainClient_Button_ClassSetting
             // 
-            this.MainClient_Button_ClassSetting.Location = new System.Drawing.Point(292, 150);
+            this.MainClient_Button_ClassSetting.AccessibleDescription = "";
+            this.MainClient_Button_ClassSetting.Location = new System.Drawing.Point(292, 121);
             this.MainClient_Button_ClassSetting.Name = "MainClient_Button_ClassSetting";
             this.MainClient_Button_ClassSetting.Size = new System.Drawing.Size(75, 23);
-            this.MainClient_Button_ClassSetting.TabIndex = 3;
-            this.MainClient_Button_ClassSetting.Text = "학급 설정";
-            this.MainClient_ToolTip.SetToolTip(this.MainClient_Button_ClassSetting, "학급 인원 수, 학생 이름, 성별, 같이 앉히면 안되는 사람 등\r\n자리 배치시 고려 사항을 설정합니다.");
+            this.MainClient_Button_ClassSetting.TabIndex = 2;
+            this.MainClient_Button_ClassSetting.Text = "교실 설정";
+            this.MainClient_ToolTip.SetToolTip(this.MainClient_Button_ClassSetting, "교실의 책상 배치를 설정합니다.");
             this.MainClient_Button_ClassSetting.UseVisualStyleBackColor = true;
+            this.MainClient_Button_ClassSetting.Click += new System.EventHandler(this.MainClient_Button_ClassSetting_Click);
+            // 
+            // MainClient_Button_StudentSetting
+            // 
+            this.MainClient_Button_StudentSetting.Location = new System.Drawing.Point(292, 150);
+            this.MainClient_Button_StudentSetting.Name = "MainClient_Button_StudentSetting";
+            this.MainClient_Button_StudentSetting.Size = new System.Drawing.Size(75, 23);
+            this.MainClient_Button_StudentSetting.TabIndex = 3;
+            this.MainClient_Button_StudentSetting.Text = "학급 설정";
+            this.MainClient_ToolTip.SetToolTip(this.MainClient_Button_StudentSetting, "학급 인원 수, 학생 이름, 성별, 같이 앉히면 안되는 사람 등\r\n자리 배치시 고려 사항을 설정합니다.");
+            this.MainClient_Button_StudentSetting.UseVisualStyleBackColor = true;
+            this.MainClient_Button_StudentSetting.Click += new System.EventHandler(this.MainClient_Button_StudentSetting_Click);
             // 
             // MainClient_Button_Replacement
             // 
@@ -103,17 +106,28 @@ namespace replace
             this.MainClient_Label_Sign.TabIndex = 5;
             this.MainClient_Label_Sign.Text = "인디스쿨:전라남도교육지원청\r\n티스토리:https://celbeing.tistory.com/";
             // 
+            // MainClient_Label_CurrentSetting
+            // 
+            this.MainClient_Label_CurrentSetting.AutoSize = true;
+            this.MainClient_Label_CurrentSetting.Location = new System.Drawing.Point(9, 121);
+            this.MainClient_Label_CurrentSetting.Name = "MainClient_Label_CurrentSetting";
+            this.MainClient_Label_CurrentSetting.Size = new System.Drawing.Size(38, 12);
+            this.MainClient_Label_CurrentSetting.TabIndex = 6;
+            this.MainClient_Label_CurrentSetting.Text = "label1";
+            // 
             // MainClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 214);
+            this.Controls.Add(this.MainClient_Label_CurrentSetting);
             this.Controls.Add(this.MainClient_Label_Sign);
             this.Controls.Add(this.MainClient_Button_Replacement);
+            this.Controls.Add(this.MainClient_Button_StudentSetting);
             this.Controls.Add(this.MainClient_Button_ClassSetting);
-            this.Controls.Add(this.MainClient_Button_LayoutSetting);
             this.Controls.Add(this.MainClient_Label_Version);
             this.Controls.Add(this.MainClient_Label_Title);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(395, 253);
@@ -129,11 +143,12 @@ namespace replace
 
         private System.Windows.Forms.Label MainClient_Label_Title;
         private System.Windows.Forms.Label MainClient_Label_Version;
-        private System.Windows.Forms.Button MainClient_Button_LayoutSetting;
         private System.Windows.Forms.Button MainClient_Button_ClassSetting;
+        private System.Windows.Forms.Button MainClient_Button_StudentSetting;
         private System.Windows.Forms.Button MainClient_Button_Replacement;
         private System.Windows.Forms.Label MainClient_Label_Sign;
         private System.Windows.Forms.ToolTip MainClient_ToolTip;
+        private System.Windows.Forms.Label MainClient_Label_CurrentSetting;
     }
 }
 

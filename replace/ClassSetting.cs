@@ -12,7 +12,7 @@ namespace replace
 {
     public partial class ClassSetting : Form
     {
-        int column, row;
+        int column, row, deskcount;
         bool[,] DeskActive = new bool[10, 10];
         bool[,] LinkActive_v = new bool[9, 10];
         bool[,] LinkActive_h = new bool[10, 9];
@@ -23,11 +23,14 @@ namespace replace
         PictureBox[,] Cent = new PictureBox[9, 9];
         PictureBox[] PenV = new PictureBox[10];
         PictureBox[] PenH = new PictureBox[10];
+
+        public delegate void ClassDataHandler(int row, int col, bool[,] desk, bool[,] vertical_link, bool[,] horizontal_link);
+        public event ClassDataHandler data_handler;
         public ClassSetting()
         {
             InitializeComponent();
             ClassSetting_PictureBox_Desk.Image = replace.Properties.Resources.desk_sprite;
-            column = 6; row = 4;
+            column = 6; row = 4; deskcount = 24;
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
@@ -95,7 +98,7 @@ namespace replace
                     ClassSetting_ToolTip.SetToolTip(Cent[i, j], "네 자리의 모둠을 설정하거나 해제합니다.");
                 }
             }
-            for(int i = 0; i < 10; i++)
+            for(int i = 0; i < 9; i++)
             {
                 PenH[i] = new PictureBox();
                 PenH[i].Image = replace.Properties.Resources.pencil_horizontal;
@@ -254,6 +257,16 @@ namespace replace
                 DeskActive[deskRow, deskCol] = true;
                 desk.Image = replace.Properties.Resources.desk_sprite;
             }
+
+            deskcount = 0;
+            for(int i = 0; i < row; i++)
+            {
+                for(int j = 0; j < column; j++)
+                {
+                    if (DeskActive[i, j]) deskcount++;
+                }
+            }
+            this.Text = $"교실 설정({deskcount}명)";
         }
 
         private void ClassSetting_Load(object sender, EventArgs e)
@@ -283,6 +296,30 @@ namespace replace
                     else Desk[i, j].Image = replace.Properties.Resources.desk_lock_sprite;
                 }
             }
+
+            deskcount = 0;
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < column; j++)
+                {
+                    if (DeskActive[i, j]) deskcount++;
+                }
+            }
+            this.Text = $"교실 설정({deskcount}명)";
+        }
+
+        private void ClassSetting_Button_Submit_Click(object sender, EventArgs e)
+        {
+            if (deskcount > 0)
+            {
+                this.data_handler(row, column, DeskActive, LinkActive_v, LinkActive_h);
+                this.Close();
+                
+            }
+            else
+            {
+                MessageBox.Show("교실에 책상이 없습니다.");
+            }
         }
 
         private void ClassSetting_Button_Apply_Click(object sender, EventArgs e)
@@ -306,6 +343,16 @@ namespace replace
                 ClassSetting_Button_Submit.Location = new System.Drawing.Point(237, row * 50 + 23);
                 this.ClientSize = new System.Drawing.Size(324, row * 50 + 59);
             }
+
+            deskcount = 0;
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < column; j++)
+                {
+                    if (DeskActive[i, j]) deskcount++;
+                }
+            }
+            this.Text = $"교실 설정({deskcount}명)";
         }
     }
 }
