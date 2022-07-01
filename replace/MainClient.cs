@@ -17,6 +17,15 @@ namespace replace
         bool[,] desk = new bool[10, 10];
         bool[,] link_vertical = new bool[10, 10];
         bool[,] link_horizontal = new bool[10, 10];
+        string[] preset = new string[103];
+        /* 
+         * [0] ClassData,(row),(column),(deskcount)
+         * [1] DeskData,(desk1),(desk2),(...)
+         * [2] StudentData,(studentcount)
+         * [3] (name1),(properties)
+         * [.]
+         * [102] (name100),(properties)
+         */
 
         public MainClient()
         {
@@ -38,6 +47,13 @@ namespace replace
             this.desk = desk;
             this.link_vertical = link_vertical;
             this.link_horizontal = link_horizontal;
+            /*
+             * row            : 책상 세로 배치
+             * col            : 책상 가로 배치
+             * desk           : 책상 수
+             * link_vertical  : 좌우 연결된 자리
+             * link_horizontal: 전후 연결된 자리
+             */
         }
 
         private void MainClient_Button_StudentSetting_Click(object sender, EventArgs e)
@@ -49,7 +65,7 @@ namespace replace
             */
 
             // csv파일 만들기
-            if (File.Exists(Application.StartupPath + "\\replace_setting.csv"))
+            if (File.Exists(Application.StartupPath + "\\preset.csv"))
             {
                 // 파일 데이터 변경하기
             }

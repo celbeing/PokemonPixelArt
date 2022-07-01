@@ -31,6 +31,13 @@ namespace replace
             InitializeComponent();
             ClassSetting_PictureBox_Desk.Image = replace.Properties.Resources.desk_sprite;
             column = 6; row = 4; deskcount = 24;
+            /*
+             * [책상 배열 초기 값]
+             * preset있으면: preset data 불러오기 + 책상 활성화, 연결 상태 불러오기
+             * preset없으면: 새로운 preset data 생성 후 4행 6열
+             */
+
+            // 책상 활성화 아이콘
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
@@ -48,6 +55,8 @@ namespace replace
                     ClassSetting_ToolTip.SetToolTip(Desk[i, j], "이 자리를 활성화하거나 비활성화합니다.");
                 }
             }
+
+            // 전후 책상 연결 아이콘
             for(int i = 0; i < 9; i++)
             {
                 for(int j = 0; j < 10; j++)
@@ -65,6 +74,8 @@ namespace replace
                     ClassSetting_ToolTip.SetToolTip(LinkV[i, j], "앞, 뒤를 짝으로 설정하거나 해제합니다.");
                 }
             }
+
+            // 좌우 책상 연결 아이콘
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 9; j++)
@@ -82,6 +93,8 @@ namespace replace
                     ClassSetting_ToolTip.SetToolTip(LinkH[i, j], "양 옆을 짝으로 설정하거나 해제합니다.");
                 }
             }
+
+            // 4개 일괄 연결 아이콘
             for(int i = 0; i < 9; i++)
             {
                 for(int j = 0; j < 9; j++)
@@ -98,6 +111,8 @@ namespace replace
                     ClassSetting_ToolTip.SetToolTip(Cent[i, j], "네 자리의 모둠을 설정하거나 해제합니다.");
                 }
             }
+
+            // 행, 열 일괄 연결 아이콘
             for(int i = 0; i < 9; i++)
             {
                 PenH[i] = new PictureBox();
@@ -123,6 +138,8 @@ namespace replace
                 ClassSetting_ToolTip.SetToolTip(PenV[i], "양 옆 두 줄을 짝으로 설정하거나 해제합니다.");
             }
         }
+
+        // 행 일괄 연결
         private void PenH_Click(object sender, EventArgs e)
         {
             PictureBox pen = sender as PictureBox;
@@ -150,6 +167,8 @@ namespace replace
                 }
             }
         }
+
+        // 열 일괄 연결
         private void PenV_Click(object sender, EventArgs e)
         {
             PictureBox pen = sender as PictureBox;
@@ -177,6 +196,8 @@ namespace replace
                 }
             }
         }
+
+        // 4개 일괄 연결
         private void Cent_Click(object sender, EventArgs e)
         {
             PictureBox cent = sender as PictureBox;
@@ -207,6 +228,8 @@ namespace replace
                 LinkV[centRow, centCol + 1].Image = replace.Properties.Resources.chain_vertical;
             }
         }
+
+        // 좌우 책상 연결
         private void LinkH_Click(object sender, EventArgs e)
         {
             PictureBox link_h = sender as PictureBox;
@@ -224,6 +247,8 @@ namespace replace
                 link_h.Image = replace.Properties.Resources.chain_horizontal;
             }
         }
+
+        // 전후 책상 연결
         private void LinkV_Click(object sender, EventArgs e)
         {
             PictureBox link_v = sender as PictureBox;
@@ -241,6 +266,8 @@ namespace replace
                 link_v.Image = replace.Properties.Resources.chain_vertical;
             }
         }
+
+        // 책상 활성화
         private void Desk_Click(object sender, EventArgs e)
         {
             PictureBox desk = sender as PictureBox;
@@ -274,6 +301,7 @@ namespace replace
 
         }
 
+        // 전체 활성화
         private void ClassSetting_PictureBox_Desk_Click(object sender, EventArgs e)
         {
             if (allActive)
@@ -308,8 +336,14 @@ namespace replace
             this.Text = $"교실 설정({deskcount}명)";
         }
 
+        // 설정 저장
         private void ClassSetting_Button_Submit_Click(object sender, EventArgs e)
         {
+            /*
+             * [desk data save]
+             * csv파일 생성 또는 수정
+             * parent form 으로 데이터 전송
+             */
             if (deskcount > 0)
             {
                 this.data_handler(row, column, DeskActive, LinkActive_v, LinkActive_h);
@@ -324,6 +358,10 @@ namespace replace
 
         private void ClassSetting_Button_Apply_Click(object sender, EventArgs e)
         {
+            /*
+             * [form set]
+             * 책상 배열 변경과 form size, control location 연동
+             */
             column = (int)ClassSetting_ColumnUpdown.Value;
             row = (int)ClassSetting_RowUpdown.Value;
             ClassSetting_TableLayout.Size = new System.Drawing.Size(column * 60, row * 50);
