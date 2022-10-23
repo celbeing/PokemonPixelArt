@@ -33,7 +33,6 @@ namespace Pokemon_Drawing_ver2
             this.tab_control = new System.Windows.Forms.TabControl();
             this.search = new System.Windows.Forms.TabPage();
             this.label_signature = new System.Windows.Forms.Label();
-            this.check_search_desktop = new System.Windows.Forms.CheckBox();
             this.combo_search_pokemon_difficulty = new System.Windows.Forms.ComboBox();
             this.label_search_pokemon_data = new System.Windows.Forms.Label();
             this.combo_search_pokemon_form = new System.Windows.Forms.ComboBox();
@@ -45,7 +44,6 @@ namespace Pokemon_Drawing_ver2
             this.random = new System.Windows.Forms.TabPage();
             this.check_all = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.check_random_desktop = new System.Windows.Forms.CheckBox();
             this.combo_random_pokemon_difficulty = new System.Windows.Forms.ComboBox();
             this.label_random_pokemon_data = new System.Windows.Forms.Label();
             this.combo_random_pokemon_form = new System.Windows.Forms.ComboBox();
@@ -61,6 +59,8 @@ namespace Pokemon_Drawing_ver2
             this.button_random_pokemon = new System.Windows.Forms.Button();
             this.image_random_pokemon = new System.Windows.Forms.PictureBox();
             this.label_random_pokemon = new System.Windows.Forms.Label();
+            this.check_desktop = new System.Windows.Forms.CheckBox();
+            this.check_number_style = new System.Windows.Forms.CheckBox();
             this.tab_control.SuspendLayout();
             this.search.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_search_pokemon)).BeginInit();
@@ -83,7 +83,6 @@ namespace Pokemon_Drawing_ver2
             // 
             this.search.BackColor = System.Drawing.Color.Transparent;
             this.search.Controls.Add(this.label_signature);
-            this.search.Controls.Add(this.check_search_desktop);
             this.search.Controls.Add(this.combo_search_pokemon_difficulty);
             this.search.Controls.Add(this.label_search_pokemon_data);
             this.search.Controls.Add(this.combo_search_pokemon_form);
@@ -108,17 +107,6 @@ namespace Pokemon_Drawing_ver2
             this.label_signature.Size = new System.Drawing.Size(221, 24);
             this.label_signature.TabIndex = 11;
             this.label_signature.Text = "인디스쿨:전라남도교육지원청\r\n티스토리:https://celbeing.tistory.com/";
-            // 
-            // check_search_desktop
-            // 
-            this.check_search_desktop.AutoSize = true;
-            this.check_search_desktop.Location = new System.Drawing.Point(229, 219);
-            this.check_search_desktop.Name = "check_search_desktop";
-            this.check_search_desktop.Size = new System.Drawing.Size(112, 16);
-            this.check_search_desktop.TabIndex = 10;
-            this.check_search_desktop.Text = "바탕화면에 저장";
-            this.check_search_desktop.UseVisualStyleBackColor = true;
-            this.check_search_desktop.CheckedChanged += new System.EventHandler(this.check_search_Saveoption);
             // 
             // combo_search_pokemon_difficulty
             // 
@@ -203,7 +191,6 @@ namespace Pokemon_Drawing_ver2
             this.random.BackColor = System.Drawing.Color.Transparent;
             this.random.Controls.Add(this.check_all);
             this.random.Controls.Add(this.label1);
-            this.random.Controls.Add(this.check_random_desktop);
             this.random.Controls.Add(this.combo_random_pokemon_difficulty);
             this.random.Controls.Add(this.label_random_pokemon_data);
             this.random.Controls.Add(this.combo_random_pokemon_form);
@@ -248,17 +235,6 @@ namespace Pokemon_Drawing_ver2
             this.label1.Size = new System.Drawing.Size(221, 24);
             this.label1.TabIndex = 21;
             this.label1.Text = "인디스쿨:전라남도교육지원청\r\n티스토리:https://celbeing.tistory.com/";
-            // 
-            // check_random_desktop
-            // 
-            this.check_random_desktop.AutoSize = true;
-            this.check_random_desktop.Location = new System.Drawing.Point(229, 219);
-            this.check_random_desktop.Name = "check_random_desktop";
-            this.check_random_desktop.Size = new System.Drawing.Size(112, 16);
-            this.check_random_desktop.TabIndex = 20;
-            this.check_random_desktop.Text = "바탕화면에 저장";
-            this.check_random_desktop.UseVisualStyleBackColor = true;
-            this.check_random_desktop.CheckedChanged += new System.EventHandler(this.check_random_Saveoption);
             // 
             // combo_random_pokemon_difficulty
             // 
@@ -444,11 +420,35 @@ namespace Pokemon_Drawing_ver2
             this.label_random_pokemon.Text = "무작위로 포켓몬을 하나 뽑습니다.\r\n세대를 선택해 뽑을 수 있습니다.\r\n뽑힌 포켓몬의 형태는 자유롭게 선택할 수 있습니다.\r\n(색이 다른 포켓몬 " +
     "등장 확률 = 0.1%)";
             // 
+            // check_desktop
+            // 
+            this.check_desktop.AutoSize = true;
+            this.check_desktop.Checked = true;
+            this.check_desktop.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_desktop.Location = new System.Drawing.Point(238, 11);
+            this.check_desktop.Name = "check_desktop";
+            this.check_desktop.Size = new System.Drawing.Size(112, 16);
+            this.check_desktop.TabIndex = 10;
+            this.check_desktop.Text = "바탕화면에 저장";
+            this.check_desktop.UseVisualStyleBackColor = true;
+            // 
+            // check_number_style
+            // 
+            this.check_number_style.AutoSize = true;
+            this.check_number_style.Location = new System.Drawing.Point(356, 11);
+            this.check_number_style.Name = "check_number_style";
+            this.check_number_style.Size = new System.Drawing.Size(88, 16);
+            this.check_number_style.TabIndex = 1;
+            this.check_number_style.Text = "숫자 진하게";
+            this.check_number_style.UseVisualStyleBackColor = true;
+            // 
             // Main_Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 294);
+            this.Controls.Add(this.check_number_style);
+            this.Controls.Add(this.check_desktop);
             this.Controls.Add(this.tab_control);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -463,6 +463,7 @@ namespace Pokemon_Drawing_ver2
             this.random.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_random_pokemon)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -495,11 +496,11 @@ namespace Pokemon_Drawing_ver2
         private System.Windows.Forms.ComboBox combo_random_pokemon_difficulty;
         private System.Windows.Forms.Label label_random_pokemon_data;
         private System.Windows.Forms.Button button_random_out;
-        private System.Windows.Forms.CheckBox check_search_desktop;
-        private System.Windows.Forms.CheckBox check_random_desktop;
+        private System.Windows.Forms.CheckBox check_desktop;
         private System.Windows.Forms.Label label_signature;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox check_all;
+        private System.Windows.Forms.CheckBox check_number_style;
     }
 }
 

@@ -68,7 +68,7 @@ namespace Pokemon_Drawing_ver2
             number_dot_loc.Add("01,02,07,08,09,10,16,19,20,25,29,30,35,39,40,44,49,51,52,53,59");                   // 2
             number_dot_loc.Add("01,02,07,08,10,19,20,24,29,30,34,39,40,44,49,51,52,53,55,56,57,58");                // 3
             number_dot_loc.Add("06,07,14,15,17,22,23,27,30,31,37,40,41,42,43,44,45,46,47,48,49,57");                // 4
-            number_dot_loc.Add("01,02,03,04,05,08,10,14,19,20,24,29,30,34,39,40,44,49,50,55,56,57,58");             // 5
+            number_dot_loc.Add("00,01,02,03,04,05,08,10,14,19,20,24,29,30,34,39,40,44,49,50,55,56,57,58");          // 5
             number_dot_loc.Add("01,02,03,04,05,06,07,08,10,14,19,20,24,29,30,34,39,40,44,49,51,55,56,57,58");       // 6
             number_dot_loc.Add("00,01,02,10,20,30,36,37,38,39,40,43,44,45,50,51,52");                               // 7
             number_dot_loc.Add("01,02,03,05,06,07,08,10,14,19,20,24,29,30,34,39,40,44,49,51,52,53,55,56,57,58");    // 8
@@ -348,8 +348,12 @@ namespace Pokemon_Drawing_ver2
                     int dx = location / 10;
                     int dy = location % 10;
 
-                    pixelart.SetPixel
-                        (x + dx, y + dy, Color.FromArgb(255, 175, 175, 175));
+                    if (check_number_style.Checked)
+                        pixelart.SetPixel
+                            (x + dx, y + dy, Color.FromArgb(255, 92, 92, 92));
+                    else
+                        pixelart.SetPixel
+                            (x + dx, y + dy, Color.FromArgb(255, 175, 175, 175));
                 }
                 x += 7;
             }
@@ -449,7 +453,7 @@ namespace Pokemon_Drawing_ver2
         private void button_search_out_Click(object sender, EventArgs e)
         {
             get_pixelart(image_search);
-            if (check_search_desktop.Checked)
+            if (check_desktop.Checked)
             {
                 file_path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
                     + $"\\No{pokemon_number:D3}";
@@ -541,7 +545,7 @@ namespace Pokemon_Drawing_ver2
         {
             get_pixelart(image_random);
 
-            if (check_random_desktop.Checked)
+            if (check_desktop.Checked)
             {
                 file_path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
                     + $"\\No{pokemon_number:D3}";
@@ -563,18 +567,6 @@ namespace Pokemon_Drawing_ver2
             get_file_name();
             pixelart.Save(file_path);
             MessageBox.Show("저장되었습니다.");
-        }
-        private void check_search_Saveoption(object sender, EventArgs e)
-        {
-            if (check_search_desktop.Checked)
-                check_random_desktop.Checked = true;
-            else check_random_desktop.Checked = false;
-        }
-        private void check_random_Saveoption(object sender, EventArgs e)
-        {
-            if (check_random_desktop.Checked)
-                check_search_desktop.Checked = true;
-            else check_search_desktop.Checked = false;
         }
         private void check_all_CheckedChanged(object sender, EventArgs e)
         {
