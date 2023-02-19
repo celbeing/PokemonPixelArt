@@ -47,6 +47,7 @@ namespace Pokemon_Drawing_ver2
             this.combo_random_pokemon_difficulty = new System.Windows.Forms.ComboBox();
             this.label_random_pokemon_data = new System.Windows.Forms.Label();
             this.combo_random_pokemon_form = new System.Windows.Forms.ComboBox();
+            this.check_gen9 = new System.Windows.Forms.CheckBox();
             this.check_gen8 = new System.Windows.Forms.CheckBox();
             this.check_gen7 = new System.Windows.Forms.CheckBox();
             this.check_gen6 = new System.Windows.Forms.CheckBox();
@@ -189,6 +190,7 @@ namespace Pokemon_Drawing_ver2
             // random
             // 
             this.random.BackColor = System.Drawing.Color.Transparent;
+            this.random.Controls.Add(this.check_gen9);
             this.random.Controls.Add(this.check_all);
             this.random.Controls.Add(this.label1);
             this.random.Controls.Add(this.combo_random_pokemon_difficulty);
@@ -267,6 +269,20 @@ namespace Pokemon_Drawing_ver2
             this.combo_random_pokemon_form.TabIndex = 17;
             this.combo_random_pokemon_form.Visible = false;
             this.combo_random_pokemon_form.SelectedIndexChanged += new System.EventHandler(this.combo_random_pokemon_form_SelectedIndexChanged);
+            // 
+            // check_gen9
+            // 
+            this.check_gen9.AutoSize = true;
+            this.check_gen9.Checked = true;
+            this.check_gen9.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_gen9.Cursor = System.Windows.Forms.Cursors.Default;
+            this.check_gen9.Location = new System.Drawing.Point(6, 175);
+            this.check_gen9.Name = "check_gen9";
+            this.check_gen9.Size = new System.Drawing.Size(196, 16);
+            this.check_gen9.TabIndex = 17;
+            this.check_gen9.Text = "9세대(일부 포켓몬만 있습니다.)";
+            this.check_gen9.UseVisualStyleBackColor = true;
+            this.check_gen9.CheckedChanged += new System.EventHandler(this.check_gen9_CheckedChanged);
             // 
             // check_gen8
             // 
@@ -492,6 +508,7 @@ namespace Pokemon_Drawing_ver2
         private System.Windows.Forms.CheckBox check_gen6;
         private System.Windows.Forms.CheckBox check_gen7;
         private System.Windows.Forms.CheckBox check_gen8;
+        private System.Windows.Forms.CheckBox check_gen9;
         private System.Windows.Forms.ComboBox combo_random_pokemon_form;
         private System.Windows.Forms.ComboBox combo_random_pokemon_difficulty;
         private System.Windows.Forms.Label label_random_pokemon_data;

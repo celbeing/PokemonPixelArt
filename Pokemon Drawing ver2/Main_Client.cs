@@ -582,7 +582,8 @@ namespace Pokemon_Drawing_ver2
                 check_gen6.Checked = true;
                 check_gen7.Checked = true;
                 check_gen8.Checked = true;
-                gen_select = 8;
+                check_gen9.Checked = true;
+                gen_select = 9;
                 button_random_pokemon.Visible = true;
             }
             else
@@ -595,6 +596,7 @@ namespace Pokemon_Drawing_ver2
                 check_gen6.Checked = false;
                 check_gen7.Checked = false;
                 check_gen8.Checked = false;
+                check_gen9.Checked = false;
                 gen_select = 0;
                 button_random_pokemon.Visible = false;
             }
@@ -608,7 +610,7 @@ namespace Pokemon_Drawing_ver2
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
-            if (gen_select == 8) check_all.Checked = true;
+            if (gen_select == 9) check_all.Checked = true;
             else check_all.Checked = false;
             check_box_event = false;
         }
@@ -620,7 +622,7 @@ namespace Pokemon_Drawing_ver2
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
-            if (gen_select == 8) check_all.Checked = true;
+            if (gen_select == 9) check_all.Checked = true;
             else check_all.Checked = false;
             check_box_event = false;
         }
@@ -632,7 +634,7 @@ namespace Pokemon_Drawing_ver2
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
-            if (gen_select == 8) check_all.Checked = true;
+            if (gen_select == 9) check_all.Checked = true;
             else check_all.Checked = false;
             check_box_event = false;
         }
@@ -644,7 +646,7 @@ namespace Pokemon_Drawing_ver2
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
-            if (gen_select == 8) check_all.Checked = true;
+            if (gen_select == 9) check_all.Checked = true;
             else check_all.Checked = false;
             check_box_event = false;
         }
@@ -656,7 +658,7 @@ namespace Pokemon_Drawing_ver2
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
-            if (gen_select == 8) check_all.Checked = true;
+            if (gen_select == 9) check_all.Checked = true;
             else check_all.Checked = false;
             check_box_event = false;
         }
@@ -668,7 +670,7 @@ namespace Pokemon_Drawing_ver2
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
-            if (gen_select == 8) check_all.Checked = true;
+            if (gen_select == 9) check_all.Checked = true;
             else check_all.Checked = false;
             check_box_event = false;
         }
@@ -680,7 +682,7 @@ namespace Pokemon_Drawing_ver2
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
-            if (gen_select == 8) check_all.Checked = true;
+            if (gen_select == 9) check_all.Checked = true;
             else check_all.Checked = false;
             check_box_event = false;
         }
@@ -692,7 +694,20 @@ namespace Pokemon_Drawing_ver2
             else gen_select--;
             if (gen_select == 0) button_random_pokemon.Visible = false;
             else button_random_pokemon.Visible = true;
-            if (gen_select == 8) check_all.Checked = true;
+            if (gen_select == 9) check_all.Checked = true;
+            else check_all.Checked = false;
+            check_box_event = false;
+        }
+
+        private void check_gen9_CheckedChanged(object sender, EventArgs e)
+        {
+            if (check_all_event) return;
+            check_box_event = true;
+            if (check_gen9.Checked) gen_select++;
+            else gen_select--;
+            if (gen_select == 0) button_random_pokemon.Visible = false;
+            else button_random_pokemon.Visible = true;
+            if (gen_select == 9) check_all.Checked = true;
             else check_all.Checked = false;
             check_box_event = false;
         }
