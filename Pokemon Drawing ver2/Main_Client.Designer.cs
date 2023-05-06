@@ -42,12 +42,12 @@ namespace Pokemon_Drawing_ver2
             this.textbox_number = new System.Windows.Forms.TextBox();
             this.label_search_pokemon = new System.Windows.Forms.Label();
             this.random = new System.Windows.Forms.TabPage();
+            this.check_gen9 = new System.Windows.Forms.CheckBox();
             this.check_all = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.combo_random_pokemon_difficulty = new System.Windows.Forms.ComboBox();
             this.label_random_pokemon_data = new System.Windows.Forms.Label();
             this.combo_random_pokemon_form = new System.Windows.Forms.ComboBox();
-            this.check_gen9 = new System.Windows.Forms.CheckBox();
             this.check_gen8 = new System.Windows.Forms.CheckBox();
             this.check_gen7 = new System.Windows.Forms.CheckBox();
             this.check_gen6 = new System.Windows.Forms.CheckBox();
@@ -62,6 +62,7 @@ namespace Pokemon_Drawing_ver2
             this.label_random_pokemon = new System.Windows.Forms.Label();
             this.check_desktop = new System.Windows.Forms.CheckBox();
             this.check_number_style = new System.Windows.Forms.CheckBox();
+            this.check_painted = new System.Windows.Forms.CheckBox();
             this.tab_control.SuspendLayout();
             this.search.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_search_pokemon)).BeginInit();
@@ -215,6 +216,20 @@ namespace Pokemon_Drawing_ver2
             this.random.TabIndex = 4;
             this.random.Text = "포켓몬 뽑기";
             // 
+            // check_gen9
+            // 
+            this.check_gen9.AutoSize = true;
+            this.check_gen9.Checked = true;
+            this.check_gen9.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_gen9.Cursor = System.Windows.Forms.Cursors.Default;
+            this.check_gen9.Location = new System.Drawing.Point(6, 175);
+            this.check_gen9.Name = "check_gen9";
+            this.check_gen9.Size = new System.Drawing.Size(100, 16);
+            this.check_gen9.TabIndex = 17;
+            this.check_gen9.Text = "9세대(팔데아)";
+            this.check_gen9.UseVisualStyleBackColor = true;
+            this.check_gen9.CheckedChanged += new System.EventHandler(this.check_gen9_CheckedChanged);
+            // 
             // check_all
             // 
             this.check_all.AutoSize = true;
@@ -269,20 +284,6 @@ namespace Pokemon_Drawing_ver2
             this.combo_random_pokemon_form.TabIndex = 17;
             this.combo_random_pokemon_form.Visible = false;
             this.combo_random_pokemon_form.SelectedIndexChanged += new System.EventHandler(this.combo_random_pokemon_form_SelectedIndexChanged);
-            // 
-            // check_gen9
-            // 
-            this.check_gen9.AutoSize = true;
-            this.check_gen9.Checked = true;
-            this.check_gen9.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_gen9.Cursor = System.Windows.Forms.Cursors.Default;
-            this.check_gen9.Location = new System.Drawing.Point(6, 175);
-            this.check_gen9.Name = "check_gen9";
-            this.check_gen9.Size = new System.Drawing.Size(196, 16);
-            this.check_gen9.TabIndex = 17;
-            this.check_gen9.Text = "9세대(일부 포켓몬만 있습니다.)";
-            this.check_gen9.UseVisualStyleBackColor = true;
-            this.check_gen9.CheckedChanged += new System.EventHandler(this.check_gen9_CheckedChanged);
             // 
             // check_gen8
             // 
@@ -458,11 +459,22 @@ namespace Pokemon_Drawing_ver2
             this.check_number_style.Text = "숫자 진하게";
             this.check_number_style.UseVisualStyleBackColor = true;
             // 
+            // check_painted
+            // 
+            this.check_painted.AutoSize = true;
+            this.check_painted.Location = new System.Drawing.Point(180, 11);
+            this.check_painted.Name = "check_painted";
+            this.check_painted.Size = new System.Drawing.Size(48, 16);
+            this.check_painted.TabIndex = 23;
+            this.check_painted.Text = "색칠";
+            this.check_painted.UseVisualStyleBackColor = true;
+            // 
             // Main_Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 294);
+            this.Controls.Add(this.check_painted);
             this.Controls.Add(this.check_number_style);
             this.Controls.Add(this.check_desktop);
             this.Controls.Add(this.tab_control);
@@ -470,7 +482,7 @@ namespace Pokemon_Drawing_ver2
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Main_Client";
-            this.Text = "포켓몬 뽑기 v2.02";
+            this.Text = "포켓몬 뽑기 v2.10";
             this.tab_control.ResumeLayout(false);
             this.search.ResumeLayout(false);
             this.search.PerformLayout();
@@ -518,6 +530,7 @@ namespace Pokemon_Drawing_ver2
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox check_all;
         private System.Windows.Forms.CheckBox check_number_style;
+        private System.Windows.Forms.CheckBox check_painted;
     }
 }
 
