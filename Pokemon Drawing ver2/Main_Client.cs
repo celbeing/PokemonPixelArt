@@ -14,17 +14,18 @@ namespace Pokemon_Drawing_ver2
 {
     public partial class Main_Client : Form
     {
-        const int all_pokemon_count = 1344; // 전체 포켓몬 이미지 수
-        const int last_pokemon_number = 905;// 마지막 포켓몬 번호
-        const double shiny_rate = 5;        // % 단위
+        const int all_pokemon_count = 1344;     // 전체 포켓몬 이미지 수
+        const int gen9pokemon_count = 124;      // 9세대포켓몬 이미지 수
+        const int last_pokemon_number = 1010;   // 마지막 포켓몬 번호
+        const double shiny_rate = 5;            // % 단위
 
-        byte gen_select = 8;                // 선택된 세대 수
-        int pokemon_number = 0;             // 뽑으려는 포켓몬 번호
-        int current_search_pokemon_number = 0; // 찾은 포켓몬 번호 저장
-        int current_random_pokemon_number = 0; // 뽑은 포켓몬 번호 저장
+        int gen_select = 9;                     // 선택된 세대 수
+        int pokemon_number = 0;                 // 뽑으려는 포켓몬 번호
+        int current_search_pokemon_number = 0;  // 찾은 포켓몬 번호 저장
+        int current_random_pokemon_number = 0;  // 뽑은 포켓몬 번호 저장
 
-        int sample_order_front = 0;         // 이미지 샘플 첫번째 순서
-        int sample_order_back = 0;          // 이미지 샘플 마지막 순서
+        int sample_order_front = 0;             // 이미지 샘플 첫번째 순서
+        int sample_order_back = 0;              // 이미지 샘플 마지막 순서
         int search_order_front = 0;
         int search_order_back = 0;
         int random_order_front = 0;
@@ -388,15 +389,15 @@ namespace Pokemon_Drawing_ver2
                 {
                     pokemon_number = int.Parse(textbox_number.Text);
                     current_search_pokemon_number = pokemon_number;
-                    if (pokemon_number < 1 || pokemon_number > 905)
+                    if (pokemon_number < 1 || pokemon_number > 1010)
                     {
-                        MessageBox.Show("범위를 벗어났습니다.\n\r1~905 사이의 숫자를 입력해주세요.");
+                        MessageBox.Show("범위를 벗어났습니다.\n\r1~1010 사이의 숫자를 입력해주세요.");
                         return;
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("입력이 잘못되었습니다.\n\r1~905 사이의 숫자를 입력해주세요.");
+                    MessageBox.Show("입력이 잘못되었습니다.\n\r1~1010 사이의 숫자를 입력해주세요.");
                     return;
                 }
             }
@@ -478,7 +479,7 @@ namespace Pokemon_Drawing_ver2
         }
         private void button_random_pokemon_Click(object sender, EventArgs e)
         {
-            pokemon_form.Clear();
+            pokemon_form.Clear(); 
             this.shiny = false;
 
             // 포켓몬 번호 뽑기
@@ -493,7 +494,8 @@ namespace Pokemon_Drawing_ver2
                 else if (pokemon_number < 649) { if (check_gen5.Checked) break; }
                 else if (pokemon_number < 721) { if (check_gen6.Checked) break; }
                 else if (pokemon_number < 807) { if (check_gen7.Checked) break; }
-                else { if (check_gen8.Checked) break; }
+                else if (pokemon_number < 1011) { if (check_gen8.Checked) break; }
+                else { if (check_gen9.Checked) break; }
             }
             pokemon_number++;
             current_random_pokemon_number = pokemon_number;
