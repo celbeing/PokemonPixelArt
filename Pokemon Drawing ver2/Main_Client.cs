@@ -172,10 +172,11 @@ namespace Pokemon_Drawing_ver2
         }
         private void get_pokemon_image(int index, int difficulty, bool shiny)   // 샘플 이미지 만들기
         {
+            Bitmap image_origin;
+            Bitmap image_enlarge = new Bitmap(136, 112);
+            Bitmap image_97 = new Bitmap(97, 97);
             if (!gen9)
             {
-                Bitmap image_enlarge = new Bitmap(136, 112);
-                Bitmap image_origin;
                 if (shiny)
                 {
                     if (difficulty == 0)
@@ -215,7 +216,42 @@ namespace Pokemon_Drawing_ver2
             }
             else
             {
-
+                if (shiny)
+                {
+                    if(difficulty == 0)
+                    {
+                        image_origin =
+                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.gen9_shiny_easy);
+                    }
+                    else if(difficulty == 1)
+                    {
+                        image_origin =
+                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.gen9_shiny_normal);
+                    }
+                    else
+                    {
+                        image_origin =
+                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.gen9_shiny_hard);
+                    }
+                }
+                else
+                {
+                    if(difficulty == 1)
+                    {
+                        image_origin =
+                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.gen9_regular_easy);
+                    }
+                    else if(difficulty == 0)
+                    {
+                        image_origin =
+                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.gen9_regular_normal);
+                    }
+                    else
+                    {
+                        image_origin =
+                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.gen9_regular_hard);
+                    }
+                }
             }
 
             
@@ -232,7 +268,7 @@ namespace Pokemon_Drawing_ver2
             {
                 for (int col = 0; col < 68; col++)
                 {
-                    gen8image_sampleㅎ.SetPixel(col, row, image_color[col, row]);
+                    gen8image_sample.SetPixel(col, row, image_color[col, row]);
                     image_enlarge.SetPixel(col * 2, row * 2, image_color[col, row]);
                     image_enlarge.SetPixel(col * 2, row * 2 + 1, image_color[col, row]);
                     image_enlarge.SetPixel(col * 2 + 1, row * 2, image_color[col, row]);
@@ -241,12 +277,12 @@ namespace Pokemon_Drawing_ver2
             }
             if (tab_control.SelectedIndex == 0)
             {
-                gen8image_search = gen8image_sampleㅎ;
+                gen8image_search = gen8image_sample;
                 image_search_pokemon.Image = image_enlarge;
             }
             else
             {
-                gen8image_random = gen8image_sampleㅎ;
+                gen8image_random = gen8image_sample;
                 image_random_pokemon.Image = image_enlarge;
             }
         }

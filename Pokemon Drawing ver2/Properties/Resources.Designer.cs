@@ -61,6 +61,66 @@ namespace Pokemon_Drawing_ver2.Properties {
         }
         
         /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap gen9_regular_easy {
+            get {
+                object obj = ResourceManager.GetObject("gen9_regular_easy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap gen9_regular_hard {
+            get {
+                object obj = ResourceManager.GetObject("gen9_regular_hard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap gen9_regular_normal {
+            get {
+                object obj = ResourceManager.GetObject("gen9_regular_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap gen9_shiny_easy {
+            get {
+                object obj = ResourceManager.GetObject("gen9_shiny_easy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap gen9_shiny_hard {
+            get {
+                object obj = ResourceManager.GetObject("gen9_shiny_hard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap gen9_shiny_normal {
+            get {
+                object obj = ResourceManager.GetObject("gen9_shiny_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   abomasnow-mega.png,no460 눈설왕-(메가진화).png
         ///abomasnow.png,no460 눈설왕.png
         ///abra.png,no063 캐이시.png
@@ -165,35 +225,34 @@ namespace Pokemon_Drawing_ver2.Properties {
         }
         
         /// <summary>
-        ///   001,이상해씨,Bulbasaur
-        ///002,이상해풀,Ivysaur
-        ///003,이상해꽃,Venusaur
-        ///004,파이리,Charmander
-        ///005,리자드,Charmeleon
-        ///006,리자몽,Charizard
-        ///007,꼬부기,Squirtle
-        ///008,어니부기,Wartortle
-        ///009,거북왕,Blastoise
-        ///010,캐터피,Caterpie
-        ///011,단데기,Metapod
-        ///012,버터플,Butterfree
-        ///013,뿔충이,Weedle
-        ///014,딱충이,Kakuna
-        ///015,독침붕,Beedrill
-        ///016,구구,Pidgey
-        ///017,피죤,Pidgeotto
-        ///018,피죤투,Pidgeot
-        ///019,꼬렛,Rattata
-        ///020,레트라,Raticate
-        ///021,깨비참,Spearow
-        ///022,깨비드릴조,Fearow
-        ///023,아보,Ekans
-        ///024,아보크,Arbok
-        ///025,피카츄,Pikachu
-        ///026,라이츄,Raichu
-        ///027,모래두지,Sandshrew
-        ///028,고지,Sandslash
-        ///029,니드런♀,Nidora[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   1,�̻��ؾ�,Bulbasaur
+        ///2,�̻���Ǯ,Ivysaur
+        ///3,�̻��ز�,Venusaur
+        ///4,���̸�,Charmander
+        ///5,���ڵ�,Charmeleon
+        ///6,���ڸ�,Charizard
+        ///7,���α�,Squirtle
+        ///8,��Ϻα�,Wartortle
+        ///9,�źϿ�,Blastoise
+        ///10,ĳ����,Caterpie
+        ///11,�ܵ���,Metapod
+        ///12,������,Butterfree
+        ///13,������,Weedle
+        ///14,������,Kakuna
+        ///15,��ħ��,Beedrill
+        ///16,����,Pidgey
+        ///17,����,Pidgeotto
+        ///18,������,Pidgeot
+        ///19,����,Rattata
+        ///20,��Ʈ��,Raticate
+        ///21,������,Spearow
+        ///22,����帱��,Fearow
+        ///23,�ƺ�,Ekans
+        ///24,�ƺ�ũ,Arbok
+        ///25,��ī��,Pikachu
+        ///26,������,Raichu
+        ///27,�𷡵���,Sandshrew
+        ///28,����,Sands[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string pokemon_no_kor_eng {
             get {
@@ -238,8 +297,7 @@ namespace Pokemon_Drawing_ver2.Properties {
         ///nidoking,니드킹
         ///clefairy,삐삐
         ///clefable,픽시
-        ///vulpix,식스테일
-        ///[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///vulpix,식스테일        ///[나머지 문자열은 잘림]&quot;;과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string pokemon_translate {
             get {
