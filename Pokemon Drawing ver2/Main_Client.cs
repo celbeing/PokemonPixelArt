@@ -15,7 +15,7 @@ namespace Pokemon_Drawing_ver2
     public partial class Main_Client : Form
     {
         const int all_pokemon_count = 1344;     // 전체 포켓몬 이미지 수
-        const int gen9pokemon_count = 124;      // 9세대포켓몬 이미지 수
+        const int all_pokemon_count_gen9 = 124; // 9세대포켓몬 이미지 수
         const int last_pokemon_number = 1010;   // 마지막 포켓몬 번호
         const double shiny_rate = 5;            // % 단위
 
@@ -56,17 +56,17 @@ namespace Pokemon_Drawing_ver2
         List<string> pokemon_form = new List<string>();
 
         // 1~8세대 이미지 박스 로드용 비트맵
-        Bitmap gen8image_sample = new Bitmap(68, 56);
-        Bitmap gen8image_search = new Bitmap(68, 56);
-        Bitmap gen8image_random = new Bitmap(68, 56);
+        Bitmap image_sample = new Bitmap(68, 56);
+        Bitmap image_search = new Bitmap(68, 56);
+        Bitmap image_random = new Bitmap(68, 56);
 
         // 9세대   이미지 박스 로드용 비트맵
-        Bitmap gen9image_sample = new Bitmap(97, 97);
-        Bitmap gen9image_search = new Bitmap(97, 97);
-        Bitmap gen9image_random = new Bitmap(97, 97);
+        Bitmap image_sample_gen9 = new Bitmap(97, 97);
+        Bitmap image_search_gen9 = new Bitmap(97, 97);
+        Bitmap image_random_gen9 = new Bitmap(97, 97);
 
-        Bitmap gen8pixelart = new Bitmap(1600, 1100);   // 한칸 크기 18*18
-        Bitmap gen9pixelart = new Bitmap(1900, 1650);   // 한칸 크기 16*16
+        Bitmap pixelart = new Bitmap(1600, 1100);       // 한칸 크기 18*18
+        Bitmap pixelart_gen9 = new Bitmap(1900, 1650);  // 한칸 크기 16*16
 
         Assembly _assembly;
         StreamReader pokemon_name_search;
@@ -174,7 +174,7 @@ namespace Pokemon_Drawing_ver2
         {
             Bitmap image_origin;
             Bitmap image_enlarge = new Bitmap(136, 112);
-            Bitmap image_97 = new Bitmap(97, 97);
+            Bitmap image_enlarge_gen9 = new Bitmap(97, 97);
             if (!gen9)
             {
                 if (shiny)
@@ -256,34 +256,64 @@ namespace Pokemon_Drawing_ver2
 
             
             Color[,] image_color = new Color[68, 56];
-            for (int row = 0; row < 56; row++)
+            Color[,] image_color_gen9 = new Color[97, 97];
+            if (!gen9)
             {
-                for (int col = 0; col < 68; col++)
+                for (int row = 0; row < 56; row++)
                 {
-                    image_color[col, row] = image_origin.GetPixel
-                        ((index % 32) * 68 + col, (index / 32) * 56 + row);
+                    for (int col = 0; col < 68; col++)
+                    {
+                        image_color[col, row] = image_origin.GetPixel
+                            ((index % 32) * 68 + col, (index / 32) * 56 + row);
+                    }
                 }
-            }
-            for (int row = 0; row < 56; row++)
-            {
-                for (int col = 0; col < 68; col++)
+                for (int row = 0; row < 56; row++)
                 {
-                    gen8image_sample.SetPixel(col, row, image_color[col, row]);
-                    image_enlarge.SetPixel(col * 2, row * 2, image_color[col, row]);
-                    image_enlarge.SetPixel(col * 2, row * 2 + 1, image_color[col, row]);
-                    image_enlarge.SetPixel(col * 2 + 1, row * 2, image_color[col, row]);
-                    image_enlarge.SetPixel(col * 2 + 1, row * 2 + 1, image_color[col, row]);
+                    for (int col = 0; col < 68; col++)
+                    {
+                        image_sample.SetPixel(col, row, image_color[col, row]);
+                        image_enlarge.SetPixel(col * 2, row * 2, image_color[col, row]);
+                        image_enlarge.SetPixel(col * 2, row * 2 + 1, image_color[col, row]);
+                        image_enlarge.SetPixel(col * 2 + 1, row * 2, image_color[col, row]);
+                        image_enlarge.SetPixel(col * 2 + 1, row * 2 + 1, image_color[col, row]);
+                    }
                 }
-            }
-            if (tab_control.SelectedIndex == 0)
-            {
-                gen8image_search = gen8image_sample;
-                image_search_pokemon.Image = image_enlarge;
+                if (tab_control.SelectedIndex == 0)
+                {
+                    image_search = image_sample;
+                    image_search_pokemon.Image = image_enlarge;
+                }
+                else
+                {
+                    image_random = image_sample;
+                    image_random_pokemon.Image = image_enlarge;
+                }
             }
             else
             {
-                gen8image_random = gen8image_sample;
-                image_random_pokemon.Image = image_enlarge;
+                for (int row = 0; row < 97; row++)
+                {
+                    for (int col = 0; col < 97; col++)
+                    {
+                        image_color_gen9[col, row] = image_origin.GetPixel
+                            ((index % 20) * 97 + col, (index / 20) * 97 + row);
+                    }
+                }
+                for (int row = 0; row < 97; row++)
+                {
+                    for (int col = 0; col < 97; col++)
+                        image_sample_gen9.SetPixel(col, row, image_color_gen9[col, row]);
+                }
+                if (tab_control.SelectedIndex == 0)
+                {
+                    image_search = image_sample_gen9;
+                    image_search_pokemon.Image = image_enlarge_gen9;
+                }
+                else
+                {
+                    image_random = image_sample_gen9;
+                    image_random_pokemon.Image = image_enlarge_gen9;
+                }
             }
         }
         private void get_pixelart(Bitmap pokemon)
@@ -294,7 +324,7 @@ namespace Pokemon_Drawing_ver2
             Dictionary<int, Color> color_chart_r = new Dictionary<int, Color>();
             int color_count = 1;
             int[,] color_table = new int[68, 56];
-            Graphics field = Graphics.FromImage(gen8pixelart);
+            Graphics field = Graphics.FromImage(pixelart);
             field.Clear(Color.White);
             color_chart.Add(Color.FromArgb(255,255,255,255), 0);
             color_chart_r.Add(0, Color.FromArgb(255,255,255,255));
@@ -336,7 +366,7 @@ namespace Pokemon_Drawing_ver2
                 for (int col = 0; col < 68; col++)
                 {
                     for (int i = 0; i < 9; i++)
-                        gen8pixelart.SetPixel
+                        pixelart.SetPixel
                                 (cursor_x + dx[i] + col * 3, cursor_y + dy[i] + row * 3, color_pokemon[col, row]);
                 }
             }
@@ -346,7 +376,7 @@ namespace Pokemon_Drawing_ver2
                 pokemon_name = label_search_pokemon_data.Text;
             else
                 pokemon_name = label_random_pokemon_data.Text;
-            Graphics text = Graphics.FromImage(gen8pixelart);
+            Graphics text = Graphics.FromImage(pixelart);
             cursor_x = 1280;
             cursor_y = 208;
             Brush black = new SolidBrush(Color.Black);
@@ -402,10 +432,10 @@ namespace Pokemon_Drawing_ver2
         {
             for (int i = 0; i < 19; i++)
             {
-                gen8pixelart.SetPixel(x + i, y, Color.FromArgb(255, 175, 175, 175));
-                gen8pixelart.SetPixel(x, y + i, Color.FromArgb(255, 175, 175, 175));
-                gen8pixelart.SetPixel(x + i, y + 18, Color.FromArgb(255, 175, 175, 175));
-                gen8pixelart.SetPixel(x + 18, y + i, Color.FromArgb(255, 175, 175, 175));
+                pixelart.SetPixel(x + i, y, Color.FromArgb(255, 175, 175, 175));
+                pixelart.SetPixel(x, y + i, Color.FromArgb(255, 175, 175, 175));
+                pixelart.SetPixel(x + i, y + 18, Color.FromArgb(255, 175, 175, 175));
+                pixelart.SetPixel(x + 18, y + i, Color.FromArgb(255, 175, 175, 175));
             }
         }
         private void draw_number(int number, int x, int y)
@@ -425,10 +455,10 @@ namespace Pokemon_Drawing_ver2
                     int dy = location % 10;
 
                     if (check_number_style.Checked)
-                        gen8pixelart.SetPixel
+                        pixelart.SetPixel
                             (x + dx, y + dy, Color.FromArgb(255, 92, 92, 92));
                     else
-                        gen8pixelart.SetPixel
+                        pixelart.SetPixel
                             (x + dx, y + dy, Color.FromArgb(255, 175, 175, 175));
                 }
                 x += 7;
@@ -528,7 +558,7 @@ namespace Pokemon_Drawing_ver2
         }
         private void button_search_out_Click(object sender, EventArgs e)
         {
-            get_pixelart(gen8image_search);
+            get_pixelart(image_search);
             if (check_desktop.Checked)
             {
                 file_path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
@@ -549,7 +579,7 @@ namespace Pokemon_Drawing_ver2
                 }
             }
             get_file_name();
-            gen8pixelart.Save(file_path);
+            pixelart.Save(file_path);
             MessageBox.Show("저장되었습니다.");
         }
         private void button_random_pokemon_Click(object sender, EventArgs e)
@@ -620,7 +650,7 @@ namespace Pokemon_Drawing_ver2
         }
         private void button_random_out_Click(object sender, EventArgs e)
         {
-            get_pixelart(gen8image_random);
+            get_pixelart(image_random);
 
             if (check_desktop.Checked)
             {
@@ -642,7 +672,7 @@ namespace Pokemon_Drawing_ver2
                 }
             }
             get_file_name();
-            gen8pixelart.Save(file_path);
+            pixelart.Save(file_path);
             MessageBox.Show("저장되었습니다.");
         }
         private void check_all_CheckedChanged(object sender, EventArgs e)
