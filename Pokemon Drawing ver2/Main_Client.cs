@@ -119,24 +119,24 @@ namespace Pokemon_Drawing_ver2
 
         private void get_pokemon_index()
         {
-            int count_sample = 0;
-            int count_order = 0;
-            int first = -1;
-            int last = 0;
+            int count_sample = 0;                                                                       // 이미지 샘플 개수
+            int count_order = 0;                                                                        // 확인하려는 image_name 번호
+            int first = -1;                                                                             // 이미지 샘플 첫 번호
+            int last = 0;                                                                               // 이미지 샘플 마지막 번호
             StreamReader pokemon_locate_find =
                 new StreamReader(_assembly.GetManifestResourceStream
-                ("Pokemon_Drawing_ver2.Resources.image_name.csv"));
+                ("Pokemon_Drawing_ver2.Resources.image_name.csv"), Encoding.Default);
             while (true)
             {
-                if (count_order == all_pokemon_count)
+                if (count_order == all_pokemon_count + all_pokemon_count_gen9)                          // 1~9세대 번호 전부 확인한 경우
                 {
-                    last = count_order - 1;
+                    last = count_order - 1;                                                             // outofrange exception 방지
                     break;
                 }
-                string[] image_name = pokemon_locate_find.ReadLine().Split(',');
-                string[] image_no_name_form = image_name[1].Replace(".png", "").Split('-');
-                string[] image_kor_name = image_no_name_form[0].Split();
-                if (image_kor_name[1] == pokemon_name_kor)
+                string[] image_name = pokemon_locate_find.ReadLine().Split(',');                        // Image_name에서 StreamReader 한줄 읽어오고 ',' 기준으로 문자열 분리
+                string[] image_no_name_form = image_name[1].Replace(".png", "").Split('-');             // .png 제거하고 '-' 기준으로 문자열 분리
+                string[] image_kor_name = image_no_name_form[0].Split();                                // 공백기준으로 문자열 분리
+                if (image_kor_name[1] == pokemon_name_kor)                                              // 한글이름이 일치하는 경우
                 {
                     if (first == -1) first = count_order;
                     count_sample++;
@@ -153,22 +153,22 @@ namespace Pokemon_Drawing_ver2
             sample_order_back = last;
             pokemon_locate_find.Close();
         }
-        private void get_pokemon_name()
+        private void get_pokemon_name() // 번호로 이름 찾기
         {
             pokemon_name_search =
                 new StreamReader(_assembly.GetManifestResourceStream
-                ("Pokemon_Drawing_ver2.Resources.pokemon_no_kor_eng.csv"));
+                ("Pokemon_Drawing_ver2.Resources.pokemon_no_kor_eng.csv"), Encoding.Default);     // 한영 이름 불러오기
             while (true)
             {
-                string[] no_kor_eng = pokemon_name_search.ReadLine().Split(',');
-                if (int.Parse(no_kor_eng[0]) == pokemon_number)
+                string[] no_kor_eng = pokemon_name_search.ReadLine().Split(',');// 한줄씩 불러오고 ',' 기준으로 문자열 분리
+                if (int.Parse(no_kor_eng[0]) == pokemon_number)                 // StreamReader에서 불러온 번호가 일치하는 경우
                 {
-                    pokemon_name_kor = no_kor_eng[1];
-                    pokemon_name_eng = no_kor_eng[2].ToLower();
+                    pokemon_name_kor = no_kor_eng[1];                           // 한글 이름 저장
+                    pokemon_name_eng = no_kor_eng[2].ToLower();                 // 영문 이름 저장(소문자)
                     break;
                 }
             }
-            pokemon_name_search.Close();
+            pokemon_name_search.Close();                                        // StreamReader 닫기
         }
         private void get_pokemon_image(int index, int difficulty, bool shiny)   // 샘플 이미지 만들기
         {
