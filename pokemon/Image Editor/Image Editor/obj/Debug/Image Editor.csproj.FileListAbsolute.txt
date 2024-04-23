@@ -22,3 +22,15 @@ C:\Users\kimsd\OneDrive\Documents\GitHub\Csharp_Study\pokemon\Image Editor\Image
 C:\Users\kimsd\source\repos\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor_Client.Arrange.resources
 C:\Users\kimsd\source\repos\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor_Client.Size.resources
 C:\Users\kimsd\source\repos\Csharp_Study\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor_Client.Image_Editor.resources
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\Image Editor\Image Editor\bin\Debug\Image Editor.exe.config
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\Image Editor\Image Editor\bin\Debug\Image Editor.exe
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\Image Editor\Image Editor\bin\Debug\Image Editor.pdb
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.csproj.AssemblyReference.cache
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor_Client.Arrange.resources
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor_Client.Size.resources
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor_Client.Image_Editor.resources
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\Image Editor\Image Editor\obj\Debug\Image_Editor.Properties.Resources.resources
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.csproj.GenerateResource.cache
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.csproj.CoreCompileInputs.cache
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.exe
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\Image Editor\Image Editor\obj\Debug\Image Editor.pdb

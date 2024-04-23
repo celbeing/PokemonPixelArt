@@ -61,66 +61,6 @@ namespace Pokemon_Drawing_ver2.Properties {
         }
         
         /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap gen9_regular_easy {
-            get {
-                object obj = ResourceManager.GetObject("gen9_regular_easy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap gen9_regular_hard {
-            get {
-                object obj = ResourceManager.GetObject("gen9_regular_hard", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap gen9_regular_normal {
-            get {
-                object obj = ResourceManager.GetObject("gen9_regular_normal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap gen9_shiny_easy {
-            get {
-                object obj = ResourceManager.GetObject("gen9_shiny_easy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap gen9_shiny_hard {
-            get {
-                object obj = ResourceManager.GetObject("gen9_shiny_hard", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap gen9_shiny_normal {
-            get {
-                object obj = ResourceManager.GetObject("gen9_shiny_normal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   abomasnow-mega.png,no460 눈설왕-(메가진화).png
         ///abomasnow.png,no460 눈설왕.png
         ///abra.png,no063 캐이시.png

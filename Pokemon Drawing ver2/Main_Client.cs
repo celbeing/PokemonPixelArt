@@ -14,17 +14,13 @@ namespace Pokemon_Drawing_ver2
 {
     public partial class Main_Client : Form
     {
-        const int all_pokemon_count = 1344;     // 전체 포켓몬 이미지 수
-        const int all_pokemon_count_gen9 = 124; // 9세대포켓몬 이미지 수
+        const int all_pokemon_count = 1464;     // 전체 포켓몬 이미지 수
         const int last_pokemon_number = 1010;   // 마지막 포켓몬 번호
         const double shiny_rate = 5;            // % 단위
 
-        const int gen8width = 68;               // 1~8세대 이미지 가로
-        const int gen8height = 56;              // 1~8세대 이미지 세로
-        const int gen9width = 97;               // 9세대   이미지 가로
-        const int gen9height = 97;              // 9세대   이미지 세로
-        const int gen8blanksize = 18;           // 1~8세대 픽셀 칸 크기
-        const int gen9blanksize = 14;           // 9세대   픽셀 칸 크기
+        const int gen8width = 68;               // 이미지 가로
+        const int gen8height = 56;              // 이미지 세로
+        const int gen8blanksize = 18;           // 픽셀 칸 크기
 
         int gen_select = 9;                     // 선택된 세대 수
         int pokemon_number = 0;                 // 뽑으려는 포켓몬 번호
@@ -37,8 +33,6 @@ namespace Pokemon_Drawing_ver2
         int search_order_back = 0;
         int random_order_front = 0;
         int random_order_back = 0;
-
-        bool gen9 = false;                      // 9세대 여부
 
         bool shiny = false;                     // 색이 다른 포켓몬
         bool shiny_search = false;
@@ -55,18 +49,11 @@ namespace Pokemon_Drawing_ver2
         List<int[]> number_dot = new List<int[]>();
         List<string> pokemon_form = new List<string>();
 
-        // 1~8세대 이미지 박스 로드용 비트맵
         Bitmap image_sample = new Bitmap(68, 56);
         Bitmap image_search = new Bitmap(68, 56);
         Bitmap image_random = new Bitmap(68, 56);
 
-        // 9세대   이미지 박스 로드용 비트맵
-        Bitmap image_sample_gen9 = new Bitmap(97, 97);
-        Bitmap image_search_gen9 = new Bitmap(97, 97);
-        Bitmap image_random_gen9 = new Bitmap(97, 97);
-
         Bitmap pixelart = new Bitmap(1600, 1100);       // 한칸 크기 18*18
-        Bitmap pixelart_gen9 = new Bitmap(1900, 1650);  // 한칸 크기 16*16
 
         Assembly _assembly;
         StreamReader pokemon_name_search;
@@ -81,7 +68,6 @@ namespace Pokemon_Drawing_ver2
             combo_search_pokemon_difficulty.Items.Add("어려움");
 
             List<string> number_dot_loc = new List<string>();
-            // 1~8세대 숫자
             number_dot_loc.Add("01,02,03,04,05,06,07,08,10,19,20,29,30,39,40,49,51,52,53,54,55,56,57,58");          // 0
             number_dot_loc.Add("11,20,21,22,23,24,25,26,27,28,29");                                                 // 1
             number_dot_loc.Add("01,02,07,08,09,10,16,19,20,25,29,30,35,39,40,44,49,51,52,53,59");                   // 2
@@ -93,17 +79,6 @@ namespace Pokemon_Drawing_ver2
             number_dot_loc.Add("01,02,03,05,06,07,08,10,14,19,20,24,29,30,34,39,40,44,49,51,52,53,55,56,57,58");    // 8
             number_dot_loc.Add("01,02,03,04,08,10,15,19,20,25,29,30,35,39,40,45,49,51,52,53,54,55,56,57,58");       // 9
 
-            // 9세대   숫자
-            number_dot_loc.Add("01,02,03,10,14,20,24,30,34,40,44,54,54,60,64,71,72,73");                            // 0
-            number_dot_loc.Add("02,10,11,12,22,32,42,52,62,72");                                                    // 1
-            number_dot_loc.Add("01,02,03,10,14,20,24,33,42,51,60,70,71,72,73,74");                                  // 2
-            number_dot_loc.Add("01,02,03,10,14,24,31,32,33,44,54,60,64,71,72,73");                                  // 3
-            number_dot_loc.Add("02,03,12,13,21,23,31,33,40,44,50,51,53,54,55,64,74");                               // 4
-            number_dot_loc.Add("00,01,02,03,04,10,20,30,31,32,33,44,54,60,64,71,72,73");                            // 5
-            number_dot_loc.Add("01,02,03,10,14,20,30,31,32,33,40,44,50,54,60,64,71,72,73");                         // 6
-            number_dot_loc.Add("00,01,02,03,04,14,23,33,43,52,62,72");                                              // 7
-            number_dot_loc.Add("01,02,03,10,14,20,24,31,32,33,40,44,50,54,60,64,71,72,73");                         // 8
-            number_dot_loc.Add("01,02,03,10,14,20,24,30,34,41,42,43,44,54,60,64,71,72,73");                         // 9
 
             for (int i = 0; i < 10; i++)
             {
@@ -128,7 +103,7 @@ namespace Pokemon_Drawing_ver2
                 ("Pokemon_Drawing_ver2.Resources.image_name.csv"), Encoding.Default);
             while (true)
             {
-                if (count_order == all_pokemon_count + all_pokemon_count_gen9)                          // 1~9세대 번호 전부 확인한 경우
+                if (count_order == all_pokemon_count)                                                   // 1~9세대 번호 전부 확인한 경우
                 {
                     last = count_order - 1;                                                             // outofrange exception 방지
                     break;
@@ -175,145 +150,74 @@ namespace Pokemon_Drawing_ver2
             Bitmap image_origin;
             Bitmap image_enlarge = new Bitmap(136, 112);
             Bitmap image_enlarge_gen9 = new Bitmap(97, 97);
-            if (!gen9)
+            if (shiny)
             {
-                if (shiny)
+                if (difficulty == 0)
                 {
-                    if (difficulty == 0)
-                    {
-                        image_origin =
-                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_shiny_easy);
-                    }
-                    else if (difficulty == 1)
-                    {
-                        image_origin =
-                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_shiny_normal);
-                    }
-                    else
-                    {
-                        image_origin =
-                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_shiny_hard);
-                    }
+                    image_origin =
+                        new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_shiny_easy);
+                }
+                else if (difficulty == 1)
+                {
+                    image_origin =
+                        new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_shiny_normal);
                 }
                 else
                 {
-                    if (difficulty == 0)
-                    {
-                        image_origin =
-                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_regular_easy);
-                    }
-                    else if (difficulty == 1)
-                    {
-                        image_origin =
-                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_regular_normal);
-                    }
-                    else
-                    {
-                        image_origin =
-                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_regular_hard);
-                    }
+                    image_origin =
+                        new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_shiny_hard);
                 }
             }
             else
             {
-                if (shiny)
+                if (difficulty == 0)
                 {
-                    if(difficulty == 0)
-                    {
-                        image_origin =
-                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.gen9_shiny_easy);
-                    }
-                    else if(difficulty == 1)
-                    {
-                        image_origin =
-                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.gen9_shiny_normal);
-                    }
-                    else
-                    {
-                        image_origin =
-                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.gen9_shiny_hard);
-                    }
+                    image_origin =
+                        new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_regular_easy);
+                }
+                else if (difficulty == 1)
+                {
+                    image_origin =
+                        new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_regular_normal);
                 }
                 else
                 {
-                    if(difficulty == 1)
-                    {
-                        image_origin =
-                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.gen9_regular_easy);
-                    }
-                    else if(difficulty == 0)
-                    {
-                        image_origin =
-                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.gen9_regular_normal);
-                    }
-                    else
-                    {
-                        image_origin =
-                            new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.gen9_regular_hard);
-                    }
+                    image_origin =
+                        new Bitmap(Pokemon_Drawing_ver2.Properties.Resources.image_regular_hard);
                 }
             }
 
             
             Color[,] image_color = new Color[68, 56];
             Color[,] image_color_gen9 = new Color[97, 97];
-            if (!gen9)
+            for (int row = 0; row < 56; row++)
             {
-                for (int row = 0; row < 56; row++)
+                for (int col = 0; col < 68; col++)
                 {
-                    for (int col = 0; col < 68; col++)
-                    {
-                        image_color[col, row] = image_origin.GetPixel
-                            ((index % 32) * 68 + col, (index / 32) * 56 + row);
-                    }
+                    image_color[col, row] = image_origin.GetPixel
+                        ((index % 32) * 68 + col, (index / 32) * 56 + row);
                 }
-                for (int row = 0; row < 56; row++)
+            }
+            for (int row = 0; row < 56; row++)
+            {
+                for (int col = 0; col < 68; col++)
                 {
-                    for (int col = 0; col < 68; col++)
-                    {
-                        image_sample.SetPixel(col, row, image_color[col, row]);
-                        image_enlarge.SetPixel(col * 2, row * 2, image_color[col, row]);
-                        image_enlarge.SetPixel(col * 2, row * 2 + 1, image_color[col, row]);
-                        image_enlarge.SetPixel(col * 2 + 1, row * 2, image_color[col, row]);
-                        image_enlarge.SetPixel(col * 2 + 1, row * 2 + 1, image_color[col, row]);
-                    }
+                    image_sample.SetPixel(col, row, image_color[col, row]);
+                    image_enlarge.SetPixel(col * 2, row * 2, image_color[col, row]);
+                    image_enlarge.SetPixel(col * 2, row * 2 + 1, image_color[col, row]);
+                    image_enlarge.SetPixel(col * 2 + 1, row * 2, image_color[col, row]);
+                    image_enlarge.SetPixel(col * 2 + 1, row * 2 + 1, image_color[col, row]);
                 }
-                if (tab_control.SelectedIndex == 0)
-                {
-                    image_search = image_sample;
-                    image_search_pokemon.Image = image_enlarge;
-                }
-                else
-                {
-                    image_random = image_sample;
-                    image_random_pokemon.Image = image_enlarge;
-                }
+            }
+            if (tab_control.SelectedIndex == 0)
+            {
+                image_search = image_sample;
+                image_search_pokemon.Image = image_enlarge;
             }
             else
             {
-                for (int row = 0; row < 97; row++)
-                {
-                    for (int col = 0; col < 97; col++)
-                    {
-                        image_color_gen9[col, row] = image_origin.GetPixel
-                            ((index % 20) * 97 + col, (index / 20) * 97 + row);
-                    }
-                }
-                for (int row = 0; row < 97; row++)
-                {
-                    for (int col = 0; col < 97; col++)
-                        image_sample_gen9.SetPixel(col, row, image_color_gen9[col, row]);
-                }
-                if (tab_control.SelectedIndex == 0)
-                {
-                    image_search = image_sample_gen9;
-                    image_search_pokemon.Image = image_enlarge_gen9;
-                }
-                else
-                {
-                    image_random = image_sample_gen9;
-                    image_random_pokemon.Image = image_enlarge_gen9;
-                }
+                image_random = image_sample;
+                image_random_pokemon.Image = image_enlarge;
             }
         }
         private void get_pixelart(Bitmap pokemon)
