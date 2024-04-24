@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "HsnAJ6xUL6xbzBvMM3bgtptWhw9V4wPLvfPDzayDdiR0dsprkO5/gOO0IDUA76q09Ly1ZLWk7hijf6QimJWsQQ==",
+  "dgSpecHash": "xmvf8WOOREi2kyjll4SlC4EwZnEbw7pqlkLZglHaUjIBVm+VoJRsR2m/oZ7vjFcFL1ohJDM5KhzQ9QqbZbrzMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\kimsd\\OneDrive\\바탕 화면\\PokemonPixelArt\\pokemon\\image_dictionary\\image_dictionary\\image_dictionary.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\kimsd\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\kimsd\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\kimsd\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\kimsd\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
+  ],
   "logs": []
 }

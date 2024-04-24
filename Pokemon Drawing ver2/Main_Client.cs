@@ -15,7 +15,7 @@ namespace Pokemon_Drawing_ver2
     public partial class Main_Client : Form
     {
         const int all_pokemon_count = 1464;     // 전체 포켓몬 이미지 수
-        const int last_pokemon_number = 1010;   // 마지막 포켓몬 번호
+        const int last_pokemon_number = 1025;   // 마지막 포켓몬 번호
         const double shiny_rate = 5;            // % 단위
 
         const int gen8width = 68;               // 이미지 가로
@@ -100,7 +100,7 @@ namespace Pokemon_Drawing_ver2
             int last = 0;                                                                               // 이미지 샘플 마지막 번호
             StreamReader pokemon_locate_find =
                 new StreamReader(_assembly.GetManifestResourceStream
-                ("Pokemon_Drawing_ver2.Resources.image_name.csv"), Encoding.Default);
+                ("Pokemon_Drawing_ver2.Resources.image_name.csv"), Encoding.UTF8);
             while (true)
             {
                 if (count_order == all_pokemon_count)                                                   // 1~9세대 번호 전부 확인한 경우
@@ -128,11 +128,14 @@ namespace Pokemon_Drawing_ver2
             sample_order_back = last;
             pokemon_locate_find.Close();
         }
-        private void get_pokemon_name() // 번호로 이름 찾기
+
+        // 번호로 이름 찾기
+        private void get_pokemon_name()
         {
+            // 한영 이름 불러오기
             pokemon_name_search =
                 new StreamReader(_assembly.GetManifestResourceStream
-                ("Pokemon_Drawing_ver2.Resources.pokemon_no_kor_eng.csv"), Encoding.Default);     // 한영 이름 불러오기
+                ("Pokemon_Drawing_ver2.Resources.pokemon_no_kor_eng.csv"), Encoding.Default);
             while (true)
             {
                 string[] no_kor_eng = pokemon_name_search.ReadLine().Split(',');// 한줄씩 불러오고 ',' 기준으로 문자열 분리
@@ -220,6 +223,8 @@ namespace Pokemon_Drawing_ver2
                 image_random_pokemon.Image = image_enlarge;
             }
         }
+
+        // 픽셀아트 만들기
         private void get_pixelart(Bitmap pokemon)
         {
             // 색상 확인
@@ -315,6 +320,7 @@ namespace Pokemon_Drawing_ver2
                 else startPoint.Y += 21;
             }
         }
+
         private void get_file_name()
         {
             string path_ex = ".png";
@@ -386,6 +392,8 @@ namespace Pokemon_Drawing_ver2
                 shiny = shiny_random;
             }
         }
+
+        // 번호로 포켓몬 뽑기
         private void button_search_pokemon_Click(object sender, EventArgs e)
         {
             pokemon_form.Clear();
@@ -398,15 +406,20 @@ namespace Pokemon_Drawing_ver2
                 {
                     pokemon_number = int.Parse(textbox_number.Text);
                     current_search_pokemon_number = pokemon_number;
-                    if (pokemon_number < 1 || pokemon_number > 1010)
+                    if (pokemon_number < 1 || pokemon_number > 1025)
                     {
-                        MessageBox.Show("범위를 벗어났습니다.\n\r1~1010 사이의 숫자를 입력해주세요.");
+                        MessageBox.Show("범위를 벗어났습니다.\n\r1~1025 사이의 숫자를 입력해주세요.");
+                        return;
+                    }
+                    if (pokemon_number > 1008)
+                    {
+                        MessageBox.Show("1009번부터의 포켓몬은 아직 이미지가 없어요... 다음 업데이트를 기다려주세요.");
                         return;
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("입력이 잘못되었습니다.\n\r1~1010 사이의 숫자를 입력해주세요.");
+                    MessageBox.Show("입력이 잘못되었습니다.\n\r1~1025 사이의 숫자를 입력해주세요.");
                     return;
                 }
             }
@@ -486,6 +499,8 @@ namespace Pokemon_Drawing_ver2
             pixelart.Save(file_path);
             MessageBox.Show("저장되었습니다.");
         }
+
+        // 랜덤 포켓몬 뽑기
         private void button_random_pokemon_Click(object sender, EventArgs e)
         {
             pokemon_form.Clear(); 
@@ -503,8 +518,8 @@ namespace Pokemon_Drawing_ver2
                 else if (pokemon_number < 649) { if (check_gen5.Checked) break; }
                 else if (pokemon_number < 721) { if (check_gen6.Checked) break; }
                 else if (pokemon_number < 807) { if (check_gen7.Checked) break; }
-                else if (pokemon_number < 1011) { if (check_gen8.Checked) break; }
-                else { if (check_gen9.Checked) break; }
+                else if (pokemon_number < 905) { if (check_gen8.Checked) break; }
+                else if (pokemon_number < 1008){ if (check_gen9.Checked) break; }
             }
             pokemon_number++;
             current_random_pokemon_number = pokemon_number;
@@ -579,6 +594,8 @@ namespace Pokemon_Drawing_ver2
             pixelart.Save(file_path);
             MessageBox.Show("저장되었습니다.");
         }
+
+        // 각 세대 체크박스 확인
         private void check_all_CheckedChanged(object sender, EventArgs e)
         {
             if (check_box_event) return;

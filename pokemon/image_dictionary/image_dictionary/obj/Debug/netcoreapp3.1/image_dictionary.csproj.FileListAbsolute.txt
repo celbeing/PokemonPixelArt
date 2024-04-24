@@ -26,3 +26,18 @@ C:\Users\kimsd\source\repos\Csharp_Study\pokemon\image_dictionary\image_dictiona
 C:\Users\kimsd\source\repos\Csharp_Study\pokemon\image_dictionary\image_dictionary\obj\Debug\netcoreapp3.1\image_dictionary.dll
 C:\Users\kimsd\source\repos\Csharp_Study\pokemon\image_dictionary\image_dictionary\obj\Debug\netcoreapp3.1\image_dictionary.pdb
 C:\Users\kimsd\source\repos\Csharp_Study\pokemon\image_dictionary\image_dictionary\obj\Debug\netcoreapp3.1\image_dictionary.genruntimeconfig.cache
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\bin\Debug\netcoreapp3.1\image_dictionary.exe
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\bin\Debug\netcoreapp3.1\image_dictionary.deps.json
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\bin\Debug\netcoreapp3.1\image_dictionary.runtimeconfig.json
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\bin\Debug\netcoreapp3.1\image_dictionary.runtimeconfig.dev.json
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\bin\Debug\netcoreapp3.1\image_dictionary.dll
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\bin\Debug\netcoreapp3.1\image_dictionary.pdb
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\obj\Debug\netcoreapp3.1\image_dictionary.csproj.AssemblyReference.cache
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\obj\Debug\netcoreapp3.1\image_dictionary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\obj\Debug\netcoreapp3.1\image_dictionary.AssemblyInfoInputs.cache
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\obj\Debug\netcoreapp3.1\image_dictionary.AssemblyInfo.cs
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\obj\Debug\netcoreapp3.1\image_dictionary.csproj.CoreCompileInputs.cache
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\obj\Debug\netcoreapp3.1\image_dictionary.sourcelink.json
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\obj\Debug\netcoreapp3.1\image_dictionary.dll
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\obj\Debug\netcoreapp3.1\image_dictionary.pdb
+C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\image_dictionary\image_dictionary\obj\Debug\netcoreapp3.1\image_dictionary.genruntimeconfig.cache

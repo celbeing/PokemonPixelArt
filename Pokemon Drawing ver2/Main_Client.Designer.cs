@@ -462,6 +462,7 @@ namespace Pokemon_Drawing_ver2
             // check_painted
             // 
             this.check_painted.AutoSize = true;
+            this.check_painted.Enabled = false;
             this.check_painted.Location = new System.Drawing.Point(180, 11);
             this.check_painted.Name = "check_painted";
             this.check_painted.Size = new System.Drawing.Size(48, 16);

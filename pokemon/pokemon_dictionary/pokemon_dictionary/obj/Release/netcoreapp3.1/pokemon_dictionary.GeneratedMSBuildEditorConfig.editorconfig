@@ -1,3 +1,5 @@
 is_global = true
 build_property.RootNamespace = pokemon_dictionary
 build_property.ProjectDir = C:\Users\kimsd\OneDrive\바탕 화면\PokemonPixelArt\pokemon\pokemon_dictionary\pokemon_dictionary\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
