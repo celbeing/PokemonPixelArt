@@ -61,6 +61,7 @@ namespace Pokemon_Drawing_ver2
             this.image_random_pokemon = new System.Windows.Forms.PictureBox();
             this.label_random_pokemon = new System.Windows.Forms.Label();
             this.check_desktop = new System.Windows.Forms.CheckBox();
+            this.check_color_name = new System.Windows.Forms.CheckBox();
             this.check_number_style = new System.Windows.Forms.CheckBox();
             this.check_painted = new System.Windows.Forms.CheckBox();
             this.tab_control.SuspendLayout();
@@ -442,12 +443,24 @@ namespace Pokemon_Drawing_ver2
             this.check_desktop.AutoSize = true;
             this.check_desktop.Checked = true;
             this.check_desktop.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_desktop.Location = new System.Drawing.Point(238, 11);
+            this.check_desktop.Location = new System.Drawing.Point(282, 253);
             this.check_desktop.Name = "check_desktop";
-            this.check_desktop.Size = new System.Drawing.Size(112, 16);
+            this.check_desktop.Size = new System.Drawing.Size(72, 16);
             this.check_desktop.TabIndex = 10;
-            this.check_desktop.Text = "바탕화면에 저장";
+            this.check_desktop.Text = "바탕화면";
             this.check_desktop.UseVisualStyleBackColor = true;
+            // 
+            // check_color_name
+            // 
+            this.check_color_name.AutoSize = true;
+            this.check_color_name.Checked = true;
+            this.check_color_name.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_color_name.Location = new System.Drawing.Point(238, 11);
+            this.check_color_name.Name = "check_color_name";
+            this.check_color_name.Size = new System.Drawing.Size(116, 16);
+            this.check_color_name.TabIndex = 24;
+            this.check_color_name.Text = "색깔 이름 보이기";
+            this.check_color_name.UseVisualStyleBackColor = true;
             // 
             // check_number_style
             // 
@@ -462,7 +475,6 @@ namespace Pokemon_Drawing_ver2
             // check_painted
             // 
             this.check_painted.AutoSize = true;
-            this.check_painted.Enabled = false;
             this.check_painted.Location = new System.Drawing.Point(180, 11);
             this.check_painted.Name = "check_painted";
             this.check_painted.Size = new System.Drawing.Size(48, 16);
@@ -476,6 +488,7 @@ namespace Pokemon_Drawing_ver2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 294);
             this.Controls.Add(this.check_painted);
+            this.Controls.Add(this.check_color_name);
             this.Controls.Add(this.check_number_style);
             this.Controls.Add(this.check_desktop);
             this.Controls.Add(this.tab_control);
@@ -483,7 +496,8 @@ namespace Pokemon_Drawing_ver2
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Main_Client";
-            this.Text = "포켓몬 뽑기 v2.10";
+            this.Text = "포켓몬 뽑기 v2.20";
+            this.Load += new System.EventHandler(this.Main_Client_Load);
             this.tab_control.ResumeLayout(false);
             this.search.ResumeLayout(false);
             this.search.PerformLayout();
@@ -527,6 +541,7 @@ namespace Pokemon_Drawing_ver2
         private System.Windows.Forms.Label label_random_pokemon_data;
         private System.Windows.Forms.Button button_random_out;
         private System.Windows.Forms.CheckBox check_desktop;
+        private System.Windows.Forms.CheckBox check_color_name;
         private System.Windows.Forms.Label label_signature;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox check_all;

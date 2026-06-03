@@ -57,6 +57,41 @@ namespace Pokemon_Drawing_ver2
 
         Assembly _assembly;
         StreamReader pokemon_name_search;
+
+        private class ColorGroup
+        {
+            public string Name { get; private set; }
+            public Color DisplayColor { get; private set; }
+            private long red;
+            private long green;
+            private long blue;
+            private int count;
+
+            public ColorGroup(string name, Color displayColor)
+            {
+                Name = name;
+                DisplayColor = displayColor;
+            }
+
+            public void Add(Color color)
+            {
+                red += color.R;
+                green += color.G;
+                blue += color.B;
+                count++;
+            }
+
+            public Color GetAverageColor()
+            {
+                if (count == 0) return DisplayColor;
+                return Color.FromArgb(
+                    255,
+                    (int)Math.Round(red / (double)count),
+                    (int)Math.Round(green / (double)count),
+                    (int)Math.Round(blue / (double)count));
+            }
+        }
+
         public Main_Client()
         {
             InitializeComponent();
@@ -127,6 +162,135 @@ namespace Pokemon_Drawing_ver2
             sample_order_front = first;
             sample_order_back = last;
             pokemon_locate_find.Close();
+        }
+
+        private ColorGroup get_color_group(Color color)
+        {
+            if (color.A < 20 || (color.R >= 250 && color.G >= 250 && color.B >= 250))
+                return new ColorGroup("흰색", Color.White);
+
+            int max = Math.Max(color.R, Math.Max(color.G, color.B));
+            int min = Math.Min(color.R, Math.Min(color.G, color.B));
+            double brightness = max / 255.0;
+            double saturation = max == 0 ? 0 : (max - min) / (double)max;
+
+            if (brightness < 0.12)
+                return new ColorGroup("검정", Color.Black);
+
+            if (saturation < 0.12)
+            {
+                if (brightness < 0.35) return new ColorGroup("진회색", Color.DimGray);
+                if (brightness < 0.70) return new ColorGroup("회색", Color.Gray);
+                return new ColorGroup("연회색", Color.LightGray);
+            }
+
+            float hue = color.GetHue();
+
+            if (hue >= 18 && hue < 50 && brightness < 0.62 && saturation > 0.25)
+                return new ColorGroup("갈색", Color.SaddleBrown);
+
+            if (hue >= 25 && hue < 65 && brightness >= 0.62 && saturation < 0.55)
+                return new ColorGroup("베이지", Color.BurlyWood);
+
+            string name;
+            Color displayColor;
+            if (hue < 15 || hue >= 345)
+            {
+                name = "빨강";
+                displayColor = Color.Red;
+            }
+            else if (hue < 35)
+            {
+                name = "주황";
+                displayColor = Color.Orange;
+            }
+            else if (hue < 65)
+            {
+                name = "노랑";
+                displayColor = Color.Gold;
+            }
+            else if (hue < 90)
+            {
+                name = "연두";
+                displayColor = Color.YellowGreen;
+            }
+            else if (hue < 155)
+            {
+                name = "초록";
+                displayColor = Color.Green;
+            }
+            else if (hue < 185)
+            {
+                name = "청록";
+                displayColor = Color.Teal;
+            }
+            else if (hue < 210)
+            {
+                name = "하늘색";
+                displayColor = Color.SkyBlue;
+            }
+            else if (hue < 245)
+            {
+                name = "파랑";
+                displayColor = Color.Blue;
+            }
+            else if (hue < 270)
+            {
+                name = "남색";
+                displayColor = Color.Navy;
+            }
+            else if (hue < 305)
+            {
+                name = "보라";
+                displayColor = Color.Purple;
+            }
+            else if (hue < 330)
+            {
+                name = "자주";
+                displayColor = Color.MediumVioletRed;
+            }
+            else
+            {
+                name = "분홍";
+                displayColor = Color.Pink;
+            }
+
+            name = get_color_tone_name(name, brightness, saturation);
+
+            return new ColorGroup(name, displayColor);
+        }
+
+        private string get_color_tone_name(string name, double brightness, double saturation)
+        {
+            if (brightness < 0.32)
+                return "진한 " + name;
+
+            if (saturation < 0.25)
+                return brightness > 0.72 ? "연한 " + name : "탁한 " + name;
+
+            if (brightness < 0.72)
+                return is_warm_color(name) ? "탁한 " + name : "어두운 " + name;
+
+            if (brightness > 0.92)
+                return "밝은 " + name;
+
+            if (saturation < 0.45)
+                return "탁한 " + name;
+
+            if (brightness > 0.84 && saturation < 0.65)
+                return "연한 " + name;
+
+            return name;
+        }
+
+        private bool is_warm_color(string name)
+        {
+            return name == "빨강"
+                || name == "주황"
+                || name == "노랑"
+                || name == "연두"
+                || name == "초록"
+                || name == "분홍";
         }
 
         // 번호로 이름 찾기
@@ -229,27 +393,34 @@ namespace Pokemon_Drawing_ver2
         {
             // 색상 확인
             Color[,] color_pokemon = new Color[68, 56];
-            Dictionary<Color, int> color_chart = new Dictionary<Color, int>();
-            Dictionary<int, Color> color_chart_r = new Dictionary<int, Color>();
+            Dictionary<string, int> color_chart = new Dictionary<string, int>();
+            Dictionary<int, ColorGroup> color_chart_r = new Dictionary<int, ColorGroup>();
             int color_count = 1;
             int[,] color_table = new int[68, 56];
+            bool show_color_name = check_color_name.Checked;
             Graphics field = Graphics.FromImage(pixelart);
             field.Clear(Color.White);
-            color_chart.Add(Color.FromArgb(255,255,255,255), 0);
-            color_chart_r.Add(0, Color.FromArgb(255,255,255,255));
+            ColorGroup white = new ColorGroup("흰색", Color.White);
+            color_chart.Add(get_color_chart_key(Color.White, white, show_color_name), 0);
+            color_chart_r.Add(0, white);
 
             for (int row = 0; row < 56; row++)
             {
                 for (int col = 0; col < 68; col++)
                 {
                     color_pokemon[col, row] = pokemon.GetPixel(col, row);
-                    if (!color_chart.ContainsKey(color_pokemon[col, row]))
+                    ColorGroup color_group = show_color_name
+                        ? get_color_group(color_pokemon[col, row])
+                        : new ColorGroup(string.Empty, color_pokemon[col, row]);
+                    string color_key = get_color_chart_key(color_pokemon[col, row], color_group, show_color_name);
+                    if (!color_chart.ContainsKey(color_key))
                     {
-                        color_chart.Add(color_pokemon[col, row], color_count);
-                        color_chart_r.Add(color_count, color_pokemon[col, row]);
+                        color_chart.Add(color_key, color_count);
+                        color_chart_r.Add(color_count, color_group);
                         color_count++;
                     }
-                    color_table[col, row] = color_chart[color_pokemon[col, row]];
+                    color_table[col, row] = color_chart[color_key];
+                    color_chart_r[color_table[col, row]].Add(color_pokemon[col, row]);
                 }
             }
 
@@ -260,8 +431,16 @@ namespace Pokemon_Drawing_ver2
             {
                 for (int col = 0; col < 68; col++)
                 {
-                    draw_blank(col * 18 + cursor_x, row * 18 + cursor_y);
-                    draw_number(color_table[col, row], col * 18 + cursor_x, row * 18 + cursor_y);
+                    int x = col * 18 + cursor_x;
+                    int y = row * 18 + cursor_y;
+
+                    if (check_painted.Checked)
+                        draw_painted_blank(x, y, color_chart_r[color_table[col, row]].GetAverageColor());
+
+                    draw_blank(x, y);
+
+                    if (!check_painted.Checked)
+                        draw_number(color_table[col, row], x, y);
                 }
             }
 
@@ -306,19 +485,32 @@ namespace Pokemon_Drawing_ver2
             cursor_y = 253;
             startPoint.X = cursor_x;
             startPoint.Y = cursor_y;
+            Font legendFont = new Font(_font, 13, FontStyle.Regular, GraphicsUnit.Pixel);
             Pen pen = new Pen(Color.Black, 15);
             for(int i = 1; i < color_count; i++)
             {
-                pen.Color = color_chart_r[i];
-                text.DrawString(i.ToString(), myFont, black, startPoint);
-                text.DrawLine(pen, startPoint.X + 20, startPoint.Y + 7, startPoint.X + 50, startPoint.Y + 7);
+                pen.Color = color_chart_r[i].GetAverageColor();
+                text.DrawLine(pen, startPoint.X, startPoint.Y + 7, startPoint.X + 24, startPoint.Y + 7);
+                string color_name;
+                if (show_color_name)
+                    color_name = check_painted.Checked
+                        ? color_chart_r[i].Name
+                        : i.ToString() + " " + color_chart_r[i].Name;
+                else
+                    color_name = i.ToString();
+                text.DrawString(color_name, legendFont, black, new PointF(startPoint.X + 34, startPoint.Y));
                 if (i >= color_count / 2 && startPoint.X == cursor_x)
                 {
-                    startPoint.X = cursor_x + 70;
+                    startPoint.X = cursor_x + 155;
                     startPoint.Y = cursor_y;
                 }
                 else startPoint.Y += 21;
             }
+        }
+
+        private string get_color_chart_key(Color color, ColorGroup color_group, bool show_color_name)
+        {
+            return show_color_name ? color_group.Name : color.ToArgb().ToString();
         }
 
         private void get_file_name()
@@ -347,6 +539,12 @@ namespace Pokemon_Drawing_ver2
                 pixelart.SetPixel(x + i, y + 18, Color.FromArgb(255, 175, 175, 175));
                 pixelart.SetPixel(x + 18, y + i, Color.FromArgb(255, 175, 175, 175));
             }
+        }
+        private void draw_painted_blank(int x, int y, Color color)
+        {
+            for (int row = 1; row < 18; row++)
+                for (int col = 1; col < 18; col++)
+                    pixelart.SetPixel(x + col, y + row, color);
         }
         private void draw_number(int number, int x, int y)
         {
@@ -738,6 +936,11 @@ namespace Pokemon_Drawing_ver2
             if (gen_select == 9) check_all.Checked = true;
             else check_all.Checked = false;
             check_box_event = false;
+        }
+
+        private void Main_Client_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
