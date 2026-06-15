@@ -398,6 +398,7 @@ namespace Pokemon_Drawing_ver2
             int color_count = 1;
             int[,] color_table = new int[68, 56];
             bool show_color_name = check_color_name.Checked;
+            bool show_white_zero = check_white_zero.Checked && !check_painted.Checked;
             Graphics field = Graphics.FromImage(pixelart);
             field.Clear(Color.White);
             ColorGroup white = new ColorGroup("흰색", Color.White);
@@ -439,7 +440,7 @@ namespace Pokemon_Drawing_ver2
 
                     draw_blank(x, y);
 
-                    if (!check_painted.Checked)
+                    if (!check_painted.Checked && (color_table[col, row] != 0 || show_white_zero))
                         draw_number(color_table[col, row], x, y);
                 }
             }
@@ -550,6 +551,8 @@ namespace Pokemon_Drawing_ver2
         {
             x += 2; y += 2;
             Stack<int> draw_this = new Stack<int>();
+            if (number == 0)
+                draw_this.Push(0);
             while (number > 0)
             {
                 draw_this.Push(number % 10);

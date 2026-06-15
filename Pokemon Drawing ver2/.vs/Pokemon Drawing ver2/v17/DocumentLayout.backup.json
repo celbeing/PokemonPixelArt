@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\kimsd\\Documents\\GitHub\\PokemonPixelArt\\Pokemon Drawing ver2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B8C9970C-9AE4-4BA2-9821-44D3E3B0D05C}|Pokemon Drawing ver2.csproj|C:\\Users\\kimsd\\Documents\\GitHub\\PokemonPixelArt\\Pokemon Drawing ver2\\main_client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B8C9970C-9AE4-4BA2-9821-44D3E3B0D05C}|Pokemon Drawing ver2.csproj|c:\\users\\kimsd\\documents\\github\\pokemonpixelart\\pokemon drawing ver2\\main_client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B8C9970C-9AE4-4BA2-9821-44D3E3B0D05C}|Pokemon Drawing ver2.csproj|solutionrelative:main_client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -20,9 +20,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B8C9970C-9AE4-4BA2-9821-44D3E3B0D05C}|Pokemon Drawing ver2.csproj|C:\\Users\\kimsd\\Documents\\GitHub\\PokemonPixelArt\\Pokemon Drawing ver2\\resources\\image_name.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{B8C9970C-9AE4-4BA2-9821-44D3E3B0D05C}|Pokemon Drawing ver2.csproj|solutionrelative:resources\\image_name.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8C9970C-9AE4-4BA2-9821-44D3E3B0D05C}|Pokemon Drawing ver2.csproj|c:\\users\\kimsd\\documents\\github\\pokemonpixelart\\pokemon drawing ver2\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|a54ad834-9219-4aa6-b589-607af21c3e26"
     }
   ],
   "DocumentGroupContainers": [
@@ -56,8 +53,7 @@
               "ToolTip": "C:\\Users\\kimsd\\Documents\\GitHub\\PokemonPixelArt\\Pokemon Drawing ver2\\Pokemon Drawing ver2.csproj",
               "RelativeToolTip": "Pokemon Drawing ver2.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-04-24T06:42:39.843Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T06:42:39.843Z"
             },
             {
               "$type": "Document",
@@ -81,8 +77,7 @@
               "RelativeToolTip": "Main_Client.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-02T06:34:17.933Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-02T06:34:17.933Z"
             },
             {
               "$type": "Document",
