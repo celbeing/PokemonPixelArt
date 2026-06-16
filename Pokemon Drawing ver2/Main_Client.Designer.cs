@@ -256,14 +256,17 @@ namespace Pokemon_Drawing_ver2
             // 
             // label1
             // 
+            this.label1.ActiveLinkColor = System.Drawing.Color.Gray;
             this.label1.AutoSize = true;
             this.label1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.label1.LinkColor = System.Drawing.Color.Gray;
             this.label1.Location = new System.Drawing.Point(6, 208);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(221, 24);
             this.label1.TabIndex = 21;
             this.label1.TabStop = true;
             this.label1.Text = "인디스쿨:전라남도교육지원청\r\n티스토리:https://celbeing.tistory.com/";
+            this.label1.VisitedLinkColor = System.Drawing.Color.Gray;
             this.label1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.signature_LinkClicked);
             // 
             // combo_random_pokemon_difficulty
