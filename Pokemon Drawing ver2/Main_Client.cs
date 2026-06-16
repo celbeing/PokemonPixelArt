@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace Pokemon_Drawing_ver2
 {
@@ -21,6 +22,8 @@ namespace Pokemon_Drawing_ver2
         const int gen8width = 68;               // 이미지 가로
         const int gen8height = 56;              // 이미지 세로
         const int gen8blanksize = 18;           // 픽셀 칸 크기
+        const string indischool_url = "https://indischool.com/@celbeing";
+        const string tistory_url = "https://celbeing.tistory.com/";
 
         int gen_select = 9;                     // 선택된 세대 수
         int pokemon_number = 0;                 // 뽑으려는 포켓몬 번호
@@ -37,12 +40,18 @@ namespace Pokemon_Drawing_ver2
         bool shiny = false;                     // 색이 다른 포켓몬
         bool shiny_search = false;
         bool shiny_random = false;
+        bool hide_search_image = false;
+        bool hide_random_image = false;
+        bool hide_search_name = false;
+        bool hide_random_name = false;
 
         bool check_all_event = false;           // 모두 선택 옵션
         bool check_box_event = false;           // 개별 선택 옵션
 
         string pokemon_name_kor = string.Empty; // 포켓몬 한글 이름
         string pokemon_name_eng = string.Empty; // 포켓몬 영문 이름
+        string search_pokemon_label = string.Empty;
+        string random_pokemon_label = string.Empty;
         string file_path = string.Empty;        // 파일 경로
         string directory_path = string.Empty;   // 디렉토리
 
@@ -378,14 +387,126 @@ namespace Pokemon_Drawing_ver2
             }
             if (tab_control.SelectedIndex == 0)
             {
-                image_search = image_sample;
-                image_search_pokemon.Image = image_enlarge;
+                image_search = new Bitmap(image_sample);
+                update_search_image_view(image_enlarge);
             }
             else
             {
-                image_random = image_sample;
-                image_random_pokemon.Image = image_enlarge;
+                image_random = new Bitmap(image_sample);
+                update_random_image_view(image_enlarge);
             }
+        }
+
+        private Bitmap get_enlarged_pokemon_image(Bitmap pokemon)
+        {
+            Bitmap image_enlarge = new Bitmap(136, 112);
+            for (int row = 0; row < 56; row++)
+            {
+                for (int col = 0; col < 68; col++)
+                {
+                    Color color = pokemon.GetPixel(col, row);
+                    image_enlarge.SetPixel(col * 2, row * 2, color);
+                    image_enlarge.SetPixel(col * 2, row * 2 + 1, color);
+                    image_enlarge.SetPixel(col * 2 + 1, row * 2, color);
+                    image_enlarge.SetPixel(col * 2 + 1, row * 2 + 1, color);
+                }
+            }
+            return image_enlarge;
+        }
+
+        private Bitmap get_hidden_pokemon_image(int width, int height)
+        {
+            Stream unknown_stream =
+                _assembly.GetManifestResourceStream("Pokemon_Drawing_ver2.Resources.unknown.png");
+            if (unknown_stream == null)
+                return new Bitmap(width, height);
+
+            Bitmap unknown = new Bitmap(unknown_stream);
+            Bitmap hidden_image = get_scaled_bitmap(unknown, width, height);
+            unknown.Dispose();
+            unknown_stream.Dispose();
+            return hidden_image;
+        }
+
+        private Bitmap get_scaled_bitmap(Bitmap source, int width, int height)
+        {
+            Bitmap scaled = new Bitmap(width, height);
+            for (int row = 0; row < height; row++)
+            {
+                for (int col = 0; col < width; col++)
+                {
+                    scaled.SetPixel(
+                        col,
+                        row,
+                        source.GetPixel(col * source.Width / width, row * source.Height / height));
+                }
+            }
+            return scaled;
+        }
+
+        private void update_search_image_view()
+        {
+            if (hide_search_image)
+                image_search_pokemon.Image = get_hidden_pokemon_image(136, 112);
+            else
+                image_search_pokemon.Image = get_enlarged_pokemon_image(image_search);
+        }
+
+        private void update_search_image_view(Bitmap image_enlarge)
+        {
+            if (hide_search_image)
+                image_search_pokemon.Image = get_hidden_pokemon_image(136, 112);
+            else
+                image_search_pokemon.Image = image_enlarge;
+        }
+
+        private void update_random_image_view()
+        {
+            if (hide_random_image)
+                image_random_pokemon.Image = get_hidden_pokemon_image(136, 112);
+            else
+                image_random_pokemon.Image = get_enlarged_pokemon_image(image_random);
+        }
+
+        private void update_random_image_view(Bitmap image_enlarge)
+        {
+            if (hide_random_image)
+                image_random_pokemon.Image = get_hidden_pokemon_image(136, 112);
+            else
+                image_random_pokemon.Image = image_enlarge;
+        }
+
+        private string get_hidden_pokemon_label(bool is_shiny)
+        {
+            string hidden_label = "No.??? ???";
+            if (is_shiny) hidden_label += "\n\r색이 다른 포켓몬!!!";
+            return hidden_label;
+        }
+
+        private void update_search_name_view()
+        {
+            label_search_pokemon_data.Text = hide_search_name
+                ? get_hidden_pokemon_label(shiny_search)
+                : search_pokemon_label;
+        }
+
+        private void update_random_name_view()
+        {
+            label_random_pokemon_data.Text = hide_random_name
+                ? get_hidden_pokemon_label(shiny_random)
+                : random_pokemon_label;
+        }
+
+        private bool get_current_image_hidden()
+        {
+            return tab_control.SelectedIndex == 0 ? hide_search_image : hide_random_image;
+        }
+
+        private string get_current_pokemon_label()
+        {
+            if (tab_control.SelectedIndex == 0)
+                return hide_search_name ? get_hidden_pokemon_label(shiny_search) : search_pokemon_label;
+            return hide_random_name ? get_hidden_pokemon_label(shiny_random) : random_pokemon_label;
         }
 
         // 픽셀아트 만들기
@@ -448,23 +569,26 @@ namespace Pokemon_Drawing_ver2
             // 샘플 붙이기
             cursor_x = 1280;
             cursor_y = 30;
-            int[] dx = { 0, 0, 0, 1, 1, 1, 2, 2, 2 };
-            int[] dy = { 0, 1, 2, 0, 1, 2, 0, 1, 2 };
-            for (int row = 0; row < 56; row++)
+            if (get_current_image_hidden())
             {
-                for (int col = 0; col < 68; col++)
+                draw_hidden_pokemon_sample(cursor_x, cursor_y);
+            }
+            else
+            {
+                int[] dx = { 0, 0, 0, 1, 1, 1, 2, 2, 2 };
+                int[] dy = { 0, 1, 2, 0, 1, 2, 0, 1, 2 };
+                for (int row = 0; row < 56; row++)
                 {
-                    for (int i = 0; i < 9; i++)
-                        pixelart.SetPixel
-                                (cursor_x + dx[i] + col * 3, cursor_y + dy[i] + row * 3, color_pokemon[col, row]);
+                    for (int col = 0; col < 68; col++)
+                    {
+                        for (int i = 0; i < 9; i++)
+                            pixelart.SetPixel
+                                    (cursor_x + dx[i] + col * 3, cursor_y + dy[i] + row * 3, color_pokemon[col, row]);
+                    }
                 }
             }
 
-            string pokemon_name = string.Empty;
-            if (tab_control.SelectedIndex == 0)
-                pokemon_name = label_search_pokemon_data.Text;
-            else
-                pokemon_name = label_random_pokemon_data.Text;
+            string pokemon_name = get_current_pokemon_label();
             Graphics text = Graphics.FromImage(pixelart);
             cursor_x = 1280;
             cursor_y = 208;
@@ -547,6 +671,14 @@ namespace Pokemon_Drawing_ver2
                 for (int col = 1; col < 18; col++)
                     pixelart.SetPixel(x + col, y + row, color);
         }
+        private void draw_hidden_pokemon_sample(int x, int y)
+        {
+            Bitmap hidden_image = get_hidden_pokemon_image(204, 168);
+            Graphics hidden = Graphics.FromImage(pixelart);
+            hidden.DrawImage(hidden_image, x, y);
+            hidden.Dispose();
+            hidden_image.Dispose();
+        }
         private void draw_number(int number, int x, int y)
         {
             x += 2; y += 2;
@@ -599,6 +731,8 @@ namespace Pokemon_Drawing_ver2
         {
             pokemon_form.Clear();
             this.shiny = false;
+            hide_search_image = false;
+            hide_search_name = false;
 
             // 번호 입력
             if (textbox_number.Text != string.Empty)
@@ -657,7 +791,8 @@ namespace Pokemon_Drawing_ver2
             label_search_pokemon_data.Visible = true;
             string pokemon_label = $"No.{int.Parse(textbox_number.Text):D3} {pokemon_name_kor}";
             if (this.shiny) pokemon_label += "\n\r색이 다른 포켓몬!!!";
-            label_search_pokemon_data.Text = pokemon_label;
+            search_pokemon_label = pokemon_label;
+            update_search_name_view();
 
             // 포켓몬 이미지 출력
             get_pokemon_image(sample_order_back, combo_search_pokemon_difficulty.SelectedIndex, this.shiny);
@@ -706,6 +841,8 @@ namespace Pokemon_Drawing_ver2
         {
             pokemon_form.Clear(); 
             this.shiny = false;
+            hide_random_image = false;
+            hide_random_name = false;
 
             // 포켓몬 번호 뽑기
             Random number = new Random();
@@ -744,7 +881,8 @@ namespace Pokemon_Drawing_ver2
             label_random_pokemon_data.Visible = true;
             string pokemon_label = $"No.{pokemon_number:D3} {pokemon_name_kor}";
             if (this.shiny) pokemon_label += "\n\r색이 다른 포켓몬!!!";
-            label_random_pokemon_data.Text = pokemon_label;
+            random_pokemon_label = pokemon_label;
+            update_random_name_view();
 
             // 콤보박스 초기화
             combo_random_pokemon_form.Items.Clear();
@@ -794,6 +932,31 @@ namespace Pokemon_Drawing_ver2
             get_file_name();
             pixelart.Save(file_path);
             MessageBox.Show("저장되었습니다.");
+        }
+
+        private void image_search_pokemon_Click(object sender, EventArgs e)
+        {
+            if (!button_search_out.Visible) return;
+            hide_search_image = !hide_search_image;
+            update_search_image_view();
+        }
+        private void image_random_pokemon_Click(object sender, EventArgs e)
+        {
+            if (!button_random_out.Visible) return;
+            hide_random_image = !hide_random_image;
+            update_random_image_view();
+        }
+        private void label_search_pokemon_data_Click(object sender, EventArgs e)
+        {
+            if (!label_search_pokemon_data.Visible) return;
+            hide_search_name = !hide_search_name;
+            update_search_name_view();
+        }
+        private void label_random_pokemon_data_Click(object sender, EventArgs e)
+        {
+            if (!label_random_pokemon_data.Visible) return;
+            hide_random_name = !hide_random_name;
+            update_random_name_view();
         }
 
         // 각 세대 체크박스 확인
@@ -943,7 +1106,35 @@ namespace Pokemon_Drawing_ver2
 
         private void Main_Client_Load(object sender, EventArgs e)
         {
+            set_signature_links(label_signature);
+            set_signature_links(label1);
+        }
 
+        private void set_signature_links(LinkLabel signature)
+        {
+            string[] lines = signature.Text.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            if (lines.Length < 2) return;
+
+            signature.Links.Clear();
+            signature.Links.Add(0, lines[0].Length, indischool_url);
+            signature.Links.Add(lines[0].Length + 2, lines[1].Length, tistory_url);
+        }
+
+        private void signature_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (e.Link.LinkData == null) return;
+
+            string url = e.Link.LinkData.ToString();
+            e.Link.Visited = true;
+
+            try
+            {
+                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+            }
+            catch
+            {
+                MessageBox.Show("링크를 열 수 없습니다.\n\r" + url);
+            }
         }
     }
 }
